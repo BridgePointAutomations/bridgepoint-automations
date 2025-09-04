@@ -6,9 +6,9 @@ import { CheckCircle, ArrowRight, Zap, TrendingUp, Users } from "lucide-react";
 const ServicesSection = () => {
   const packages = [
     {
-      tier: "Starter",
-      price: "$2,000",
-      support: "$250/month",
+      tier: "Efficiency Essentials",
+      price: "$2,500",
+      support: "$350/month",
       icon: <Zap className="w-6 h-6" />,
       description: "Perfect for small businesses seeking initial automation wins",
       features: [
@@ -25,9 +25,9 @@ const ServicesSection = () => {
       popular: false
     },
     {
-      tier: "Growth",
+      tier: "Growth Builder",
       price: "$5,000",
-      support: "$500/month",
+      support: "$550/month",
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Comprehensive automation for growing businesses",
       features: [
@@ -46,7 +46,7 @@ const ServicesSection = () => {
     {
       tier: "Enterprise Lite",
       price: "$9,000",
-      support: "$1,000/month",
+      support: "$750/month",
       icon: <Users className="w-6 h-6" />,
       description: "Enterprise automation for established businesses",
       features: [
@@ -172,33 +172,33 @@ const ServicesSection = () => {
             {[
               {
                 title: "Industry Templates",
-                price: "$1,200-1,500",
-                description: "Pre-built automation templates for your specific industry"
+                price: "$1,200.00 One-time",
+                description: "Pre-built automation templates for specific industries (Airtable bases + workflows)"
               },
               {
-                title: "24/7 Monitoring",
-                price: "$400/month",
-                description: "Continuous workflow monitoring with proactive issue resolution"
+                title: "Premium Care & Monitoring",
+                price: "$650.00 Monthly",
+                description: "24/7 monitoring, proactive fixes, faster response, after-hours support"
               },
               {
-                title: "Priority Support",
-                price: "$300-500/month",
-                description: "Faster response times and direct access to senior consultants"
+                title: "Integration Quick Wins",
+                price: "$750.00 One-time",
+                description: "Additional integrations (QuickBooks, Slack, DocuSign, etc.)"
               },
               {
-                title: "Template Library Access",
-                price: "$750 one-time",
-                description: "Growing library of automation templates and community solutions"
+                title: "Template Library",
+                price: "$750.00 One-time",
+                description: "Access to a growing library of automation templates (lifetime access)"
               },
               {
                 title: "Quarterly Optimization",
-                price: "$500/session",
-                description: "Performance review, improvements, and new automation opportunities"
+                price: "$500.00 Per Session",
+                description: "Performance review, new opportunity identification, ROI reporting"
               },
               {
-                title: "Training Resources",
-                price: "$350",
-                description: "Video tutorials, best practices guides, and ongoing education materials"
+                title: "ROI Dashboard",
+                price: "$1,000.00 One-time + Optional Monthly",
+                description: "Custom ROI dashboard (Airtable/BI) with optional ongoing maintenance"
               }
             ].map((addon, index) => (
               <div key={index} className="p-4 bg-accent rounded-lg">
