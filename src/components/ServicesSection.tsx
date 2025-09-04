@@ -32,14 +32,13 @@ const ServicesSection = () => {
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Comprehensive automation for growing businesses",
       features: [
-        "Automation Audit",
         "Everything in Efficiency Essentials, plus:",
-        "5-6 automated workflows",
-        "2 Airtable bases with advanced features",
-        "2 custom dashboards",
-        "ROI tracking dashboard",
+        "2-3 additional smart workflows with advanced triggers (5-6 total)",
+        "1 additional Airtable base with predictive analytics features",
+        "1 additional real-time insights dashboard",
+        "ROI tracking with performance metrics",
         "Comprehensive training program",
-        "Integration with existing tools"
+        "Intelligent integration with existing tools"
       ],
       platforms: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
       roi: "400-700% ROI",
@@ -53,16 +52,15 @@ const ServicesSection = () => {
       icon: <Users className="w-6 h-6" />,
       description: "Enterprise automation for established businesses",
       features: [
-        "Automation Audit",
         "Everything in Growth Builder, plus:",
-        "6-10 automated workflows",
-        "Multi-base Airtable system",
-        "AI-powered tools integration",
+        "1-4 additional enterprise-grade workflows with machine learning (6-10 total)",
+        "Advanced multi-base system with intelligent data sync",
+        "AI-powered business intelligence suite",
         "AI Agent included",
-        "Custom reporting suite",
-        "Advanced dashboard with real-time metrics",
+        "Custom reporting with advanced analytics",
+        "Enterprise dashboard with workflow orchestration",
         "Department-specific automation",
-        "Change management support"
+        "Strategic change management support"
       ],
       platforms: ["Enterprise Zapier + AI", "Advanced Airtable", "Make Pro", "Activepieces", "AI Integration"],
       roi: "500-900% ROI",
