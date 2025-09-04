@@ -7,7 +7,7 @@ const ServicesSection = () => {
   const packages = [
     {
       tier: "Efficiency Essentials",
-      price: "$2,500",
+      price: "Starting at $2,500",
       support: "$350/month",
       icon: <Zap className="w-6 h-6" />,
       description: "Perfect for small businesses seeking initial automation wins",
@@ -21,13 +21,13 @@ const ServicesSection = () => {
         "Documentation package"
       ],
       platforms: ["Zapier", "Airtable", "Make (Basic)"],
-      roi: "300-500% ROI",
+      roi: "200-350% ROI",
       savings: "5-10 hours weekly",
       popular: false
     },
     {
       tier: "Growth Builder",
-      price: "$5,000",
+      price: "Starting at $5,000",
       support: "$550/month",
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Comprehensive automation for growing businesses",
@@ -41,13 +41,13 @@ const ServicesSection = () => {
         "Intelligent integration with existing tools"
       ],
       platforms: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
-      roi: "400-700% ROI",
+      roi: "300-500% ROI",
       savings: "15-25 hours weekly",
       popular: true
     },
     {
       tier: "Enterprise Lite",
-      price: "$9,000",
+      price: "Starting at $9,000",
       support: "$750/month",
       icon: <Users className="w-6 h-6" />,
       description: "Enterprise automation for established businesses",
@@ -63,7 +63,7 @@ const ServicesSection = () => {
         "Strategic change management support"
       ],
       platforms: ["Enterprise Zapier + AI", "Advanced Airtable", "Make Pro", "Activepieces", "AI Integration"],
-      roi: "500-900% ROI",
+      roi: "400-650% ROI",
       savings: "30-50 hours weekly",
       popular: false
     }
@@ -84,6 +84,9 @@ const ServicesSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Structured packages designed to make enterprise automation accessible to Pittsburgh small businesses. Each tier includes bundled support and guaranteed ROI.
+          </p>
+          <p className="text-sm text-muted-foreground/80 max-w-xl mx-auto mt-2">
+            Final pricing tailored based on discovery and scope.
           </p>
         </div>
 
@@ -169,7 +172,7 @@ const ServicesSection = () => {
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-2">Premium Add-On Services</h3>
             <p className="text-muted-foreground">
-              Enhance your automation with specialized services and advanced features
+              Optional enhancements to packages, not standalone services. Pricing customized during discovery calls based on your specific ROI and workflow gaps.
             </p>
           </div>
 
@@ -177,37 +180,37 @@ const ServicesSection = () => {
             {[
               {
                 title: "AI Agent",
-                price: "$2,500.00 One-time",
+                price: "Starting at $2,000",
                 description: "Custom AI agent for customer service, lead qualification, or appointment scheduling"
               },
               {
                 title: "Industry Templates",
-                price: "$1,200.00 One-time",
+                price: "Starting at $1,200",
                 description: "Pre-built automation templates for specific industries (Airtable bases + workflows)"
               },
               {
                 title: "Premium Care & Monitoring",
-                price: "$650.00 Monthly",
+                price: "Starting at $650/month",
                 description: "24/7 monitoring, proactive fixes, faster response, after-hours support"
               },
               {
                 title: "Integration Quick Wins",
-                price: "$750.00 One-time",
+                price: "Starting at $600",
                 description: "Additional integrations (QuickBooks, Slack, DocuSign, etc.)"
               },
               {
                 title: "Template Library",
-                price: "$750.00 One-time",
+                price: "Starting at $750",
                 description: "Access to a growing library of automation templates (lifetime access)"
               },
               {
                 title: "Quarterly Optimization",
-                price: "$500.00 Per Session",
+                price: "$500/session",
                 description: "Performance review, new opportunity identification, ROI reporting"
               },
               {
                 title: "ROI Dashboard",
-                price: "$1,000.00 One-time + Optional Monthly",
+                price: "Included in Growth+, available as add-on starting at $800",
                 description: "Custom ROI dashboard (Airtable/BI) with optional ongoing maintenance"
               }
             ].map((addon, index) => (
