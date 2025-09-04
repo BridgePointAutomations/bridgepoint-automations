@@ -2,6 +2,8 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import IndustriesSection from "@/components/IndustriesSection";
+import ROICalculator from "@/components/ROICalculator";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
@@ -12,6 +14,8 @@ const Index = () => {
         <HeroSection />
         <ServicesSection />
         <IndustriesSection />
+        <ROICalculator />
+        <FAQSection />
         <ContactSection />
       </main>
       
@@ -37,8 +41,8 @@ const Index = () => {
             <div className="space-y-4">
               <h4 className="font-semibold">Services</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Starter Package ($2,000)</p>
-                <p>Growth Package ($5,000)</p>
+                <p>Efficiency Essentials ($2,500)</p>
+                <p>Growth Builder ($5,000)</p>
                 <p>Enterprise Lite ($9,000)</p>
                 <p>Free Automation Audit</p>
               </div>
