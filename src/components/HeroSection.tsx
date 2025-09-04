@@ -51,7 +51,12 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="group"
+                onClick={() => window.location.href = '/booking'}
+              >
                 Start Free Audit
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -65,11 +70,7 @@ const HeroSection = () => {
               <p className="text-sm text-muted-foreground mb-4">Trusted by Pittsburgh businesses to save 15-50 hours weekly</p>
               <div className="flex items-center space-x-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$135K</div>
-                  <div className="text-xs text-muted-foreground">Year 1 Revenue</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">300%</div>
+                  <div className="text-2xl font-bold text-primary">150%</div>
                   <div className="text-xs text-muted-foreground">Average ROI</div>
                 </div>
                 <div className="text-center">
@@ -123,13 +124,6 @@ const HeroSection = () => {
               </div>
             </div>
             
-            {/* Floating Stats */}
-            <div className="absolute -top-4 -right-4 bg-card border border-border rounded-xl p-4 shadow-medium">
-              <div className="text-center">
-                <div className="text-lg font-bold text-success">↗ 400%</div>
-                <div className="text-xs text-muted-foreground">ROI Increase</div>
-              </div>
-            </div>
             
             <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl p-4 shadow-medium">
               <div className="text-center">

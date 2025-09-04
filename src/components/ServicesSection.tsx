@@ -150,6 +150,7 @@ const ServicesSection = () => {
                 <Button 
                   variant={pkg.popular ? "default" : "outline"}
                   className="w-full group"
+                  onClick={() => window.location.href = '/booking'}
                 >
                   Choose {pkg.tier}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

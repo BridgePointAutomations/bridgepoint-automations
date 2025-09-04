@@ -20,6 +20,14 @@ const ROICalculator = () => {
     }
 
     setShowResults(true);
+    
+    // Scroll to results section after calculation
+    setTimeout(() => {
+      const resultsElement = document.getElementById('roi-results');
+      if (resultsElement) {
+        resultsElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 100);
   };
 
   const getResults = () => {
@@ -38,9 +46,9 @@ const ROICalculator = () => {
     const weeklyTimeSaved = weeklyHours * timeSavingsMultiplier;
     const annualSavings = weeklyTimeSaved * 52 * wage;
     
-    // Determine package investment based on employee count
+    // Determine package investment based on employee count  
     let investment = 2500; // Efficiency Essentials
-    if (employees === "20-50" || employees === "50-100") investment = 5000; // Growth Builder
+    if (employees === "20-50") investment = 5000; // Growth Builder
     if (employees === "50-100") investment = 9000; // Enterprise Lite
     
     const roi = ((annualSavings - investment) / investment) * 100;
@@ -162,7 +170,7 @@ const ROICalculator = () => {
             </Card>
 
             {/* Results */}
-            <Card className={`transition-all duration-500 ${showResults ? 'opacity-100' : 'opacity-50'}`}>
+            <Card id="roi-results" className={`transition-all duration-500 ${showResults ? 'opacity-100' : 'opacity-50'}`}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-primary" />
@@ -205,7 +213,11 @@ const ROICalculator = () => {
 
                     <div className="p-4 bg-gradient-primary text-white rounded-lg text-center">
                       <p className="font-semibold mb-2">Ready to get started?</p>
-                      <Button variant="secondary" size="sm">
+                      <Button 
+                        variant="secondary" 
+                        size="sm"
+                        onClick={() => window.location.href = '/booking'}
+                      >
                         Get Free Automation Audit
                       </Button>
                     </div>
