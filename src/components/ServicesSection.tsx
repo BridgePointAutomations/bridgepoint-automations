@@ -180,7 +180,7 @@ const ServicesSection = () => {
               {
                 title: "AI Agent",
                 price: "$2,500.00 One-time",
-                description: "Custom AI agent for customer service, lead qualification, or appointment scheduling (Enterprise Lite only)"
+                description: "Custom AI agent for customer service, lead qualification, or appointment scheduling"
               },
               {
                 title: "Industry Templates",
