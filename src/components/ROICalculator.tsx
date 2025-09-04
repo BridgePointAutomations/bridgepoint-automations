@@ -64,7 +64,7 @@ const ROICalculator = () => {
   const results = getResults();
 
   return (
-    <section className="py-20 bg-gradient-subtle">
+    <section id="roi-calculator" className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary font-medium mb-4">

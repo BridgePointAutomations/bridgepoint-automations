@@ -18,6 +18,12 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <a href="/" className="text-foreground hover:text-primary animate-smooth">
+              Home
+            </a>
+            <a href="#roi-calculator" className="text-foreground hover:text-primary animate-smooth">
+              ROI Calculator
+            </a>
             <a href="#services" className="text-foreground hover:text-primary animate-smooth">
               Services
             </a>
@@ -34,10 +40,19 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => window.location.href = '/booking'}
+            >
               Free Audit
             </Button>
-            <Button variant="default" size="sm" className="group">
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="group"
+              onClick={() => window.location.href = '/booking'}
+            >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -59,6 +74,20 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden bg-background border-t border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
+              <a
+                href="/"
+                className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </a>
+              <a
+                href="#roi-calculator"
+                className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
+                onClick={() => setIsOpen(false)}
+              >
+                ROI Calculator
+              </a>
               <a
                 href="#services"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
@@ -88,10 +117,20 @@ const Navigation = () => {
                 Contact
               </a>
               <div className="pt-4 space-y-2">
-                <Button variant="outline" size="sm" className="w-full">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => {window.location.href = '/booking'; setIsOpen(false);}}
+                >
                   Free Audit
                 </Button>
-                <Button variant="default" size="sm" className="w-full">
+                <Button 
+                  variant="default" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => {window.location.href = '/booking'; setIsOpen(false);}}
+                >
                   Get Started
                 </Button>
               </div>

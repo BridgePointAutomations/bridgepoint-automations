@@ -1,7 +1,8 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, CheckCircle, ArrowLeft } from "lucide-react";
 
 const Booking = () => {
   return (
@@ -11,18 +12,31 @@ const Booking = () => {
       <main className="pt-20">
         {/* Header */}
         <section className="py-16 bg-gradient-subtle">
-          <div className="container mx-auto px-4 text-center">
-            <Badge variant="outline" className="text-primary border-primary/20 mb-4">
-              <Calendar className="w-3 h-3 mr-1" />
-              Free Automation Audit
-            </Badge>
-            <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-              Schedule Your <span className="text-gradient">Free Automation Audit</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover how much time and money you could save with automation. 
-              Our 45-minute audit includes a custom ROI projection and automation roadmap.
-            </p>
+          <div className="container mx-auto px-4">
+            <div className="flex items-center mb-6">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => window.location.href = '/'}
+                className="flex items-center gap-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </Button>
+            </div>
+            <div className="text-center">
+              <Badge variant="outline" className="text-primary border-primary/20 mb-4">
+                <Calendar className="w-3 h-3 mr-1" />
+                Free Automation Audit
+              </Badge>
+              <h1 className="text-3xl lg:text-4xl font-bold mb-4">
+                Schedule Your <span className="text-gradient">Free Automation Audit</span>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Discover how much time and money you could save with automation. 
+                Our 45-minute audit includes a custom ROI projection and automation roadmap.
+              </p>
+            </div>
           </div>
         </section>
 

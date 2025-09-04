@@ -12,6 +12,7 @@ const ServicesSection = () => {
       icon: <Zap className="w-6 h-6" />,
       description: "Perfect for small businesses seeking initial automation wins",
       features: [
+        "Automation Audit",
         "2-3 automated workflows",
         "1 Airtable base setup",
         "Basic dashboard creation",
@@ -31,6 +32,8 @@ const ServicesSection = () => {
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Comprehensive automation for growing businesses",
       features: [
+        "Automation Audit",
+        "Everything in Efficiency Essentials, plus:",
         "5-6 automated workflows",
         "2 Airtable bases with advanced features",
         "2 custom dashboards",
@@ -50,9 +53,12 @@ const ServicesSection = () => {
       icon: <Users className="w-6 h-6" />,
       description: "Enterprise automation for established businesses",
       features: [
+        "Automation Audit",
+        "Everything in Growth Builder, plus:",
         "6-10 automated workflows",
         "Multi-base Airtable system",
         "AI-powered tools integration",
+        "AI Agent included",
         "Custom reporting suite",
         "Advanced dashboard with real-time metrics",
         "Department-specific automation",
@@ -171,6 +177,11 @@ const ServicesSection = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              {
+                title: "AI Agent",
+                price: "$2,500.00 One-time",
+                description: "Custom AI agent for customer service, lead qualification, or appointment scheduling (Enterprise Lite only)"
+              },
               {
                 title: "Industry Templates",
                 price: "$1,200.00 One-time",

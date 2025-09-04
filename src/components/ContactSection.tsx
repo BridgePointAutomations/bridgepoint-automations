@@ -156,7 +156,16 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full group">
+                <Button 
+                  type="submit" 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full group"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = '/booking';
+                  }}
+                >
                   Schedule Free Audit
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>

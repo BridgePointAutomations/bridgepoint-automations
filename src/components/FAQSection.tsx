@@ -188,6 +188,87 @@ const FAQSection = () => {
           )
         }
       ]
+    },
+    {
+      title: "Small Business Automation",
+      icon: <HelpCircle className="w-5 h-5" />,
+      faqs: [
+        {
+          question: "I'm a small business owner - is automation really worth it for me?",
+          answer: (
+            <div className="space-y-3">
+              <p>Absolutely! Small businesses often see the biggest impact from automation because:</p>
+              <ul className="space-y-2 ml-4">
+                <li><strong>Immediate relief:</strong> You're probably doing repetitive tasks manually right now</li>
+                <li><strong>Bigger percentage gains:</strong> Small improvements make a huge difference</li>
+                <li><strong>Level the playing field:</strong> Access to enterprise-level efficiency</li>
+                <li><strong>Focus on growth:</strong> Spend time on strategy, not busy work</li>
+                <li><strong>Better customer service:</strong> Faster response times, fewer errors</li>
+              </ul>
+              <p><strong>Example:</strong> A Pittsburgh auto shop saved 20 hours weekly by automating appointment scheduling, customer follow-ups, and inventory tracking.</p>
+            </div>
+          )
+        },
+        {
+          question: "What repetitive tasks can automation eliminate for small businesses?",
+          answer: (
+            <div className="space-y-3">
+              <p>Common tasks we automate for Pittsburgh small businesses:</p>
+              <ul className="space-y-2 ml-4">
+                <li><strong>Customer communications:</strong> Welcome emails, appointment reminders, follow-ups</li>
+                <li><strong>Lead management:</strong> Capture, qualify, and route leads automatically</li>
+                <li><strong>Scheduling:</strong> Appointment booking, staff scheduling, resource allocation</li>
+                <li><strong>Invoicing & payments:</strong> Generate invoices, send reminders, track payments</li>
+                <li><strong>Inventory tracking:</strong> Stock alerts, reorder notifications, supplier communications</li>
+                <li><strong>Social media:</strong> Post scheduling, review monitoring, engagement tracking</li>
+                <li><strong>Data entry:</strong> Customer info, order details, contact management</li>
+              </ul>
+              <p><strong>Result:</strong> Most clients save 15-25 hours weekly on these tasks alone.</p>
+            </div>
+          )
+        },
+        {
+          question: "How much should a small business budget for automation?",
+          answer: (
+            <div className="space-y-3">
+              <p>Investment varies by business size and complexity:</p>
+              <ul className="space-y-2 ml-4">
+                <li><strong>Micro businesses (1-5 employees):</strong> $2,500-5,000 initial + $350-550/month</li>
+                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $550-750/month</li>
+                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $750+/month</li>
+              </ul>
+              <p>ROI considerations:</p>
+              <ul className="space-y-1 ml-4">
+                <li>Average time savings: 15-25 hours weekly</li>
+                <li>If your time is worth $25/hour: $19,500-32,500 annual savings</li>
+                <li>Typical ROI: 300-700% in first year</li>
+                <li>6-month ROI guarantee included</li>
+              </ul>
+            </div>
+          )
+        },
+        {
+          question: "Can I start small and add more automation later?",
+          answer: (
+            <div className="space-y-3">
+              <p>Yes! This is actually our recommended approach:</p>
+              <ul className="space-y-2 ml-4">
+                <li><strong>Start with Efficiency Essentials:</strong> 2-3 high-impact workflows</li>
+                <li><strong>See immediate results:</strong> Build confidence and momentum</li>
+                <li><strong>Upgrade as you grow:</strong> Add more complex automation</li>
+                <li><strong>Preserve investment:</strong> Everything we build scales up</li>
+                <li><strong>Learn gradually:</strong> Master simple automation before complex ones</li>
+              </ul>
+              <p><strong>Common progression:</strong></p>
+              <ul className="space-y-1 ml-4">
+                <li>Month 1-6: Efficiency Essentials</li>
+                <li>Month 6-12: Upgrade to Growth Builder</li>
+                <li>Year 2+: Enterprise Lite as business scales</li>
+              </ul>
+            </div>
+          )
+        }
+      ]
     }
   ];
 
