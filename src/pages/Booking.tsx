@@ -46,6 +46,8 @@ const Booking = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [showWebhookConfig, setShowWebhookConfig] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState(localStorage.getItem('zapier_webhook_url') || '');
   const { toast } = useToast();
   
   const form = useForm<BookingFormData>({
@@ -122,6 +124,51 @@ const Booking = () => {
         throw appointmentError;
       }
 
+      // Send data to Zapier webhook for Airtable integration
+      try {
+        const zapierWebhookUrl = localStorage.getItem('zapier_webhook_url');
+        if (zapierWebhookUrl) {
+          await fetch(zapierWebhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            mode: 'no-cors',
+            body: JSON.stringify({
+              // Lead information
+              first_name: data.first_name,
+              last_name: data.last_name,
+              full_name: `${data.first_name} ${data.last_name}`,
+              email: data.email,
+              phone: data.phone || '',
+              company_name: data.company_name,
+              job_title: data.job_title || '',
+              industry: data.industry,
+              website: data.website || '',
+              company_size: data.company_size,
+              // Business process information
+              current_processes: data.current_processes,
+              pain_points: data.pain_points,
+              automation_goals: data.automation_goals,
+              timeline: data.timeline,
+              budget_range: data.budget_range,
+              // Appointment information
+              appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
+              appointment_time: data.appointment_time,
+              appointment_time_formatted: formatTime(data.appointment_time),
+              appointment_datetime: `${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}`,
+              timezone: 'America/New_York',
+              status: 'scheduled',
+              source: 'booking_form',
+              created_at: new Date().toISOString(),
+            }),
+          });
+        }
+      } catch (error) {
+        console.log('Zapier webhook call failed (non-critical):', error);
+        // Don't throw - this shouldn't break the booking flow
+      }
+
       toast({
         title: "Appointment Scheduled!",
         description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. We'll send you a confirmation email shortly.`,
@@ -148,6 +195,16 @@ const Booking = () => {
     date.setHours(parseInt(hours), parseInt(minutes));
     return format(date, 'h:mm a');
   };
+
+  const saveWebhookUrl = () => {
+    localStorage.setItem('zapier_webhook_url', webhookUrl);
+    setShowWebhookConfig(false);
+    toast({
+      title: "Webhook URL Saved",
+      description: "Zapier integration configured successfully!",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -536,10 +593,45 @@ const Booking = () => {
 
       {/* Footer */}
       <footer className="bg-foreground/5 py-12 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            &copy; 2025 BridgePoint Automations. All Rights Reserved.
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <p className="text-muted-foreground">
+              &copy; 2025 BridgePoint Automations. All Rights Reserved.
+            </p>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => setShowWebhookConfig(!showWebhookConfig)}
+            >
+              {showWebhookConfig ? 'Hide' : 'Configure'} Zapier Integration
+            </Button>
+          </div>
+          
+          {showWebhookConfig && (
+            <div className="mt-6 p-4 bg-background border rounded-lg">
+              <h3 className="font-semibold mb-3">Zapier Webhook Configuration</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                To sync appointments with Airtable via Zapier:
+              </p>
+              <ol className="text-sm text-muted-foreground mb-4 space-y-1 ml-4">
+                <li>1. Create a Zap with "Webhooks by Zapier" trigger</li>
+                <li>2. Copy the webhook URL from Zapier</li>
+                <li>3. Connect it to Airtable "Create Record" action</li>
+                <li>4. Paste the webhook URL below and save</li>
+              </ol>
+              <div className="flex gap-2">
+                <Input
+                  placeholder="https://hooks.zapier.com/hooks/catch/..."
+                  value={webhookUrl}
+                  onChange={(e) => setWebhookUrl(e.target.value)}
+                  className="flex-1"
+                />
+                <Button onClick={saveWebhookUrl} size="sm">
+                  Save
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </footer>
 
