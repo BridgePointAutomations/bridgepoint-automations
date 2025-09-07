@@ -126,7 +126,7 @@ const Booking = () => {
 
       // Send data to Zapier webhook for Airtable integration
       try {
-        const zapierWebhookUrl = localStorage.getItem('zapier_webhook_url');
+        const zapierWebhookUrl = localStorage.getItem('https://hooks.zapier.com/hooks/catch/24515939/ud5ltjq/');
         if (zapierWebhookUrl) {
           await fetch(zapierWebhookUrl, {
             method: 'POST',
