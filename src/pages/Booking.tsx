@@ -13,6 +13,8 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { TimeSlotPicker } from "@/components/TimeSlotPicker";
+import { format } from "date-fns";
 
 // Form validation schema
 const bookingFormSchema = z.object({
@@ -31,13 +33,19 @@ const bookingFormSchema = z.object({
   pain_points: z.string().min(10, "Please describe your pain points (minimum 10 characters)"),
   automation_goals: z.string().min(10, "Please describe your automation goals (minimum 10 characters)"),
   timeline: z.string().min(1, "Timeline is required"),
-  budget_range: z.string().min(1, "Budget range is required")
+  budget_range: z.string().min(1, "Budget range is required"),
+  appointment_date: z.date({
+    required_error: "Please select an appointment date"
+  }),
+  appointment_time: z.string().min(1, "Please select an appointment time")
 });
 
 type BookingFormData = z.infer<typeof bookingFormSchema>;
 
 const Booking = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date>();
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const { toast } = useToast();
   
   const form = useForm<BookingFormData>({
@@ -56,7 +64,9 @@ const Booking = () => {
       pain_points: "",
       automation_goals: "",
       timeline: "",
-      budget_range: ""
+      budget_range: "",
+      appointment_date: undefined,
+      appointment_time: ""
     }
   });
 
@@ -64,6 +74,7 @@ const Booking = () => {
     setIsSubmitting(true);
     
     try {
+      // First create the lead
       const leadData = {
         first_name: data.first_name,
         last_name: data.last_name,
@@ -82,30 +93,58 @@ const Booking = () => {
         source: 'booking_form'
       };
 
-      const { error } = await supabase
+      const { data: leadResult, error: leadError } = await supabase
         .from('leads')
-        .insert(leadData);
+        .insert(leadData)
+        .select()
+        .single();
 
-      if (error) {
-        throw error;
+      if (leadError) {
+        throw leadError;
+      }
+
+      // Then create the appointment
+      const appointmentData = {
+        lead_id: leadResult.id,
+        appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
+        appointment_time: data.appointment_time,
+        timezone: 'America/New_York',
+        status: 'scheduled'
+      };
+
+      const { error: appointmentError } = await supabase
+        .from('appointments')
+        .insert(appointmentData);
+
+      if (appointmentError) {
+        throw appointmentError;
       }
 
       toast({
-        title: "Audit Request Submitted!",
-        description: "Thank you for your interest. We'll contact you within 24 hours to schedule your free automation audit.",
+        title: "Appointment Scheduled!",
+        description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. We'll send you a confirmation email shortly.`,
       });
       
       form.reset();
+      setSelectedDate(undefined);
+      setSelectedTime("");
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your request. Please try again or contact us directly.",
+        title: "Scheduling Failed",
+        description: "There was an error scheduling your appointment. Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const formatTime = (time: string) => {
+    const [hours, minutes] = time.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours), parseInt(minutes));
+    return format(date, 'h:mm a');
   };
   return (
     <div className="min-h-screen bg-background">
@@ -425,18 +464,41 @@ const Booking = () => {
                         </div>
                       </div>
 
+                      {/* Appointment Scheduling */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Schedule Your Audit</h3>
+                        <TimeSlotPicker
+                          selectedDate={selectedDate}
+                          selectedTime={selectedTime}
+                          onDateSelect={(date) => {
+                            setSelectedDate(date);
+                            form.setValue("appointment_date", date as Date);
+                          }}
+                          onTimeSelect={(time) => {
+                            setSelectedTime(time);
+                            form.setValue("appointment_time", time);
+                          }}
+                        />
+                        {form.formState.errors.appointment_date && (
+                          <p className="text-sm text-destructive">{form.formState.errors.appointment_date.message}</p>
+                        )}
+                        {form.formState.errors.appointment_time && (
+                          <p className="text-sm text-destructive">{form.formState.errors.appointment_time.message}</p>
+                        )}
+                      </div>
+
                       <Button 
                         type="submit" 
                         className="w-full"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !selectedDate || !selectedTime}
                         size="lg"
                       >
                         {isSubmitting ? (
-                          <>Submitting...</>
+                          <>Scheduling...</>
                         ) : (
                           <>
                             <Send className="w-4 h-4 mr-2" />
-                            Request Free Audit
+                            Schedule Free Audit
                           </>
                         )}
                       </Button>
