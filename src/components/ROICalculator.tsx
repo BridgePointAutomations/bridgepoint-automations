@@ -1,235 +1,279 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calculator, TrendingUp, Clock, DollarSign } from "lucide-react";
+import { Calculator, TrendingUp, Clock, DollarSign, Zap, Target, CheckCircle } from "lucide-react";
 
 const ROICalculator = () => {
-  const [employees, setEmployees] = useState("");
+  const [businessSize, setBusinessSize] = useState("");
   const [hoursPerWeek, setHoursPerWeek] = useState("");
   const [hourlyWage, setHourlyWage] = useState("");
-  const [errorFrequency, setErrorFrequency] = useState("");
-  const [complexity, setComplexity] = useState("");
-  const [showResults, setShowResults] = useState(false);
+  const [subscriptionCost, setSubscriptionCost] = useState("");
 
-  const calculateROI = () => {
-    if (!employees || !hoursPerWeek || !hourlyWage || !errorFrequency || !complexity) {
-      return;
-    }
-
-    setShowResults(true);
-    
-    // Scroll to results section after calculation
-    setTimeout(() => {
-      const resultsElement = document.getElementById('roi-results');
-      if (resultsElement) {
-        resultsElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }, 100);
-  };
-
+  // Calculate results in real-time
   const getResults = () => {
-    if (!employees || !hoursPerWeek || !hourlyWage || !errorFrequency || !complexity) {
-      return { savings: 0, roi: 0, timesSaved: 0, investment: 2500 };
+    if (!businessSize || !hoursPerWeek || !hourlyWage) {
+      return {
+        annualLaborSavings: 0,
+        annualAutomationCost: 0,
+        totalYear1Cost: 0,
+        roi: 0,
+        paybackMonths: 0,
+        netSavingsYear1: 0,
+        implementationFee: 0
+      };
     }
 
-    const weeklyHours = parseInt(hoursPerWeek);
+    const weeklyHours = parseFloat(hoursPerWeek);
     const wage = parseFloat(hourlyWage);
+    const monthlySoftware = parseFloat(subscriptionCost) || 0;
     
-    // Calculate time savings based on complexity and employee count
-    let timeSavingsMultiplier = 0.4; // Base 40% time savings
-    if (complexity === "complex" || complexity === "very-complex") timeSavingsMultiplier += 0.2;
-    if (errorFrequency === "frequently" || errorFrequency === "very-often") timeSavingsMultiplier += 0.15;
+    // Conservative time savings based on business size
+    let timeSavingsPercent = 0.35; // Base 35% savings
+    let implementationFee = 2500;
+    let monthlySupport = 350;
     
-    const weeklyTimeSaved = weeklyHours * timeSavingsMultiplier;
-    const annualSavings = weeklyTimeSaved * 52 * wage;
+    switch (businessSize) {
+      case "small":
+        implementationFee = 2500;
+        monthlySupport = 350;
+        timeSavingsPercent = 0.35;
+        break;
+      case "medium":
+        implementationFee = 5000;
+        monthlySupport = 550;
+        timeSavingsPercent = 0.45;
+        break;
+      case "large":
+        implementationFee = 9000;
+        monthlySupport = 750;
+        timeSavingsPercent = 0.55;
+        break;
+    }
     
-    // Determine package investment based on employee count  
-    let investment = 2500; // Efficiency Essentials
-    if (employees === "20-50") investment = 5000; // Growth Builder
-    if (employees === "50-100") investment = 9000; // Enterprise Lite
-    
-    const roi = ((annualSavings - investment) / investment) * 100;
+    // Calculate savings
+    const weeklyTimeSaved = weeklyHours * timeSavingsPercent;
+    const annualLaborSavings = weeklyTimeSaved * 52 * wage;
+    const annualSupport = monthlySupport * 12;
+    const annualSoftware = monthlySoftware * 12;
+    const annualAutomationCost = annualSupport + annualSoftware;
+    const totalYear1Cost = implementationFee + annualAutomationCost;
+    const netSavingsYear1 = annualLaborSavings - totalYear1Cost;
+    const roi = totalYear1Cost > 0 ? (netSavingsYear1 / totalYear1Cost) * 100 : 0;
+    const paybackMonths = annualLaborSavings > 0 ? (implementationFee / (annualLaborSavings / 12)) : 0;
     
     return {
-      savings: Math.round(annualSavings),
+      annualLaborSavings: Math.round(annualLaborSavings),
+      annualAutomationCost: Math.round(annualAutomationCost),
+      totalYear1Cost: Math.round(totalYear1Cost),
       roi: Math.round(roi),
-      timesSaved: Math.round(weeklyTimeSaved),
-      investment
+      paybackMonths: Math.round(paybackMonths * 10) / 10,
+      netSavingsYear1: Math.round(netSavingsYear1),
+      implementationFee
     };
   };
 
   const results = getResults();
 
   return (
-    <section id="roi-calculator" className="py-20 bg-gradient-subtle">
+    <section id="roi-calculator" className="py-20 bg-gradient-accent">
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary font-medium mb-4">
             <Calculator className="w-4 h-4" />
             ROI Calculator
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Calculate Your Automation ROI
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+            BridgePoint ROI Calculator
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            See how much time and money you could save with our automation solutions.
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
+            Front-facing app version. Share this with prospects to quantify value quickly.
           </p>
+          <div className="inline-flex items-center gap-2 text-sm text-primary font-medium">
+            <span>Implementation Fee:</span>
+            <span className="text-lg font-bold">${results.implementationFee.toLocaleString()}</span>
+          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Calculator Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calculator className="w-5 h-5 text-primary" />
-                  Business Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="employees">Number of Employees</Label>
-                  <Select value={employees} onValueChange={setEmployees}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select business size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="5-10">5-10 employees</SelectItem>
-                      <SelectItem value="10-20">10-20 employees</SelectItem>
-                      <SelectItem value="20-50">20-50 employees</SelectItem>
-                      <SelectItem value="50-100">50-100 employees</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="hours">Hours spent on manual tasks per week</Label>
-                  <Input
-                    id="hours"
-                    type="number"
-                    placeholder="e.g., 20"
-                    value={hoursPerWeek}
-                    onChange={(e) => setHoursPerWeek(e.target.value)}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="wage">Average hourly wage ($)</Label>
-                  <Input
-                    id="wage"
-                    type="number"
-                    placeholder="e.g., 25"
-                    value={hourlyWage}
-                    onChange={(e) => setHourlyWage(e.target.value)}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="errors">How often do errors occur in your current processes?</Label>
-                  <Select value={errorFrequency} onValueChange={setErrorFrequency}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select error frequency" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="rarely">Rarely (less than 5% of tasks)</SelectItem>
-                      <SelectItem value="occasionally">Occasionally (5-10% of tasks)</SelectItem>
-                      <SelectItem value="sometimes">Sometimes (10-20% of tasks)</SelectItem>
-                      <SelectItem value="frequently">Frequently (20-30% of tasks)</SelectItem>
-                      <SelectItem value="very-often">Very often (30%+ of tasks)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="complexity">How complex are your current manual processes?</Label>
-                  <Select value={complexity} onValueChange={setComplexity}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select process complexity" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="simple">Simple (mostly data entry)</SelectItem>
-                      <SelectItem value="basic">Basic (some decision making)</SelectItem>
-                      <SelectItem value="moderate">Moderate (multiple steps, some logic)</SelectItem>
-                      <SelectItem value="complex">Complex (many steps, approvals, integrations)</SelectItem>
-                      <SelectItem value="very-complex">Very complex (highly customized workflows)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <Button 
-                  onClick={calculateROI} 
-                  className="w-full"
-                  disabled={!employees || !hoursPerWeek || !hourlyWage || !errorFrequency || !complexity}
-                >
-                  Calculate My ROI
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Results */}
-            <Card id="roi-results" className={`transition-all duration-500 ${showResults ? 'opacity-100' : 'opacity-50'}`}>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-primary" />
-                  Your Potential Savings
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {showResults ? (
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-4 bg-primary/5 rounded-lg">
-                        <DollarSign className="w-6 h-6 text-primary mx-auto mb-2" />
-                        <div className="text-2xl font-bold text-primary">
-                          ${results.savings.toLocaleString()}
-                        </div>
-                        <div className="text-sm text-muted-foreground">saved annually</div>
-                      </div>
-                      <div className="text-center p-4 bg-success/5 rounded-lg">
-                        <TrendingUp className="w-6 h-6 text-success mx-auto mb-2" />
-                        <div className="text-2xl font-bold text-success">
-                          {results.roi}%
-                        </div>
-                        <div className="text-sm text-muted-foreground">ROI in first year</div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="flex items-center gap-2 text-muted-foreground">
-                          <Clock className="w-4 h-4" />
-                          Weekly time savings:
-                        </span>
-                        <span className="font-semibold">{results.timesSaved} hours</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground">Package investment:</span>
-                        <span className="font-semibold">${results.investment.toLocaleString()}</span>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gradient-primary text-white rounded-lg text-center">
-                      <p className="font-semibold mb-2">Ready to get started?</p>
-                      <Button 
-                        variant="secondary" 
-                        size="sm"
-                        onClick={() => window.location.href = '/booking'}
-                      >
-                        Get Free Automation Audit
-                      </Button>
-                    </div>
+        {/* Main Calculator */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Left Panel - Inputs */}
+            <div className="lg:col-span-2">
+              <Card className="shadow-soft">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Zap className="w-5 h-5 text-primary" />
+                    Business Information
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="business-size">Business Size</Label>
+                    <Select value={businessSize} onValueChange={setBusinessSize}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your business size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="small">Small (Efficiency Essentials)</SelectItem>
+                        <SelectItem value="medium">Medium (Growth Builder)</SelectItem>
+                        <SelectItem value="large">Large (Enterprise Lite)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
-                ) : (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <Calculator className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                    <p>Fill out the form to see your potential savings</p>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="hours">Hours spent on manual tasks per week</Label>
+                    <Input
+                      id="hours"
+                      type="number"
+                      placeholder="e.g., 20"
+                      value={hoursPerWeek}
+                      onChange={(e) => setHoursPerWeek(e.target.value)}
+                      className="text-base"
+                    />
                   </div>
-                )}
-              </CardContent>
-            </Card>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="wage">Average hourly wage ($)</Label>
+                    <Input
+                      id="wage"
+                      type="number"
+                      placeholder="e.g., 25"
+                      value={hourlyWage}
+                      onChange={(e) => setHourlyWage(e.target.value)}
+                      className="text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subscription">Monthly software subscription costs ($)</Label>
+                    <Input
+                      id="subscription"
+                      type="number"
+                      placeholder="e.g., 150 (optional)"
+                      value={subscriptionCost}
+                      onChange={(e) => setSubscriptionCost(e.target.value)}
+                      className="text-base"
+                    />
+                  </div>
+
+                  <div className="pt-4">
+                    <Button 
+                      className="w-full"
+                      onClick={() => {
+                        const element = document.getElementById('roi-results');
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      disabled={!businessSize || !hoursPerWeek || !hourlyWage}
+                    >
+                      View ROI Results
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Right Panel - Results Grid */}
+            <div className="lg:col-span-3" id="roi-results">
+              <div className="grid grid-cols-2 gap-4">
+                {/* Annual Labor Savings */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <DollarSign className="w-8 h-8 text-success mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-success mb-1">
+                      ${results.annualLaborSavings.toLocaleString()}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Annual Labor Savings</p>
+                  </CardContent>
+                </Card>
+
+                {/* Annual Automation Cost */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Zap className="w-8 h-8 text-primary mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      ${results.annualAutomationCost.toLocaleString()}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Annual Automation Cost</p>
+                  </CardContent>
+                </Card>
+
+                {/* Total Year 1 Cost */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Calculator className="w-8 h-8 text-warning mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-warning mb-1">
+                      ${results.totalYear1Cost.toLocaleString()}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Total Year 1 Cost</p>
+                  </CardContent>
+                </Card>
+
+                {/* ROI Percentage */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <TrendingUp className="w-8 h-8 text-success mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-success mb-1">
+                      {results.roi}%
+                    </div>
+                    <p className="text-sm text-muted-foreground">ROI Percentage</p>
+                  </CardContent>
+                </Card>
+
+                {/* Payback Period */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Clock className="w-8 h-8 text-primary mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      {results.paybackMonths}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Payback (Months)</p>
+                  </CardContent>
+                </Card>
+
+                {/* Net Savings Year 1 */}
+                <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Target className="w-8 h-8 text-success mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-success mb-1">
+                      ${results.netSavingsYear1.toLocaleString()}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Net Savings Year 1</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Call to Action */}
+              <Card className="mt-6 bg-gradient-primary text-white shadow-bold">
+                <CardContent className="p-6 text-center">
+                  <CheckCircle className="w-8 h-8 mx-auto mb-3" />
+                  <p className="font-semibold mb-4">Ready to unlock these savings?</p>
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    onClick={() => window.location.href = '/booking'}
+                    className="font-medium"
+                  >
+                    Book Free Automation Audit
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Assumptions */}
+              <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• Annual savings calculated using 52 weeks</li>
+                  <li>• Time savings: Small (35%), Medium (45%), Large (55%)</li>
+                  <li>• Includes monthly support: Small ($350), Medium ($550), Large ($750)</li>
+                  <li>• Payback period based on implementation cost vs. monthly labor savings</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
