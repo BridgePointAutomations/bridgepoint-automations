@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          automation_goals: string | null
+          budget_range: string | null
+          company_name: string
+          company_size: Database["public"]["Enums"]["company_size"] | null
+          created_at: string
+          current_processes: string | null
+          email: string
+          first_name: string
+          id: string
+          industry: string | null
+          job_title: string | null
+          last_name: string
+          notes: string | null
+          pain_points: string | null
+          phone: string | null
+          source: string | null
+          status: Database["public"]["Enums"]["lead_status"]
+          timeline: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          automation_goals?: string | null
+          budget_range?: string | null
+          company_name: string
+          company_size?: Database["public"]["Enums"]["company_size"] | null
+          created_at?: string
+          current_processes?: string | null
+          email: string
+          first_name: string
+          id?: string
+          industry?: string | null
+          job_title?: string | null
+          last_name: string
+          notes?: string | null
+          pain_points?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          automation_goals?: string | null
+          budget_range?: string | null
+          company_name?: string
+          company_size?: Database["public"]["Enums"]["company_size"] | null
+          created_at?: string
+          current_processes?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          industry?: string | null
+          job_title?: string | null
+          last_name?: string
+          notes?: string | null
+          pain_points?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +91,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      company_size: "1-10" | "11-50" | "51-200" | "201-1000" | "1000+"
+      lead_status:
+        | "new"
+        | "contacted"
+        | "qualified"
+        | "proposal_sent"
+        | "closed_won"
+        | "closed_lost"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +225,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      company_size: ["1-10", "11-50", "51-200", "201-1000", "1000+"],
+      lead_status: [
+        "new",
+        "contacted",
+        "qualified",
+        "proposal_sent",
+        "closed_won",
+        "closed_lost",
+      ],
+    },
   },
 } as const

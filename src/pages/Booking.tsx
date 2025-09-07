@@ -2,9 +2,111 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, CheckCircle, ArrowLeft } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calendar, Clock, CheckCircle, ArrowLeft, Send } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+
+// Form validation schema
+const bookingFormSchema = z.object({
+  first_name: z.string().min(1, "First name is required"),
+  last_name: z.string().min(1, "Last name is required"),
+  email: z.string().email("Valid email is required"),
+  phone: z.string().optional(),
+  company_name: z.string().min(1, "Company name is required"),
+  job_title: z.string().optional(),
+  company_size: z.enum(["1-10", "11-50", "51-200", "201-1000", "1000+"], {
+    required_error: "Please select company size"
+  }),
+  industry: z.string().optional(),
+  website: z.string().optional(),
+  current_processes: z.string().min(10, "Please describe your current processes (minimum 10 characters)"),
+  pain_points: z.string().min(10, "Please describe your pain points (minimum 10 characters)"),
+  automation_goals: z.string().min(10, "Please describe your automation goals (minimum 10 characters)"),
+  timeline: z.string().min(1, "Timeline is required"),
+  budget_range: z.string().min(1, "Budget range is required")
+});
+
+type BookingFormData = z.infer<typeof bookingFormSchema>;
 
 const Booking = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  
+  const form = useForm<BookingFormData>({
+    resolver: zodResolver(bookingFormSchema),
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone: "",
+      company_name: "",
+      job_title: "",
+      company_size: "1-10",
+      industry: "",
+      website: "",
+      current_processes: "",
+      pain_points: "",
+      automation_goals: "",
+      timeline: "",
+      budget_range: ""
+    }
+  });
+
+  const onSubmit = async (data: BookingFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const leadData = {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone: data.phone || null,
+        company_name: data.company_name,
+        job_title: data.job_title || null,
+        company_size: data.company_size,
+        industry: data.industry || null,
+        website: data.website || null,
+        current_processes: data.current_processes || null,
+        pain_points: data.pain_points || null,
+        automation_goals: data.automation_goals || null,
+        timeline: data.timeline || null,
+        budget_range: data.budget_range || null,
+        source: 'booking_form'
+      };
+
+      const { error } = await supabase
+        .from('leads')
+        .insert(leadData);
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Audit Request Submitted!",
+        description: "Thank you for your interest. We'll contact you within 24 hours to schedule your free automation audit.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -107,28 +209,238 @@ const Booking = () => {
                   </CardContent>
                 </Card>
 
-                {/* Booking Form Placeholder */}
+                {/* Booking Form */}
                 <Card className="shadow-soft">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-primary" />
-                      Schedule Your Audit
+                      Request Your Free Audit
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-accent rounded-lg p-8 text-center space-y-4">
-                      <Calendar className="w-12 h-12 text-primary mx-auto" />
-                      <h3 className="text-lg font-semibold">Booking Form Coming Soon</h3>
-                      <p className="text-muted-foreground">
-                        Our embedded booking form will be available here. In the meantime, 
-                        contact us directly to schedule your free automation audit.
-                      </p>
-                      <div className="pt-4 space-y-2">
-                        <p className="text-sm font-medium">Contact Information:</p>
-                        <p className="text-sm text-muted-foreground">(412) 555-BRIDGE</p>
-                        <p className="text-sm text-muted-foreground">hello@bridgepoint-automations.com</p>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      {/* Contact Information */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Contact Information</h3>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="first_name">First Name *</Label>
+                            <Input 
+                              id="first_name"
+                              {...form.register("first_name")}
+                              placeholder="John"
+                            />
+                            {form.formState.errors.first_name && (
+                              <p className="text-sm text-destructive">{form.formState.errors.first_name.message}</p>
+                            )}
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label htmlFor="last_name">Last Name *</Label>
+                            <Input 
+                              id="last_name"
+                              {...form.register("last_name")}
+                              placeholder="Smith"
+                            />
+                            {form.formState.errors.last_name && (
+                              <p className="text-sm text-destructive">{form.formState.errors.last_name.message}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email *</Label>
+                          <Input 
+                            id="email"
+                            type="email"
+                            {...form.register("email")}
+                            placeholder="john.smith@company.com"
+                          />
+                          {form.formState.errors.email && (
+                            <p className="text-sm text-destructive">{form.formState.errors.email.message}</p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Phone</Label>
+                          <Input 
+                            id="phone"
+                            type="tel"
+                            {...form.register("phone")}
+                            placeholder="(555) 123-4567"
+                          />
+                        </div>
                       </div>
-                    </div>
+
+                      {/* Business Information */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Business Information</h3>
+                        
+                        <div className="space-y-2">
+                          <Label htmlFor="company_name">Company Name *</Label>
+                          <Input 
+                            id="company_name"
+                            {...form.register("company_name")}
+                            placeholder="Your Company Inc."
+                          />
+                          {form.formState.errors.company_name && (
+                            <p className="text-sm text-destructive">{form.formState.errors.company_name.message}</p>
+                          )}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="job_title">Job Title</Label>
+                            <Input 
+                              id="job_title"
+                              {...form.register("job_title")}
+                              placeholder="CEO, Operations Manager, etc."
+                            />
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label htmlFor="company_size">Company Size *</Label>
+                            <Select onValueChange={(value) => form.setValue("company_size", value as any)} defaultValue={form.watch("company_size")}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select company size" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1-10">1-10 employees</SelectItem>
+                                <SelectItem value="11-50">11-50 employees</SelectItem>
+                                <SelectItem value="51-200">51-200 employees</SelectItem>
+                                <SelectItem value="201-1000">201-1000 employees</SelectItem>
+                                <SelectItem value="1000+">1000+ employees</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            {form.formState.errors.company_size && (
+                              <p className="text-sm text-destructive">{form.formState.errors.company_size.message}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="industry">Industry</Label>
+                            <Input 
+                              id="industry"
+                              {...form.register("industry")}
+                              placeholder="Healthcare, Finance, Manufacturing, etc."
+                            />
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label htmlFor="website">Website</Label>
+                            <Input 
+                              id="website"
+                              type="url"
+                              {...form.register("website")}
+                              placeholder="https://yourcompany.com"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Process Information */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Process Information</h3>
+                        
+                        <div className="space-y-2">
+                          <Label htmlFor="current_processes">Current Processes *</Label>
+                          <Textarea 
+                            id="current_processes"
+                            {...form.register("current_processes")}
+                            placeholder="Describe your current business processes that you'd like to automate..."
+                            rows={3}
+                          />
+                          {form.formState.errors.current_processes && (
+                            <p className="text-sm text-destructive">{form.formState.errors.current_processes.message}</p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="pain_points">Pain Points *</Label>
+                          <Textarea 
+                            id="pain_points"
+                            {...form.register("pain_points")}
+                            placeholder="What challenges are you facing with your current processes?"
+                            rows={3}
+                          />
+                          {form.formState.errors.pain_points && (
+                            <p className="text-sm text-destructive">{form.formState.errors.pain_points.message}</p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="automation_goals">Automation Goals *</Label>
+                          <Textarea 
+                            id="automation_goals"
+                            {...form.register("automation_goals")}
+                            placeholder="What do you hope to achieve with automation? (e.g., save time, reduce errors, improve efficiency)"
+                            rows={3}
+                          />
+                          {form.formState.errors.automation_goals && (
+                            <p className="text-sm text-destructive">{form.formState.errors.automation_goals.message}</p>
+                          )}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="timeline">Timeline *</Label>
+                            <Select onValueChange={(value) => form.setValue("timeline", value)}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select timeline" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="ASAP">ASAP</SelectItem>
+                                <SelectItem value="1-3 months">1-3 months</SelectItem>
+                                <SelectItem value="3-6 months">3-6 months</SelectItem>
+                                <SelectItem value="6-12 months">6-12 months</SelectItem>
+                                <SelectItem value="12+ months">12+ months</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            {form.formState.errors.timeline && (
+                              <p className="text-sm text-destructive">{form.formState.errors.timeline.message}</p>
+                            )}
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label htmlFor="budget_range">Budget Range *</Label>
+                            <Select onValueChange={(value) => form.setValue("budget_range", value)}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select budget range" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Under $5,000">Under $5,000</SelectItem>
+                                <SelectItem value="$5,000 - $15,000">$5,000 - $15,000</SelectItem>
+                                <SelectItem value="$15,000 - $50,000">$15,000 - $50,000</SelectItem>
+                                <SelectItem value="$50,000 - $100,000">$50,000 - $100,000</SelectItem>
+                                <SelectItem value="$100,000+">$100,000+</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            {form.formState.errors.budget_range && (
+                              <p className="text-sm text-destructive">{form.formState.errors.budget_range.message}</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <Button 
+                        type="submit" 
+                        className="w-full"
+                        disabled={isSubmitting}
+                        size="lg"
+                      >
+                        {isSubmitting ? (
+                          <>Submitting...</>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4 mr-2" />
+                            Request Free Audit
+                          </>
+                        )}
+                      </Button>
+                    </form>
                   </CardContent>
                 </Card>
 
