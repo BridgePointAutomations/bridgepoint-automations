@@ -76,98 +76,62 @@ const Booking = () => {
     setIsSubmitting(true);
     
     try {
-      // Generate leadId client-side to avoid SELECT permission issues
-      const leadId = crypto.randomUUID();
+      // Validate Zapier webhook URL first
+      const zapierWebhookUrl = localStorage.getItem('zapier_webhook_url');
+      if (!zapierWebhookUrl) {
+        throw new Error('Zapier webhook URL not configured. Please set up your Zapier integration first.');
+      }
+
+      // Generate unique booking ID for tracking
+      const bookingId = crypto.randomUUID();
       
-      // First create the lead
-      const leadData = {
-        id: leadId,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        email: data.email,
-        phone: data.phone || null,
-        company_name: data.company_name,
-        job_title: data.job_title || null,
-        company_size: data.company_size,
-        industry: data.industry || null,
-        website: data.website || null,
-        current_processes: data.current_processes || null,
-        pain_points: data.pain_points || null,
-        automation_goals: data.automation_goals || null,
-        timeline: data.timeline || null,
-        budget_range: data.budget_range || null,
-        source: 'booking_form'
-      };
+      // Send all data directly to Zapier webhook for Airtable integration
+      const response = await fetch(zapierWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          // Booking metadata
+          booking_id: bookingId,
+          created_at: new Date().toISOString(),
+          source: 'booking_form',
+          
+          // Lead information
+          first_name: data.first_name,
+          last_name: data.last_name,
+          full_name: `${data.first_name} ${data.last_name}`,
+          email: data.email,
+          phone: data.phone || '',
+          
+          // Company information
+          company_name: data.company_name,
+          job_title: data.job_title || '',
+          industry: data.industry,
+          website: data.website || '',
+          company_size: data.company_size,
+          
+          // Business process information
+          current_processes: data.current_processes,
+          pain_points: data.pain_points,
+          automation_goals: data.automation_goals,
+          timeline: data.timeline,
+          budget_range: data.budget_range,
+          
+          // Appointment information
+          appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
+          appointment_date_formatted: format(data.appointment_date, 'EEEE, MMMM do, yyyy'),
+          appointment_time: data.appointment_time,
+          appointment_time_formatted: formatTime(data.appointment_time),
+          appointment_datetime: `${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}`,
+          timezone: 'America/New_York',
+          status: 'scheduled'
+        }),
+      });
 
-      const { error: leadError } = await supabase
-        .from('leads')
-        .insert(leadData);
-
-      if (leadError) {
-        throw leadError;
-      }
-
-      // Then create the appointment
-      const appointmentData = {
-        lead_id: leadId,
-        appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
-        appointment_time: data.appointment_time,
-        timezone: 'America/New_York',
-        status: 'scheduled'
-      };
-
-      const { error: appointmentError } = await supabase
-        .from('appointments')
-        .insert(appointmentData);
-
-      if (appointmentError) {
-        throw appointmentError;
-      }
-
-      // Send data to Zapier webhook for Airtable integration
-      try {
-        const zapierWebhookUrl = localStorage.getItem('zapier_webhook_url');
-        if (zapierWebhookUrl) {
-          await fetch(zapierWebhookUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            mode: 'no-cors',
-            body: JSON.stringify({
-              // Lead information
-              first_name: data.first_name,
-              last_name: data.last_name,
-              full_name: `${data.first_name} ${data.last_name}`,
-              email: data.email,
-              phone: data.phone || '',
-              company_name: data.company_name,
-              job_title: data.job_title || '',
-              industry: data.industry,
-              website: data.website || '',
-              company_size: data.company_size,
-              // Business process information
-              current_processes: data.current_processes,
-              pain_points: data.pain_points,
-              automation_goals: data.automation_goals,
-              timeline: data.timeline,
-              budget_range: data.budget_range,
-              // Appointment information
-              appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
-              appointment_time: data.appointment_time,
-              appointment_time_formatted: formatTime(data.appointment_time),
-              appointment_datetime: `${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}`,
-              timezone: 'America/New_York',
-              status: 'scheduled',
-              source: 'booking_form',
-              created_at: new Date().toISOString(),
-            }),
-          });
-        }
-      } catch (error) {
-        console.log('Zapier webhook call failed (non-critical):', error);
-        // Don't throw - this shouldn't break the booking flow
-      }
+      // Since we're using no-cors, we can't check response status
+      // We'll assume success if no error was thrown
 
       toast({
         title: "Appointment Scheduled!",
@@ -179,9 +143,20 @@ const Booking = () => {
       setSelectedTime("");
     } catch (error) {
       console.error('Error submitting form:', error);
+      
+      let errorMessage = "There was an error scheduling your appointment. Please try again or contact us directly.";
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Zapier webhook URL not configured')) {
+          errorMessage = "Zapier integration not configured. Please contact us directly to schedule your appointment.";
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          errorMessage = "Connection error. Please check your internet connection and try again.";
+        }
+      }
+      
       toast({
         title: "Scheduling Failed",
-        description: "There was an error scheduling your appointment. Please try again or contact us directly.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -565,10 +540,31 @@ const Booking = () => {
                         )}
                       </div>
 
+                      {/* Webhook Configuration Warning */}
+                      {!webhookUrl && (
+                        <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+                          <div className="flex items-start space-x-3">
+                            <div className="flex-shrink-0">
+                              <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-medium text-yellow-800 dark:text-yellow-200">
+                                Zapier Integration Required
+                              </h4>
+                              <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
+                                Please configure your Zapier webhook URL below to enable appointment scheduling with Airtable.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       <Button 
                         type="submit" 
                         className="w-full"
-                        disabled={isSubmitting || !selectedDate || !selectedTime}
+                        disabled={isSubmitting || !selectedDate || !selectedTime || !webhookUrl}
                         size="lg"
                       >
                         {isSubmitting ? (
