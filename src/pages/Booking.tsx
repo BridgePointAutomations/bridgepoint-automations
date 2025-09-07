@@ -74,8 +74,12 @@ const Booking = () => {
     setIsSubmitting(true);
     
     try {
+      // Generate leadId client-side to avoid SELECT permission issues
+      const leadId = crypto.randomUUID();
+      
       // First create the lead
       const leadData = {
+        id: leadId,
         first_name: data.first_name,
         last_name: data.last_name,
         email: data.email,
@@ -93,11 +97,9 @@ const Booking = () => {
         source: 'booking_form'
       };
 
-      const { data: leadResult, error: leadError } = await supabase
+      const { error: leadError } = await supabase
         .from('leads')
-        .insert(leadData)
-        .select()
-        .single();
+        .insert(leadData);
 
       if (leadError) {
         throw leadError;
@@ -105,7 +107,7 @@ const Booking = () => {
 
       // Then create the appointment
       const appointmentData = {
-        lead_id: leadResult.id,
+        lead_id: leadId,
         appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
         appointment_time: data.appointment_time,
         timezone: 'America/New_York',
