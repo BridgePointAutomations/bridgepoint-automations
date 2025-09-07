@@ -27,7 +27,7 @@ const bookingFormSchema = z.object({
   company_size: z.enum(["1-10", "11-50", "51-200", "201-1000", "1000+"], {
     required_error: "Please select company size"
   }),
-  industry: z.string().optional(),
+  industry: z.string().min(1, "Industry is required"),
   website: z.string().optional(),
   current_processes: z.string().min(10, "Please describe your current processes (minimum 10 characters)"),
   pain_points: z.string().min(10, "Please describe your pain points (minimum 10 characters)"),
@@ -341,10 +341,10 @@ const Booking = () => {
                           <div className="space-y-2">
                             <Label htmlFor="company_size">Company Size *</Label>
                             <Select onValueChange={(value) => form.setValue("company_size", value as any)} defaultValue={form.watch("company_size")}>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-background">
                                 <SelectValue placeholder="Select company size" />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="bg-background border z-50">
                                 <SelectItem value="1-10">1-10 employees</SelectItem>
                                 <SelectItem value="11-50">11-50 employees</SelectItem>
                                 <SelectItem value="51-200">51-200 employees</SelectItem>
@@ -360,12 +360,31 @@ const Booking = () => {
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="industry">Industry</Label>
-                            <Input 
-                              id="industry"
-                              {...form.register("industry")}
-                              placeholder="Healthcare, Finance, Manufacturing, etc."
-                            />
+                            <Label htmlFor="industry">Industry *</Label>
+                            <Select onValueChange={(value) => form.setValue("industry", value)}>
+                              <SelectTrigger className="bg-background">
+                                <SelectValue placeholder="Select your industry" />
+                              </SelectTrigger>
+                              <SelectContent className="bg-background border z-50">
+                                <SelectItem value="Healthcare">Healthcare</SelectItem>
+                                <SelectItem value="Finance">Finance</SelectItem>
+                                <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                                <SelectItem value="Real Estate">Real Estate</SelectItem>
+                                <SelectItem value="E-commerce">E-commerce</SelectItem>
+                                <SelectItem value="Professional Services">Professional Services</SelectItem>
+                                <SelectItem value="Technology">Technology</SelectItem>
+                                <SelectItem value="Education">Education</SelectItem>
+                                <SelectItem value="Non-Profit">Non-Profit</SelectItem>
+                                <SelectItem value="Construction">Construction</SelectItem>
+                                <SelectItem value="Hospitality">Hospitality</SelectItem>
+                                <SelectItem value="Marketing & Advertising">Marketing & Advertising</SelectItem>
+                                <SelectItem value="Legal">Legal</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            {form.formState.errors.industry && (
+                              <p className="text-sm text-destructive">{form.formState.errors.industry.message}</p>
+                            )}
                           </div>
                           
                           <div className="space-y-2">
@@ -423,14 +442,14 @@ const Booking = () => {
                           )}
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label htmlFor="timeline">Timeline *</Label>
                             <Select onValueChange={(value) => form.setValue("timeline", value)}>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-background">
                                 <SelectValue placeholder="Select timeline" />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="bg-background border z-50">
                                 <SelectItem value="ASAP">ASAP</SelectItem>
                                 <SelectItem value="1-3 months">1-3 months</SelectItem>
                                 <SelectItem value="3-6 months">3-6 months</SelectItem>
@@ -446,10 +465,10 @@ const Booking = () => {
                           <div className="space-y-2">
                             <Label htmlFor="budget_range">Budget Range *</Label>
                             <Select onValueChange={(value) => form.setValue("budget_range", value)}>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-background">
                                 <SelectValue placeholder="Select budget range" />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="bg-background border z-50">
                                 <SelectItem value="Under $5,000">Under $5,000</SelectItem>
                                 <SelectItem value="$5,000 - $15,000">$5,000 - $15,000</SelectItem>
                                 <SelectItem value="$15,000 - $50,000">$15,000 - $50,000</SelectItem>

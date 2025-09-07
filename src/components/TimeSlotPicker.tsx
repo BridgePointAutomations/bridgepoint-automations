@@ -4,6 +4,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarIcon, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
@@ -117,7 +118,7 @@ export function TimeSlotPicker({
               {selectedDate ? format(selectedDate, "PPP") : "Pick a date"}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-0 bg-background border z-50" align="start">
             <Calendar
               mode="single"
               selected={selectedDate}
@@ -136,42 +137,36 @@ export function TimeSlotPicker({
             <Clock className="h-4 w-4" />
             Select Time
           </label>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base">
-                Available Times for {format(selectedDate, "EEEE, MMMM d")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {loading ? (
-                <div className="text-center text-muted-foreground py-4">
-                  Loading available times...
-                </div>
-              ) : availableSlots.length === 0 ? (
-                <div className="text-center text-muted-foreground py-4">
-                  No available times for this date
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {availableSlots.map((slot) => (
-                    <Button
-                      key={slot.time}
-                      variant={selectedTime === slot.time ? "default" : "outline"}
-                      size="sm"
-                      disabled={!slot.available}
-                      onClick={() => onTimeSelect(slot.time)}
-                      className={cn(
-                        "text-xs",
-                        !slot.available && "opacity-50 cursor-not-allowed"
-                      )}
-                    >
-                      {formatTime(slot.time)}
-                    </Button>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+          {loading ? (
+            <div className="text-center text-muted-foreground py-4">
+              Loading available times...
+            </div>
+          ) : availableSlots.length === 0 ? (
+            <div className="text-center text-muted-foreground py-4">
+              No available times for this date
+            </div>
+          ) : (
+            <Select value={selectedTime} onValueChange={onTimeSelect}>
+              <SelectTrigger className="bg-background">
+                <SelectValue placeholder="Select a time slot" />
+              </SelectTrigger>
+              <SelectContent className="bg-background border z-50">
+                {availableSlots.map((slot) => (
+                  <SelectItem
+                    key={slot.time}
+                    value={slot.time}
+                    disabled={!slot.available}
+                    className={cn(
+                      "cursor-pointer",
+                      !slot.available && "opacity-50 cursor-not-allowed"
+                    )}
+                  >
+                    {formatTime(slot.time)} {!slot.available && "(Unavailable)"}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
         </div>
       )}
     </div>
