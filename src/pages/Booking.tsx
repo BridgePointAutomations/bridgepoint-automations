@@ -391,7 +391,7 @@ const Booking = () => {
                             <Label htmlFor="website">Website</Label>
                             <Input 
                               id="website"
-                              type="url"
+                              type="text"
                               {...form.register("website")}
                               placeholder="https://yourcompany.com"
                             />
