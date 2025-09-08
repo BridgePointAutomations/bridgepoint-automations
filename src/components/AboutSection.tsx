@@ -40,9 +40,10 @@ const AboutSection = () => {
             Your Trusted <span className="text-gradient">Automation Partners</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Founded by Pittsburgh entrepreneurs who understand the daily struggles of running a small business, 
-            BridgePoint Automations was created to make enterprise-level automation accessible and affordable 
-            for businesses under 100 employees.
+            Like many entrepreneurs, our journey started with a simple dream: 
+            to build something from the ground up and watch it grow. Back in college, 
+            that dream took shape as a small mobile detailing business. I was the first to bring the idea to my hometown, 
+            and with a little grit (and a lot of Facebook group posting), it grew faster than I could have imagined.
           </p>
         </div>
 
@@ -53,20 +54,21 @@ const AboutSection = () => {
               <h3 className="text-xl font-semibold mb-6 text-center">Our Story</h3>
               <div className="prose prose-lg mx-auto text-muted-foreground">
                 <p className="mb-4">
-                  After watching countless local businesses struggle with repetitive tasks, inefficient processes, 
-                  and the overwhelming complexity of modern technology, we knew there had to be a better way. 
-                  Traditional automation agencies were either too expensive or too complex for small businesses.
+                  But growth came with a hidden challenge. Every day ended with hours of late night paperwork.
+                  Invoicing, emails, accounting, the endless “behind-the-scenes” work that stole time from what I really enjoyed: serving customers and growing.
+                  Over four years, I learned a lesson that stuck with me: running a business isn’t just about grit and grind and passion, it’s about systems. 
+                  Without the right tools, even the most promising ventures get weighed down by busywork.
                 </p>
                 <p className="mb-4">
-                  That's when we discovered the power of modern no-code platforms like Zapier, Airtable, and Make. 
+                  Later, my corporate career opened my eyes to the solution I wish I had known back then: automation. 
+                  Smarter systems that quietly handle the repetitive, time consuming tasks. That's when we discovered the power of modern no-code platforms like Zapier, Airtable, and Make. 
                   These tools could deliver the same enterprise automation capabilities at a fraction of the cost 
-                  and complexity. We founded BridgePoint Automations to bridge the gap between powerful automation 
-                  technology and Pittsburgh's hardworking small business community.
+                  and complexity.
                 </p>
                 <p>
-                  Today, we've helped dozens of local businesses save thousands of hours and increase their 
-                  profitability through smart automation. Every client success story reinforces our mission: 
-                  making automation accessible, profitable, and sustainable for businesses of all sizes.
+                 That’s why this company exists today. We’re here to help small businesses reclaim their time, simplify operations, and unlock growth.
+                  We founded BridgePoint Automations to bridge the gap between powerful automation 
+                  technology and Pittsburgh's hardworking small business community.
                 </p>
               </div>
             </CardContent>
