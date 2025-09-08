@@ -47,7 +47,7 @@ const AboutSection = () => {
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-6 text-center">Our Story</h3>
               <div className="prose prose-lg mx-auto text-muted-foreground">
-                <p className="text-lg max-w-3xl mx-auto mb-6">
+                <p className="text-lg max-w-3xl mx-auto mb-4">
                   Like many entrepreneurs, our journey started with a simple dream: 
                   to build something from the ground up and watch it grow. Back in college, 
                   that dream took shape as a small mobile detailing business. I was the first to bring the idea to my hometown, 
