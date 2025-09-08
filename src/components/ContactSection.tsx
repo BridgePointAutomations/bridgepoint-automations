@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { 
   Phone, 
   Mail, 
@@ -11,40 +10,65 @@ import {
   ArrowRight, 
   CheckCircle,
   Calendar,
-  TrendingUp
+  TrendingUp,
+  Settings
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    employees: '',
-    message: ''
+  const [showHubSpotConfig, setShowHubSpotConfig] = useState(false);
+  const [hubspotConfig, setHubspotConfig] = useState({
+    portalId: localStorage.getItem('hubspot_portal_id') || '',
+    formId: localStorage.getItem('hubspot_form_id') || ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, this would submit to a backend
+  // Load HubSpot form script dynamically
+  useEffect(() => {
+    if (hubspotConfig.portalId && hubspotConfig.formId) {
+      loadHubSpotForm();
+    }
+  }, [hubspotConfig]);
+
+  const loadHubSpotForm = () => {
+    const script = document.createElement('script');
+    script.src = `//js.hsforms.net/forms/v2.js`;
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).hbspt) {
+        (window as any).hbspt.forms.create({
+          region: "na1",
+          portalId: hubspotConfig.portalId,
+          formId: hubspotConfig.formId,
+          target: '#hubspot-form-container',
+          onFormSubmit: () => {
+            // Redirect to booking page after form submission
+            setTimeout(() => {
+              window.location.href = '/booking';
+            }, 1000);
+          }
+        });
+      }
+    };
+    document.head.appendChild(script);
+  };
+
+  const saveHubSpotConfig = () => {
+    localStorage.setItem('hubspot_portal_id', hubspotConfig.portalId);
+    localStorage.setItem('hubspot_form_id', hubspotConfig.formId);
+    setShowHubSpotConfig(false);
+    loadHubSpotForm();
     toast({
-      title: "Request Submitted!",
-      description: "We'll contact you within 24 hours to schedule your free automation audit.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '', email: '', company: '', phone: '', employees: '', message: ''
+      title: "HubSpot Configuration Saved",
+      description: "HubSpot form will now be displayed in the contact section.",
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleConfigChange = (field: string, value: string) => {
+    setHubspotConfig(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [field]: value
     }));
   };
 
@@ -71,109 +95,81 @@ const ContactSection = () => {
           {/* Contact Form */}
           <Card className="shadow-medium">
             <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <TrendingUp className="w-5 h-5 text-primary" />
-                <span>Free Automation Audit</span>
+              <CardTitle className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                  <span>Free Automation Audit</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowHubSpotConfig(!showHubSpotConfig)}
+                >
+                  <Settings className="w-4 h-4" />
+                </Button>
               </CardTitle>
               <CardDescription>
                 Get a comprehensive analysis of your automation opportunities with ROI projections - no cost, no obligation.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Full Name *</label>
-                    <Input
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="John Doe"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Business Email *</label>
-                    <Input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="john@company.com"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Company Name *</label>
-                    <Input
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Your Company LLC"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Phone Number</label>
-                    <Input
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="(412) 555-0123"
-                    />
+              {/* HubSpot Configuration */}
+              {showHubSpotConfig && (
+                <div className="mb-6 p-4 bg-muted rounded-lg space-y-4">
+                  <h4 className="font-medium">HubSpot Integration Setup</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">HubSpot Portal ID</label>
+                      <Input
+                        value={hubspotConfig.portalId}
+                        onChange={(e) => handleConfigChange('portalId', e.target.value)}
+                        placeholder="Your HubSpot Portal ID (e.g., 12345678)"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">HubSpot Form ID</label>
+                      <Input
+                        value={hubspotConfig.formId}
+                        onChange={(e) => handleConfigChange('formId', e.target.value)}
+                        placeholder="Your HubSpot Form ID"
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button onClick={saveHubSpotConfig} size="sm">
+                        Save Configuration
+                      </Button>
+                      <Button variant="outline" onClick={() => setShowHubSpotConfig(false)} size="sm">
+                        Cancel
+                      </Button>
+                    </div>
                   </div>
                 </div>
+              )}
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Number of Employees</label>
-                  <select
-                    name="employees"
-                    value={formData.employees}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-border rounded-md bg-background"
+              {/* HubSpot Form Container */}
+              {hubspotConfig.portalId && hubspotConfig.formId ? (
+                <div id="hubspot-form-container" className="min-h-[400px]">
+                  {/* HubSpot form will be injected here */}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground mb-4">
+                    Configure HubSpot integration to display the contact form.
+                  </p>
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full group"
+                    onClick={() => window.location.href = '/booking'}
                   >
-                    <option value="">Select range...</option>
-                    <option value="1-5">1-5 employees</option>
-                    <option value="6-15">6-15 employees</option>
-                    <option value="16-50">16-50 employees</option>
-                    <option value="51-100">51-100 employees</option>
-                    <option value="100+">100+ employees</option>
-                  </select>
+                    Schedule Free Audit
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <p className="text-xs text-muted-foreground text-center mt-4">
+                    Click the settings icon above to configure HubSpot integration.
+                  </p>
                 </div>
-
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Describe Your Biggest Time-Consuming Process</label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell us about manual tasks that take up significant time each week..."
-                    rows={4}
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full group"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = '/booking';
-                  }}
-                >
-                  Schedule Free Audit
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  We'll contact you within 24 hours. No spam, no pressure.
-                </p>
-              </form>
+              )}
             </CardContent>
           </Card>
 

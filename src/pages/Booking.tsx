@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { format } from "date-fns";
+import { submitToHubSpotAndZapier } from "@/lib/hubspot";
 
 // Form validation schema
 const bookingFormSchema = z.object({
@@ -48,6 +49,7 @@ const Booking = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [showWebhookConfig, setShowWebhookConfig] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState(localStorage.getItem('zapier_webhook_url') || '');
+  const [hubspotFormId, setHubspotFormId] = useState(localStorage.getItem('hubspot_booking_form_id') || '');
   const { toast } = useToast();
   
   const form = useForm<BookingFormData>({
@@ -85,57 +87,60 @@ const Booking = () => {
       // Generate unique booking ID for tracking
       const bookingId = crypto.randomUUID();
       
-      // Send all data directly to Zapier webhook for Airtable integration
-      const response = await fetch(zapierWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'no-cors',
-        body: JSON.stringify({
-          // Booking metadata
-          booking_id: bookingId,
-          created_at: new Date().toISOString(),
-          source: 'booking_form',
-          
-          // Lead information
-          first_name: data.first_name,
-          last_name: data.last_name,
-          full_name: `${data.first_name} ${data.last_name}`,
-          email: data.email,
-          phone: data.phone || '',
-          
-          // Company information
-          company_name: data.company_name,
-          job_title: data.job_title || '',
-          industry: data.industry,
-          website: data.website || '',
-          company_size: data.company_size,
-          
-          // Business process information
-          current_processes: data.current_processes,
-          pain_points: data.pain_points,
-          automation_goals: data.automation_goals,
-          timeline: data.timeline,
-          budget_range: data.budget_range,
-          
-          // Appointment information
-          appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
-          appointment_date_formatted: format(data.appointment_date, 'EEEE, MMMM do, yyyy'),
-          appointment_time: data.appointment_time,
-          appointment_time_formatted: formatTime(data.appointment_time),
-          appointment_datetime: `${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}`,
-          timezone: 'America/New_York',
-          status: 'scheduled'
-        }),
-      });
+      // Prepare form data for submission
+      const formData = {
+        // Booking metadata
+        booking_id: bookingId,
+        created_at: new Date().toISOString(),
+        source: 'booking_form',
+        
+        // Lead information
+        first_name: data.first_name,
+        last_name: data.last_name,
+        full_name: `${data.first_name} ${data.last_name}`,
+        email: data.email,
+        phone: data.phone || '',
+        
+        // Company information
+        company_name: data.company_name,
+        job_title: data.job_title || '',
+        industry: data.industry,
+        website: data.website || '',
+        company_size: data.company_size,
+        
+        // Business process information
+        current_processes: data.current_processes,
+        pain_points: data.pain_points,
+        automation_goals: data.automation_goals,
+        timeline: data.timeline,
+        budget_range: data.budget_range,
+        
+        // Appointment information
+        appointment_date: format(data.appointment_date, 'yyyy-MM-dd'),
+        appointment_date_formatted: format(data.appointment_date, 'EEEE, MMMM do, yyyy'),
+        appointment_time: data.appointment_time,
+        appointment_time_formatted: formatTime(data.appointment_time),
+        appointment_datetime: `${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}`,
+        timezone: 'America/New_York',
+        status: 'scheduled'
+      };
+      
+      // Submit to both HubSpot and Zapier
+      const results = await submitToHubSpotAndZapier(
+        formData,
+        zapierWebhookUrl,
+        hubspotFormId
+      );
 
-      // Since we're using no-cors, we can't check response status
-      // We'll assume success if no error was thrown
+      // Show success message with integration status
+      const integrationStatus = results.hubspot && results.zapier ? 
+        "Submitted to both HubSpot and Airtable." :
+        results.zapier ? "Submitted to Airtable (HubSpot not configured)." :
+        "Submission may have issues. Please contact us directly if needed.";
 
       toast({
         title: "Appointment Scheduled!",
-        description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. We'll send you a confirmation email shortly.`,
+        description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. ${integrationStatus}`,
       });
       
       form.reset();
@@ -173,10 +178,13 @@ const Booking = () => {
 
   const saveWebhookUrl = () => {
     localStorage.setItem('zapier_webhook_url', webhookUrl);
+    if (hubspotFormId) {
+      localStorage.setItem('hubspot_booking_form_id', hubspotFormId);
+    }
     setShowWebhookConfig(false);
     toast({
-      title: "Webhook URL Saved",
-      description: "Zapier integration configured successfully!",
+      title: "Integration Configured",
+      description: "Zapier and HubSpot integrations saved successfully!",
     });
   };
 
@@ -604,26 +612,49 @@ const Booking = () => {
           </div>
           
           {showWebhookConfig && (
-            <div className="mt-6 p-4 bg-background border rounded-lg">
-              <h3 className="font-semibold mb-3">Zapier Webhook Configuration</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                To sync appointments with Airtable via Zapier:
-              </p>
-              <ol className="text-sm text-muted-foreground mb-4 space-y-1 ml-4">
-                <li>1. Create a Zap with "Webhooks by Zapier" trigger</li>
-                <li>2. Copy the webhook URL from Zapier</li>
-                <li>3. Connect it to Airtable "Create Record" action</li>
-                <li>4. Paste the webhook URL below and save</li>
-              </ol>
-              <div className="flex gap-2">
+            <div className="mt-6 p-4 bg-background border rounded-lg space-y-4">
+              <h3 className="font-semibold mb-3">Integration Configuration</h3>
+              
+              {/* Zapier Configuration */}
+              <div>
+                <h4 className="font-medium mb-2">Zapier Integration</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  To sync appointments with Airtable via Zapier:
+                </p>
+                <ol className="text-sm text-muted-foreground mb-3 space-y-1 ml-4">
+                  <li>1. Create a Zap with "Webhooks by Zapier" trigger</li>
+                  <li>2. Copy the webhook URL from Zapier</li>
+                  <li>3. Connect it to Airtable "Create Record" action</li>
+                  <li>4. Paste the webhook URL below</li>
+                </ol>
                 <Input
                   placeholder="https://hooks.zapier.com/hooks/catch/..."
                   value={webhookUrl}
                   onChange={(e) => setWebhookUrl(e.target.value)}
-                  className="flex-1"
+                  className="mb-2"
                 />
+              </div>
+
+              {/* HubSpot Configuration */}
+              <div>
+                <h4 className="font-medium mb-2">HubSpot Integration (Optional)</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Enter your HubSpot Form ID to also submit leads to HubSpot:
+                </p>
+                <Input
+                  placeholder="HubSpot Form ID (e.g., 12345678-1234-1234-1234-123456789012)"
+                  value={hubspotFormId}
+                  onChange={(e) => setHubspotFormId(e.target.value)}
+                  className="mb-2"
+                />
+              </div>
+
+              <div className="flex gap-2">
                 <Button onClick={saveWebhookUrl} size="sm">
-                  Save
+                  Save Configuration
+                </Button>
+                <Button variant="outline" onClick={() => setShowWebhookConfig(false)} size="sm">
+                  Cancel
                 </Button>
               </div>
             </div>
