@@ -82,11 +82,11 @@ const TestimonialsSection = () => {
         <div className="text-center mt-12">
           <div className="inline-flex items-center gap-8 p-6 bg-accent rounded-2xl">
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary">50+</div>
+              <div className="text-2xl font-bold text-primary">60+</div>
               <div className="text-sm text-muted-foreground">Hours Saved Weekly</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary">$150K+</div>
+              <div className="text-2xl font-bold text-primary">$195K+</div>
               <div className="text-sm text-muted-foreground">Annual Savings</div>
             </div>
             <div className="text-center">

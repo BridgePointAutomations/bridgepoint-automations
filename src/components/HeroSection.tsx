@@ -71,18 +71,18 @@ const HeroSection = () => {
 
             {/* Social Proof */}
             <div className="pt-8 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-4">Trusted by Pittsburgh businesses to save 15-50 hours weekly</p>
+              <p className="text-sm text-muted-foreground mb-4">Trusted by Pittsburgh businesses to save 15-25 hours weekly</p>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">85%</div>
-                  <div className="text-xs text-muted-foreground">Reduce Manual Tasks</div>
+                  <div className="text-2xl font-bold text-primary">300%</div>
+                  <div className="text-xs text-muted-foreground">Average ROI</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">25hrs</div>
+                  <div className="text-2xl font-bold text-primary">20hrs</div>
                   <div className="text-xs text-muted-foreground">Weekly Time Savings</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$45K</div>
+                  <div className="text-2xl font-bold text-primary">$65K</div>
                   <div className="text-xs text-muted-foreground">Average Annual Savings</div>
                 </div>
                 <div className="text-center">
@@ -139,7 +139,7 @@ const HeroSection = () => {
             
             <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl p-4 shadow-medium">
               <div className="text-center">
-                <div className="text-lg font-bold text-primary">25hrs</div>
+                <div className="text-lg font-bold text-primary">20hrs</div>
                 <div className="text-xs text-muted-foreground">Weekly Savings</div>
               </div>
             </div>

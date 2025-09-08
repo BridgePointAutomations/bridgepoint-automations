@@ -205,7 +205,7 @@ const FAQSection = () => {
                 <li><strong>Focus on growth:</strong> Spend time on strategy, not busy work</li>
                 <li><strong>Better customer service:</strong> Faster response times, fewer errors</li>
               </ul>
-              <p><strong>Example:</strong> A Pittsburgh auto shop saved 20 hours weekly by automating appointment scheduling, customer follow-ups, and inventory tracking.</p>
+              <p><strong>Example:</strong> A Pittsburgh auto shop saved 15 hours weekly by automating appointment scheduling, customer follow-ups, and inventory tracking.</p>
             </div>
           )
         },
@@ -233,15 +233,15 @@ const FAQSection = () => {
             <div className="space-y-3">
               <p>Investment varies by business size and complexity:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Micro businesses (1-5 employees):</strong> $2,500-5,000 initial + $350-550/month</li>
-                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $550-750/month</li>
-                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $750+/month</li>
+                <li><strong>Micro businesses (1-5 employees):</strong> $2,500-5,000 initial + $300-600/month</li>
+                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $600-900/month</li>
+                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $900+/month</li>
               </ul>
               <p>ROI considerations:</p>
               <ul className="space-y-1 ml-4">
                 <li>Average time savings: 15-25 hours weekly</li>
                 <li>If your time is worth $25/hour: $19,500-32,500 annual savings</li>
-                <li>Typical ROI: 300-700% in first year</li>
+                <li>Typical ROI: 300-500% in first year</li>
                 <li>6-month ROI guarantee included</li>
               </ul>
             </div>
