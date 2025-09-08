@@ -55,8 +55,8 @@ const AboutSection = () => {
               <div className="prose prose-lg mx-auto text-muted-foreground">
                 <p className="mb-4">
                   But growth came with a hidden challenge. Every day ended with hours of late night paperwork.
-                  Invoicing, emails, accounting, the endless “behind-the-scenes” work that stole time from what I really enjoyed: serving customers and growing.
-                  Over four years, I learned a lesson that stuck with me: running a business isn’t just about grit and grind and passion, it’s about systems. 
+                  Invoicing, emails, accounting, the endless "behind-the-scenes" work that stole time from what I really enjoyed: serving customers and growing.
+                  Over four years, I learned a lesson that stuck with me: running a business isn't just about grit and grind and passion, it's about systems. 
                   Without the right tools, even the most promising ventures get weighed down by busywork.
                 </p>
                 <p className="mb-4">
@@ -66,7 +66,7 @@ const AboutSection = () => {
                   and complexity.
                 </p>
                 <p>
-                 That’s why this company exists today. We’re here to help small businesses reclaim their time, simplify operations, and unlock growth.
+                 That's why this company exists today. We're here to help small businesses reclaim their time, simplify operations, and unlock growth.
                   We founded BridgePoint Automations to bridge the gap between powerful automation 
                   technology and Pittsburgh's hardworking small business community.
                 </p>
