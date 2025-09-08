@@ -21,8 +21,8 @@ const Navigation = () => {
             <a href="/" className="text-foreground hover:text-primary animate-smooth">
               Home
             </a>
-            <a href="#roi-calculator" className="text-foreground hover:text-primary animate-smooth">
-              ROI Calculator
+            <a href="#about" className="text-foreground hover:text-primary animate-smooth">
+              About Us
             </a>
             <a href="#services" className="text-foreground hover:text-primary animate-smooth">
               Services
@@ -30,8 +30,8 @@ const Navigation = () => {
             <a href="#industries" className="text-foreground hover:text-primary animate-smooth">
               Industries
             </a>
-            <a href="#about" className="text-foreground hover:text-primary animate-smooth">
-              About
+            <a href="#roi-calculator" className="text-foreground hover:text-primary animate-smooth">
+              ROI Calculator
             </a>
             <a href="#contact" className="text-foreground hover:text-primary animate-smooth">
               Contact
@@ -82,11 +82,11 @@ const Navigation = () => {
                 Home
               </a>
               <a
-                href="#roi-calculator"
+                href="#about"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
               >
-                ROI Calculator
+                About Us
               </a>
               <a
                 href="#services"
@@ -103,11 +103,11 @@ const Navigation = () => {
                 Industries
               </a>
               <a
-                href="#about"
+                href="#roi-calculator"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
               >
-                About
+                ROI Calculator
               </a>
               <a
                 href="#contact"

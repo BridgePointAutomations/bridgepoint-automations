@@ -39,20 +39,20 @@ const AboutSection = () => {
           <h2 className="text-3xl lg:text-4xl font-bold">
             Your Trusted <span className="text-gradient">Automation Partners</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Like many entrepreneurs, our journey started with a simple dream: 
-            to build something from the ground up and watch it grow. Back in college, 
-            that dream took shape as a small mobile detailing business. I was the first to bring the idea to my hometown, 
-            and with a little grit (and a lot of Facebook group posting), it grew faster than I could have imagined.
-          </p>
         </div>
 
-        {/* Story Section */}
+        {/* Our Story Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <Card className="shadow-soft">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-6 text-center">Our Story</h3>
               <div className="prose prose-lg mx-auto text-muted-foreground">
+                <p className="text-lg max-w-3xl mx-auto mb-6">
+                  Like many entrepreneurs, our journey started with a simple dream: 
+                  to build something from the ground up and watch it grow. Back in college, 
+                  that dream took shape as a small mobile detailing business. I was the first to bring the idea to my hometown, 
+                  and with a little grit (and a lot of Facebook group posting), it grew faster than I could have imagined.
+                </p>
                 <p className="mb-4">
                   But growth came with a hidden challenge. Every day ended with hours of late night paperwork.
                   Invoicing, emails, accounting, the endless "behind-the-scenes" work that stole time from what I really enjoyed: serving customers and growing.

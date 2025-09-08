@@ -8,7 +8,7 @@ const ServicesSection = () => {
     {
       tier: "Efficiency Essentials",
       price: "Starting at $2,500",
-      support: "$350/month",
+      support: "$300/month",
       icon: <Zap className="w-6 h-6" />,
       description: "Perfect for small businesses seeking initial automation wins",
       features: [
@@ -28,7 +28,7 @@ const ServicesSection = () => {
     {
       tier: "Growth Builder",
       price: "Starting at $5,000",
-      support: "$550/month",
+      support: "$600/month",
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Comprehensive automation for growing businesses",
       features: [
@@ -48,7 +48,7 @@ const ServicesSection = () => {
     {
       tier: "Enterprise Lite",
       price: "Starting at $9,000",
-      support: "$750/month",
+      support: "$900/month",
       icon: <Users className="w-6 h-6" />,
       description: "Enterprise automation for established businesses",
       features: [

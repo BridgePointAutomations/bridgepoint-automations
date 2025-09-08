@@ -38,27 +38,26 @@ const ROICalculator = () => {
     switch (businessSize) {
       case "small":
         implementationFee = 2500;
-        monthlySupport = 350;
+        monthlySupport = 300;
         timeSavingsPercent = 0.35;
         break;
       case "medium":
         implementationFee = 5000;
-        monthlySupport = 550;
+        monthlySupport = 600;
         timeSavingsPercent = 0.45;
         break;
       case "large":
         implementationFee = 9000;
-        monthlySupport = 750;
+        monthlySupport = 900;
         timeSavingsPercent = 0.55;
         break;
     }
     
-    // Calculate savings
+    // Calculate savings (excluding ongoing support from ROI calculation)
     const weeklyTimeSaved = weeklyHours * timeSavingsPercent;
     const annualLaborSavings = weeklyTimeSaved * 52 * wage;
-    const annualSupport = monthlySupport * 12;
     const annualSoftware = monthlySoftware * 12;
-    const annualAutomationCost = annualSupport + annualSoftware;
+    const annualAutomationCost = annualSoftware; // Only software costs, no support
     const totalYear1Cost = implementationFee + annualAutomationCost;
     const netSavingsYear1 = annualLaborSavings - totalYear1Cost;
     const roi = totalYear1Cost > 0 ? (netSavingsYear1 / totalYear1Cost) * 100 : 0;
@@ -269,8 +268,8 @@ const ROICalculator = () => {
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
                   <li>• Time savings: Small (35%), Medium (45%), Large (55%)</li>
-                  <li>• Includes monthly support: Small ($350), Medium ($550), Large ($750)</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
+                  <li>• *Ongoing support fees are separate from this calculation</li>
                 </ul>
               </div>
             </div>
