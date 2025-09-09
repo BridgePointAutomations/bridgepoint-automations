@@ -28,7 +28,7 @@ const ROICalculator = () => {
     const wage = parseFloat(hourlyWage);
     
     // Optimized time savings based on business size
-    let baseSavingsPercent = 0.70; // Base 70% savings
+    let baseSavingsPercent = 0.60; // Base 50% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
     
@@ -36,12 +36,12 @@ const ROICalculator = () => {
       case "small":
         implementationFee = 2500;
         monthlySupport = 300;
-        baseSavingsPercent = 0.70;
+        baseSavingsPercent = 0.60;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 600;
-        baseSavingsPercent = 0.75;
+        baseSavingsPercent = 0.70;
         break;
       case "large":
         implementationFee = 9000;
@@ -82,20 +82,20 @@ const ROICalculator = () => {
       year1: {
         annualLaborSavings: Math.round(year1Savings),
         totalCost: Math.round(year1TotalCost),
-        roi: Math.min(Math.round(year1ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year1ROI), 600), // Cap ROI at 600%
         paybackMonths: Math.round(paybackMonths * 10) / 10,
         netSavings: Math.round(year1NetSavings)
       },
       year2: {
         annualLaborSavings: Math.round(year2Savings),
         totalCost: Math.round(year2TotalCost),
-        roi: Math.min(Math.round(year2ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year2ROI), 600), // Cap ROI at 600%
         cumulativeNetSavings: Math.round(cumulativeYear2NetSavings)
       },
       year3: {
         annualLaborSavings: Math.round(year3Savings),
         totalCost: Math.round(year3TotalCost),
-        roi: Math.min(Math.round(year3ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year3ROI), 600), // Cap ROI at 600%
         cumulativeNetSavings: Math.round(cumulativeYear3NetSavings)
       },
       implementationFee
@@ -382,7 +382,7 @@ const ROICalculator = () => {
                 <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
-                  <li>• Time savings: Small (50%), Medium (60%), Large (70%)</li>
+                  <li>• Time savings: Small (60%), Medium (70%), Large (80%)</li>
                   <li>• Implementation fee includes 3 months of bundled support</li>
                   <li>• Year 1 costs include only 9 months of additional ongoing support</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
