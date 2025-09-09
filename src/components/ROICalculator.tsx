@@ -62,7 +62,7 @@ const ROICalculator = () => {
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
     const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
     
-    // Year 2 calculations (8% efficiency improvement)
+    // Year 2 calculations (10% efficiency improvement)
     const year2SavingsMultiplier = 1.10;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
     const year2TotalCost = annualSupport; // Only ongoing support
@@ -70,7 +70,7 @@ const ROICalculator = () => {
     const cumulativeYear2NetSavings = year1NetSavings + year2NetSavings;
     const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
     
-    // Year 3 calculations (15% efficiency improvement from original)
+    // Year 3 calculations (20% efficiency improvement from original)
     const year3SavingsMultiplier = 1.20;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
     const year3TotalCost = annualSupport; // Only ongoing support
@@ -82,20 +82,20 @@ const ROICalculator = () => {
       year1: {
         annualLaborSavings: Math.round(year1Savings),
         totalCost: Math.round(year1TotalCost),
-        roi: Math.min(Math.round(year1ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year1ROI),600), // Cap ROI at 600%
         paybackMonths: Math.round(paybackMonths * 10) / 10,
         netSavings: Math.round(year1NetSavings)
       },
       year2: {
         annualLaborSavings: Math.round(year2Savings),
         totalCost: Math.round(year2TotalCost),
-        roi: Math.min(Math.round(year2ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year2ROI), 600), // Cap ROI at 600%
         cumulativeNetSavings: Math.round(cumulativeYear2NetSavings)
       },
       year3: {
         annualLaborSavings: Math.round(year3Savings),
         totalCost: Math.round(year3TotalCost),
-        roi: Math.min(Math.round(year3ROI), 400), // Cap ROI at 400%
+        roi: Math.min(Math.round(year3ROI), 600), // Cap ROI at 600%
         cumulativeNetSavings: Math.round(cumulativeYear3NetSavings)
       },
       implementationFee
