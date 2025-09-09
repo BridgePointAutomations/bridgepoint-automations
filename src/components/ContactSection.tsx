@@ -80,7 +80,7 @@ const ContactSection = () => {
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary" />
                   <div>
-                    <div className="font-medium">hello@bridgepoint-automations.com</div>
+                    <div className="font-medium">support@bridgepointautomations.com</div>
                     <div className="text-sm text-muted-foreground">Response within 2 hours</div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const ContactSection = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                   <div>
                     <div className="font-medium">Pittsburgh Metropolitan Area</div>
-                    <div className="text-sm text-muted-foreground">Serving all surrounding counties</div>
+                    <div className="text-sm text-muted-foreground">Serving all surrounding counties and states</div>
                   </div>
                 </div>
                 
