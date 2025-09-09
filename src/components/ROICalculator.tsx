@@ -55,9 +55,9 @@ const ROICalculator = () => {
     const baseAnnualLaborSavings = baseWeeklyTimeSaved * 52 * wage;
     const annualSupport = monthlySupport * 12;
     
-    // Year 1 calculations
+    // Year 1 calculations (includes 3 months bundled support, so only 9 months additional)
     const year1Savings = baseAnnualLaborSavings;
-    const year1TotalCost = implementationFee + annualSupport;
+    const year1TotalCost = implementationFee + (monthlySupport * 9);
     const year1NetSavings = year1Savings - year1TotalCost;
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
     const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
@@ -382,10 +382,11 @@ const ROICalculator = () => {
                 <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
-                  <li>• Time savings: Small (50%), Medium (60%), Large (70%)</li>
+                  <li>• Time savings: Small (45%), Medium (55%), Large (65%)</li>
+                  <li>• Implementation fee includes 3 months of bundled support</li>
+                  <li>• Year 1 costs include only 9 months of additional ongoing support</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
-                  <li>• Year-over-year efficiency improvements: 10% (Year 2), 20% (Year 3)</li>
-                  <li>• Ongoing support fees are separate from ROI calculation</li>
+                  <li>• Year-over-year efficiency improvements: 8% (Year 2), 15% (Year 3)</li>
                 </ul>
               </div>
             </div>
