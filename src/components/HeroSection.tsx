@@ -74,7 +74,7 @@ const HeroSection = () => {
               <p className="text-sm text-muted-foreground mb-4">Trusted by businesses to save 15-25 hours weekly</p>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">300%</div>
+                  <div className="text-2xl font-bold text-primary">150-250%</div>
                   <div className="text-xs text-muted-foreground">Average ROI</div>
                 </div>
                 <div className="text-center">
@@ -82,7 +82,7 @@ const HeroSection = () => {
                   <div className="text-xs text-muted-foreground">Weekly Time Savings</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$65K</div>
+                  <div className="text-2xl font-bold text-primary">$35K</div>
                   <div className="text-xs text-muted-foreground">Average Annual Savings</div>
                 </div>
                 <div className="text-center">

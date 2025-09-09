@@ -21,8 +21,8 @@ const ServicesSection = () => {
         "Documentation package"
       ],
       platforms: ["Zapier", "Airtable", "Make (Basic)"],
-      roi: "200-350% ROI",
-      savings: "5-10 hours weekly",
+      roi: "150-250% ROI",
+      savings: "10-15 hours weekly",
       popular: false
     },
     {
@@ -41,7 +41,7 @@ const ServicesSection = () => {
         "Intelligent integration with existing tools"
       ],
       platforms: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
-      roi: "300-500% ROI",
+      roi: "200-350% ROI",
       savings: "15-25 hours weekly",
       popular: true
     },
@@ -63,7 +63,7 @@ const ServicesSection = () => {
         "Strategic change management support"
       ],
       platforms: ["Enterprise Zapier + AI", "Advanced Airtable", "Make Pro", "Activepieces", "AI Integration"],
-      roi: "400-650% ROI",
+      roi: "250-400% ROI",
       savings: "30-50 hours weekly",
       popular: false
     }

@@ -32,7 +32,7 @@ const IndustriesSection = () => {
       title: "Healthcare",
       description: "Private practices, clinics, specialists",
       automations: ["Patient scheduling", "Insurance verification", "Follow-up reminders", "Billing automation"],
-      savings: "25-35 hours/week"
+      savings: "20-30 hours/week"
     },
     {
       icon: <Hammer className="w-6 h-6" />,
@@ -46,7 +46,7 @@ const IndustriesSection = () => {
       title: "Manufacturing",
       description: "Small manufacturers, distributors",
       automations: ["Inventory management", "Order processing", "Quality control", "Supplier communications"],
-      savings: "30-40 hours/week"
+      savings: "25-35 hours/week"
     },
     {
       icon: <ShoppingCart className="w-6 h-6" />,

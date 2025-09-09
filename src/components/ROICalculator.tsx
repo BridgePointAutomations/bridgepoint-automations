@@ -28,7 +28,7 @@ const ROICalculator = () => {
     const wage = parseFloat(hourlyWage);
     
     // Optimized time savings based on business size
-    let baseSavingsPercent = 0.50; // Base 50% savings
+    let baseSavingsPercent = 0.45; // Base 45% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
     
@@ -36,17 +36,17 @@ const ROICalculator = () => {
       case "small":
         implementationFee = 2500;
         monthlySupport = 300;
-        baseSavingsPercent = 0.50;
+        baseSavingsPercent = 0.45;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 600;
-        baseSavingsPercent = 0.60;
+        baseSavingsPercent = 0.55;
         break;
       case "large":
         implementationFee = 9000;
         monthlySupport = 900;
-        baseSavingsPercent = 0.70;
+        baseSavingsPercent = 0.65;
         break;
     }
     
@@ -62,16 +62,16 @@ const ROICalculator = () => {
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
     const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
     
-    // Year 2 calculations (10% efficiency improvement)
-    const year2SavingsMultiplier = 1.10;
+    // Year 2 calculations (8% efficiency improvement)
+    const year2SavingsMultiplier = 1.08;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
     const year2TotalCost = annualSupport; // Only ongoing support
     const year2NetSavings = year2Savings - year2TotalCost;
     const cumulativeYear2NetSavings = year1NetSavings + year2NetSavings;
     const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
     
-    // Year 3 calculations (20% efficiency improvement from original)
-    const year3SavingsMultiplier = 1.20;
+    // Year 3 calculations (15% efficiency improvement from original)
+    const year3SavingsMultiplier = 1.15;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
     const year3TotalCost = annualSupport; // Only ongoing support
     const year3NetSavings = year3Savings - year3TotalCost;
@@ -82,20 +82,20 @@ const ROICalculator = () => {
       year1: {
         annualLaborSavings: Math.round(year1Savings),
         totalCost: Math.round(year1TotalCost),
-        roi: Math.round(year1ROI),
+        roi: Math.min(Math.round(year1ROI), 400), // Cap ROI at 400%
         paybackMonths: Math.round(paybackMonths * 10) / 10,
         netSavings: Math.round(year1NetSavings)
       },
       year2: {
         annualLaborSavings: Math.round(year2Savings),
         totalCost: Math.round(year2TotalCost),
-        roi: Math.round(year2ROI),
+        roi: Math.min(Math.round(year2ROI), 400), // Cap ROI at 400%
         cumulativeNetSavings: Math.round(cumulativeYear2NetSavings)
       },
       year3: {
         annualLaborSavings: Math.round(year3Savings),
         totalCost: Math.round(year3TotalCost),
-        roi: Math.round(year3ROI),
+        roi: Math.min(Math.round(year3ROI), 400), // Cap ROI at 400%
         cumulativeNetSavings: Math.round(cumulativeYear3NetSavings)
       },
       implementationFee

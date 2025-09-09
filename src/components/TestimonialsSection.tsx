@@ -86,7 +86,7 @@ const TestimonialsSection = () => {
               <div className="text-sm text-muted-foreground">Hours Saved Weekly</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary">$195K+</div>
+              <div className="text-2xl font-bold text-primary">$125K+</div>
               <div className="text-sm text-muted-foreground">Annual Savings</div>
             </div>
             <div className="text-center">
