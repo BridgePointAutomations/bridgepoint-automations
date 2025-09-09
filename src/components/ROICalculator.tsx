@@ -28,7 +28,7 @@ const ROICalculator = () => {
     const wage = parseFloat(hourlyWage);
     
     // Optimized time savings based on business size
-    let baseSavingsPercent = 0.60; // Base 50% savings
+    let baseSavingsPercent = 0.60; // Base 60% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
     
@@ -62,7 +62,7 @@ const ROICalculator = () => {
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
     const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
     
-    // Year 2 calculations (8% efficiency improvement)
+    // Year 2 calculations (10% efficiency improvement)
     const year2SavingsMultiplier = 1.10;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
     const year2TotalCost = annualSupport; // Only ongoing support
@@ -70,7 +70,7 @@ const ROICalculator = () => {
     const cumulativeYear2NetSavings = year1NetSavings + year2NetSavings;
     const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
     
-    // Year 3 calculations (15% efficiency improvement from original)
+    // Year 3 calculations (20% efficiency improvement from original)
     const year3SavingsMultiplier = 1.20;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
     const year3TotalCost = annualSupport; // Only ongoing support
