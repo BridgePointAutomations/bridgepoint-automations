@@ -265,6 +265,32 @@ export type Database = {
           status: string
         }[]
       }
+      get_security_logs: {
+        Args: {
+          include_suspicious_only?: boolean
+          limit_count?: number
+          offset_count?: number
+        }
+        Returns: {
+          created_at: string
+          form_type: string
+          honeypot_triggered: boolean
+          id: string
+          ip_masked: string
+          is_suspicious: boolean
+          user_agent_summary: string
+        }[]
+      }
+      get_security_stats: {
+        Args: { days_back?: number }
+        Returns: {
+          honeypot_triggers: number
+          submission_rate_per_hour: number
+          suspicious_submissions: number
+          total_submissions: number
+          unique_ips: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
