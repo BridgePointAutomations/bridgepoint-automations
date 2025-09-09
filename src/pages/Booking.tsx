@@ -16,6 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { format } from "date-fns";
 import { submitToHubSpotAndZapier } from "@/lib/hubspot";
+import HubSpotSetup from "@/components/HubSpotSetup";
 
 // Form validation schema
 const bookingFormSchema = z.object({
@@ -594,6 +595,13 @@ const Booking = () => {
         </section>
 
       </main>
+
+      {/* HubSpot Setup */}
+      <section className="py-8 border-t">
+        <div className="container mx-auto px-4">
+          <HubSpotSetup />
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-foreground/5 py-12 border-t border-border">
