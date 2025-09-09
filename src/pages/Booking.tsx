@@ -17,6 +17,7 @@ import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { format } from "date-fns";
 import { submitToHubSpotAndZapier } from "@/lib/hubspot";
 import HubSpotSetup from "@/components/HubSpotSetup";
+import { clientSecurity } from "@/lib/security";
 
 // Form validation schema
 const bookingFormSchema = z.object({
@@ -39,7 +40,9 @@ const bookingFormSchema = z.object({
   appointment_date: z.date({
     required_error: "Please select an appointment date"
   }),
-  appointment_time: z.string().min(1, "Please select an appointment time")
+  appointment_time: z.string().min(1, "Please select an appointment time"),
+  // Honeypot field - should always be empty
+  website_url: z.string().optional()
 });
 
 type BookingFormData = z.infer<typeof bookingFormSchema>;
@@ -71,7 +74,8 @@ const Booking = () => {
       timeline: "",
       budget_range: "",
       appointment_date: undefined,
-      appointment_time: ""
+      appointment_time: "",
+      website_url: "" // Honeypot field
     }
   });
 
@@ -79,7 +83,52 @@ const Booking = () => {
     setIsSubmitting(true);
     
     try {
-      // Validate Zapier webhook URL first
+      // Security checks
+      if (!clientSecurity.checkRateLimit('booking_form', 3, 3600000)) { // 3 attempts per hour
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Honeypot check
+      if (!clientSecurity.validateHoneypot(data.website_url || '')) {
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Input validation
+      if (!clientSecurity.validateEmail(data.email)) {
+        toast({
+          title: "Invalid Email",
+          description: "Please enter a valid email address.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      if (data.phone && !clientSecurity.validatePhone(data.phone)) {
+        toast({
+          title: "Invalid Phone",
+          description: "Please enter a valid phone number.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Sanitize inputs
+      const sanitizedData = {
+        ...data,
+        first_name: clientSecurity.sanitizeInput(data.first_name),
+        last_name: clientSecurity.sanitizeInput(data.last_name),
+        email: clientSecurity.sanitizeInput(data.email),
+        company_name: clientSecurity.sanitizeInput(data.company_name),
+        current_processes: clientSecurity.sanitizeInput(data.current_processes),
+        pain_points: clientSecurity.sanitizeInput(data.pain_points),
+        automation_goals: clientSecurity.sanitizeInput(data.automation_goals)
+      };
+      
+      // Validate Zapier webhook URL
       const zapierWebhookUrl = localStorage.getItem('zapier_webhook_url');
       if (!zapierWebhookUrl) {
         throw new Error('Zapier webhook URL not configured. Please set up your Zapier integration first.');
@@ -126,9 +175,12 @@ const Booking = () => {
         status: 'scheduled'
       };
       
-      // Submit to both HubSpot and Zapier
+      // Submit to both HubSpot and Zapier (using sanitized data)
+      const submissionData = { ...sanitizedData };
+      delete submissionData.website_url; // Remove honeypot field
+      
       const results = await submitToHubSpotAndZapier(
-        formData,
+        submissionData,
         zapierWebhookUrl,
         hubspotFormId
       );
@@ -547,6 +599,18 @@ const Booking = () => {
                         {form.formState.errors.appointment_time && (
                           <p className="text-sm text-destructive">{form.formState.errors.appointment_time.message}</p>
                         )}
+                      </div>
+
+                      {/* Honeypot field - hidden from users */}
+                      <div style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
+                        <Label htmlFor="website_url">Website URL (do not fill)</Label>
+                        <Input 
+                          id="website_url"
+                          type="text"
+                          {...form.register("website_url")}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
                       </div>
 
                       {/* Webhook Configuration Warning */}
