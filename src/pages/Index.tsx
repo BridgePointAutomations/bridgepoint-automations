@@ -37,7 +37,7 @@ const Index = () => {
               <div className="text-sm text-muted-foreground">
                 <p>Pittsburgh Metropolitan Area</p>
                 <p>(412) 555-BRIDGE</p>
-                <p>hello@bridgepoint-automations.com</p>
+                <p>support@bridgepointautomations.com</p>
               </div>
             </div>
 
