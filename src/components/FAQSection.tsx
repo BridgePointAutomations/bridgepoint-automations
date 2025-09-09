@@ -205,7 +205,7 @@ const FAQSection = () => {
                 <li><strong>Focus on growth:</strong> Spend time on strategy, not busy work</li>
                 <li><strong>Better customer service:</strong> Faster response times, fewer errors</li>
               </ul>
-              <p><strong>Example:</strong> A Pittsburgh auto shop saved 15 hours weekly by automating appointment scheduling, customer follow-ups, and inventory tracking.</p>
+              <p><strong>Example:</strong> A local auto shop saved 15 hours weekly by automating appointment scheduling, customer follow-ups, and inventory tracking.</p>
             </div>
           )
         },
@@ -213,7 +213,7 @@ const FAQSection = () => {
           question: "What repetitive tasks can automation eliminate for small businesses?",
           answer: (
             <div className="space-y-3">
-              <p>Common tasks we automate for Pittsburgh small businesses:</p>
+              <p>Common tasks we automate for small businesses:</p>
               <ul className="space-y-2 ml-4">
                 <li><strong>Customer communications:</strong> Welcome emails, appointment reminders, follow-ups</li>
                 <li><strong>Lead management:</strong> Capture, qualify, and route leads automatically</li>

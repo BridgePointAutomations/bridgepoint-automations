@@ -41,13 +41,6 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
-              variant="outline" 
-              size="sm"
-              onClick={() => window.location.href = '/booking'}
-            >
-              Free Audit
-            </Button>
-            <Button 
               variant="default" 
               size="sm" 
               className="group"
@@ -116,15 +109,7 @@ const Navigation = () => {
               >
                 Contact
               </a>
-              <div className="pt-4 space-y-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full"
-                  onClick={() => {window.location.href = '/booking'; setIsOpen(false);}}
-                >
-                  Free Audit
-                </Button>
+              <div className="pt-4">
                 <Button 
                   variant="default" 
                   size="sm" 

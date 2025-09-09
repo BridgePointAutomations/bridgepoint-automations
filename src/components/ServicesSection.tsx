@@ -83,7 +83,7 @@ const ServicesSection = () => {
             Choose Your <span className="text-gradient">Automation Journey</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Structured packages designed to make enterprise automation accessible to Pittsburgh small businesses. Each tier includes bundled support and guaranteed ROI.
+            Structured packages designed to make enterprise automation accessible to small businesses. Each tier includes bundled support and guaranteed ROI.
           </p>
           <p className="text-sm text-muted-foreground/80 max-w-xl mx-auto mt-2">
             Final pricing tailored based on discovery and scope.

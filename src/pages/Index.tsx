@@ -32,7 +32,7 @@ const Index = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-gradient">BridgePoint Automations</h3>
               <p className="text-sm text-muted-foreground">
-                Transforming Pittsburgh small businesses through intelligent automation and proven ROI.
+                Transforming small businesses through intelligent automation and proven ROI.
               </p>
               <div className="text-sm text-muted-foreground">
                 <p>Pittsburgh Metropolitan Area</p>
@@ -48,7 +48,7 @@ const Index = () => {
                 <p>Efficiency Essentials ($2,500)</p>
                 <p>Growth Builder ($5,000)</p>
                 <p>Enterprise Lite ($9,000)</p>
-                <p>Free Automation Audit</p>
+                <p>Free Automation Consultation</p>
               </div>
             </div>
 
@@ -80,7 +80,7 @@ const Index = () => {
           </div>
 
           <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 BridgePoint Automations. All Rights Reserved. | Formerly Pittsburgh Business Automation Solutions</p>
+            <p>&copy; 2025 BridgePoint Automations. All Rights Reserved.</p>
           </div>
         </div>
       </footer>

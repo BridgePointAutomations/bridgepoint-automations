@@ -16,7 +16,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <Badge variant="outline" className="text-primary border-primary/20">
                 <TrendingUp className="w-3 h-3 mr-1" />
-                Serving Pittsburgh's Small Business Community
+                Serving Small Business Communities
               </Badge>
               
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
@@ -25,7 +25,7 @@ const HeroSection = () => {
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-xl">
-                BridgePoint Automations delivers enterprise-level automation to Pittsburgh small businesses using modern no-code platforms. Reduce manual work, improve efficiency, and guarantee ROI within 6 months.
+                BridgePoint Automations delivers enterprise-level automation to small businesses using modern no-code platforms. Reduce manual work, improve efficiency, and guarantee ROI within 6 months.
               </p>
             </div>
 
@@ -45,7 +45,7 @@ const HeroSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">Local Pittsburgh Support</span>
+                <span className="text-sm font-medium">Expert Local Support</span>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const HeroSection = () => {
                 className="group"
                 onClick={() => window.location.href = '/booking'}
               >
-                Start Free Audit
+                Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
@@ -71,7 +71,7 @@ const HeroSection = () => {
 
             {/* Social Proof */}
             <div className="pt-8 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-4">Trusted by Pittsburgh businesses to save 15-25 hours weekly</p>
+              <p className="text-sm text-muted-foreground mb-4">Trusted by businesses to save 15-25 hours weekly</p>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">300%</div>

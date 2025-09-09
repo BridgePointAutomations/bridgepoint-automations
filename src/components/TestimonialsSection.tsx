@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
             Client Success Stories
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            See What <span className="text-gradient">Pittsburgh Businesses</span> Are Saying
+            See What <span className="text-gradient">Local Businesses</span> Are Saying
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Real results from local businesses who've transformed their operations with automation

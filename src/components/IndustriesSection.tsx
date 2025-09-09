@@ -97,10 +97,10 @@ const IndustriesSection = () => {
             Industry Expertise
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold">
-            Serving <span className="text-gradient">Pittsburgh's Key Industries</span>
+            Serving <span className="text-gradient">Key Industries</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We understand the unique challenges and opportunities in Pittsburgh's diverse business landscape. Our automation solutions are tailored for each industry's specific needs.
+            We understand the unique challenges and opportunities in diverse business landscapes. Our automation solutions are tailored for each industry's specific needs.
           </p>
         </div>
 

@@ -27,7 +27,7 @@ const ContactSection = () => {
             Ready to <span className="text-gradient">Transform Your Business?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Schedule your free automation audit and discover how BridgePoint Automations can save your Pittsburgh business 15-50 hours weekly with guaranteed ROI.
+            Schedule your free automation consultation and discover how BridgePoint Automations can save your business 15-50 hours weekly with guaranteed ROI.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ const ContactSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <TrendingUp className="w-5 h-5 text-primary" />
-                <span>Free Automation Audit</span>
+                <span>Free Automation Consultation</span>
               </CardTitle>
               <CardDescription>
                 Get a comprehensive analysis of your automation opportunities with ROI projections - no cost, no obligation.
@@ -52,7 +52,7 @@ const ContactSection = () => {
                   className="w-full group"
                   onClick={() => window.location.href = '/booking'}
                 >
-                  Schedule Free Audit
+                  Schedule Free Consultation
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -66,7 +66,7 @@ const ContactSection = () => {
             <Card className="shadow-soft">
               <CardHeader>
                 <CardTitle>Get In Touch</CardTitle>
-                <CardDescription>Ready to discuss your automation needs? Contact our Pittsburgh team directly.</CardDescription>
+                <CardDescription>Ready to discuss your automation needs? Contact our team directly.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -106,7 +106,7 @@ const ContactSection = () => {
             {/* Audit Benefits */}
             <Card className="shadow-soft">
               <CardHeader>
-                <CardTitle>What You'll Get in Your Free Audit</CardTitle>
+                <CardTitle>What You'll Get in Your Free Consultation</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {[
@@ -132,7 +132,7 @@ const ContactSection = () => {
               </div>
               <div className="bg-card p-4 rounded-lg border border-border text-center">
                 <div className="text-2xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">Free Audit</div>
+                <div className="text-sm text-muted-foreground">Free Consultation</div>
               </div>
             </div>
             

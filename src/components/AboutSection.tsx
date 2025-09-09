@@ -99,7 +99,7 @@ const AboutSection = () => {
           <div className="bg-gradient-primary text-white rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-xl font-semibold mb-4">Ready to Transform Your Business?</h3>
             <p className="mb-6 opacity-90">
-              Join dozens of Pittsburgh businesses that have already automated their way to success. 
+              Join dozens of businesses that have already automated their way to success. 
               Let's discuss how we can help you save time, reduce costs, and grow your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -107,7 +107,7 @@ const AboutSection = () => {
                 href="#contact" 
                 className="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-white/90 transition-colors"
               >
-                Schedule Free Audit
+                Schedule Consultation
               </a>
               <a 
                 href="#services" 
