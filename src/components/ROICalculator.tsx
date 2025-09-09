@@ -28,7 +28,7 @@ const ROICalculator = () => {
     const wage = parseFloat(hourlyWage);
     
     // Optimized time savings based on business size
-    let baseSavingsPercent = 0.45; // Base 45% savings
+    let baseSavingsPercent = 0.50; // Base 50% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
     
@@ -36,17 +36,17 @@ const ROICalculator = () => {
       case "small":
         implementationFee = 2500;
         monthlySupport = 300;
-        baseSavingsPercent = 0.45;
+        baseSavingsPercent = 0.50;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 600;
-        baseSavingsPercent = 0.55;
+        baseSavingsPercent = 0.60;
         break;
       case "large":
         implementationFee = 9000;
         monthlySupport = 900;
-        baseSavingsPercent = 0.65;
+        baseSavingsPercent = 0.70;
         break;
     }
     
@@ -63,7 +63,7 @@ const ROICalculator = () => {
     const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
     
     // Year 2 calculations (8% efficiency improvement)
-    const year2SavingsMultiplier = 1.08;
+    const year2SavingsMultiplier = 1.10;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
     const year2TotalCost = annualSupport; // Only ongoing support
     const year2NetSavings = year2Savings - year2TotalCost;
@@ -71,7 +71,7 @@ const ROICalculator = () => {
     const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
     
     // Year 3 calculations (15% efficiency improvement from original)
-    const year3SavingsMultiplier = 1.15;
+    const year3SavingsMultiplier = 1.20;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
     const year3TotalCost = annualSupport; // Only ongoing support
     const year3NetSavings = year3Savings - year3TotalCost;
@@ -382,11 +382,11 @@ const ROICalculator = () => {
                 <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
-                  <li>• Time savings: Small (45%), Medium (55%), Large (65%)</li>
+                  <li>• Time savings: Small (50%), Medium (60%), Large (70%)</li>
                   <li>• Implementation fee includes 3 months of bundled support</li>
                   <li>• Year 1 costs include only 9 months of additional ongoing support</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
-                  <li>• Year-over-year efficiency improvements: 8% (Year 2), 15% (Year 3)</li>
+                  <li>• Year-over-year efficiency improvements: 10% (Year 2), 20% (Year 3)</li>
                 </ul>
               </div>
             </div>
