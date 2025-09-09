@@ -209,6 +209,18 @@ export type Database = {
         Args: { honeypot_field: string }
         Returns: boolean
       }
+      get_leads_secure: {
+        Args: { limit_count?: number; offset_count?: number }
+        Returns: {
+          company_name: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          status: string
+        }[]
+      }
       log_submission: {
         Args: {
           p_form_type: string
