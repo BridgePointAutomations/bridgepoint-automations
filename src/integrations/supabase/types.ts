@@ -187,11 +187,39 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      add_admin_user: {
+        Args: { _user_id: string }
+        Returns: undefined
+      }
       check_rate_limit: {
         Args: {
           p_form_type: string
@@ -205,9 +233,25 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: number
       }
+      current_user_has_role: {
+        Args: { _role: Database["public"]["Enums"]["app_role"] }
+        Returns: boolean
+      }
       detect_honeypot: {
         Args: { honeypot_field: string }
         Returns: boolean
+      }
+      get_leads_enhanced_security: {
+        Args: { limit_count?: number; offset_count?: number }
+        Returns: {
+          company_name: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          status: string
+        }[]
       }
       get_leads_secure: {
         Args: { limit_count?: number; offset_count?: number }
@@ -220,6 +264,13 @@ export type Database = {
           last_name: string
           status: string
         }[]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
       }
       log_submission: {
         Args: {
@@ -242,6 +293,7 @@ export type Database = {
       }
     }
     Enums: {
+      app_role: "admin" | "moderator" | "user"
       company_size: "1-10" | "11-50" | "51-200" | "201-1000" | "1000+"
       lead_status:
         | "new"
@@ -377,6 +429,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      app_role: ["admin", "moderator", "user"],
       company_size: ["1-10", "11-50", "51-200", "201-1000", "1000+"],
       lead_status: [
         "new",
