@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { 
   Phone, 
   Mail, 
@@ -10,68 +9,10 @@ import {
   ArrowRight, 
   CheckCircle,
   Calendar,
-  TrendingUp,
-  Settings
+  TrendingUp
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
-  const { toast } = useToast();
-  const [showHubSpotConfig, setShowHubSpotConfig] = useState(false);
-  const [hubspotConfig, setHubspotConfig] = useState({
-    portalId: localStorage.getItem('hubspot_portal_id') || '',
-    formId: localStorage.getItem('hubspot_form_id') || ''
-  });
-
-  // Load HubSpot form script dynamically
-  useEffect(() => {
-    if (hubspotConfig.portalId && hubspotConfig.formId) {
-      loadHubSpotForm();
-    }
-  }, [hubspotConfig]);
-
-  const loadHubSpotForm = () => {
-    const script = document.createElement('script');
-    script.src = `//js.hsforms.net/forms/v2.js`;
-    script.async = true;
-    script.onload = () => {
-      if ((window as any).hbspt) {
-        (window as any).hbspt.forms.create({
-          region: "na1",
-          portalId: hubspotConfig.portalId,
-          formId: hubspotConfig.formId,
-          target: '#hubspot-form-container',
-          onFormSubmit: () => {
-            // Redirect to booking page after form submission
-            setTimeout(() => {
-              window.location.href = '/booking';
-            }, 1000);
-          }
-        });
-      }
-    };
-    document.head.appendChild(script);
-  };
-
-  const saveHubSpotConfig = () => {
-    localStorage.setItem('hubspot_portal_id', hubspotConfig.portalId);
-    localStorage.setItem('hubspot_form_id', hubspotConfig.formId);
-    setShowHubSpotConfig(false);
-    loadHubSpotForm();
-    toast({
-      title: "HubSpot Configuration Saved",
-      description: "HubSpot form will now be displayed in the contact section.",
-    });
-  };
-
-  const handleConfigChange = (field: string, value: string) => {
-    setHubspotConfig(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
   return (
     <section id="contact" className="py-20 bg-gradient-accent">
       <div className="container mx-auto px-4">
@@ -95,81 +36,26 @@ const ContactSection = () => {
           {/* Contact Form */}
           <Card className="shadow-medium">
             <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <TrendingUp className="w-5 h-5 text-primary" />
-                  <span>Free Automation Audit</span>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowHubSpotConfig(!showHubSpotConfig)}
-                >
-                  <Settings className="w-4 h-4" />
-                </Button>
+              <CardTitle className="flex items-center space-x-2">
+                <TrendingUp className="w-5 h-5 text-primary" />
+                <span>Free Automation Audit</span>
               </CardTitle>
               <CardDescription>
                 Get a comprehensive analysis of your automation opportunities with ROI projections - no cost, no obligation.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {/* HubSpot Configuration */}
-              {showHubSpotConfig && (
-                <div className="mb-6 p-4 bg-muted rounded-lg space-y-4">
-                  <h4 className="font-medium">HubSpot Integration Setup</h4>
-                  <div className="space-y-3">
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">HubSpot Portal ID</label>
-                      <Input
-                        value={hubspotConfig.portalId}
-                        onChange={(e) => handleConfigChange('portalId', e.target.value)}
-                        placeholder="Your HubSpot Portal ID (e.g., 12345678)"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">HubSpot Form ID</label>
-                      <Input
-                        value={hubspotConfig.formId}
-                        onChange={(e) => handleConfigChange('formId', e.target.value)}
-                        placeholder="Your HubSpot Form ID"
-                      />
-                    </div>
-                    <div className="flex gap-2">
-                      <Button onClick={saveHubSpotConfig} size="sm">
-                        Save Configuration
-                      </Button>
-                      <Button variant="outline" onClick={() => setShowHubSpotConfig(false)} size="sm">
-                        Cancel
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* HubSpot Form Container */}
-              {hubspotConfig.portalId && hubspotConfig.formId ? (
-                <div id="hubspot-form-container" className="min-h-[400px]">
-                  {/* HubSpot form will be injected here */}
-                </div>
-              ) : (
-                <div className="text-center py-8">
-                  <p className="text-muted-foreground mb-4">
-                    Configure HubSpot integration to display the contact form.
-                  </p>
-                  <Button 
-                    variant="hero" 
-                    size="lg" 
-                    className="w-full group"
-                    onClick={() => window.location.href = '/booking'}
-                  >
-                    Schedule Free Audit
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center mt-4">
-                    Click the settings icon above to configure HubSpot integration.
-                  </p>
-                </div>
-              )}
+              <div className="text-center py-8">
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full group"
+                  onClick={() => window.location.href = '/booking'}
+                >
+                  Schedule Free Audit
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
             </CardContent>
           </Card>
 

@@ -15,8 +15,6 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { TimeSlotPicker } from "@/components/TimeSlotPicker";
 import { format } from "date-fns";
-import { submitToHubSpotAndZapier } from "@/lib/hubspot";
-import HubSpotSetup from "@/components/HubSpotSetup";
 import { clientSecurity } from "@/lib/security";
 
 // Form validation schema
@@ -53,7 +51,6 @@ const Booking = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [showWebhookConfig, setShowWebhookConfig] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState(localStorage.getItem('zapier_webhook_url') || '');
-  const [hubspotFormId, setHubspotFormId] = useState(localStorage.getItem('hubspot_booking_form_id') || '');
   const { toast } = useToast();
   
   const form = useForm<BookingFormData>({
@@ -175,25 +172,25 @@ const Booking = () => {
         status: 'scheduled'
       };
       
-      // Submit to both HubSpot and Zapier (using sanitized data)
+      // Submit to Zapier
       const submissionData = { ...sanitizedData };
       delete submissionData.website_url; // Remove honeypot field
       
-      const results = await submitToHubSpotAndZapier(
-        submissionData,
-        zapierWebhookUrl,
-        hubspotFormId
-      );
-
-      // Show success message with integration status
-      const integrationStatus = results.hubspot && results.zapier ? 
-        "Submitted to both HubSpot and Airtable." :
-        results.zapier ? "Submitted to Airtable (HubSpot not configured)." :
-        "Submission may have issues. Please contact us directly if needed.";
+      const response = await fetch(zapierWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+      });
 
       toast({
         title: "Appointment Scheduled!",
-        description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. ${integrationStatus}`,
+        description: `Your automation audit is scheduled for ${format(data.appointment_date, 'EEEE, MMMM d')} at ${formatTime(data.appointment_time)}. We'll contact you shortly to confirm.`,
       });
       
       form.reset();
@@ -231,13 +228,10 @@ const Booking = () => {
 
   const saveWebhookUrl = () => {
     localStorage.setItem('zapier_webhook_url', webhookUrl);
-    if (hubspotFormId) {
-      localStorage.setItem('hubspot_booking_form_id', hubspotFormId);
-    }
     setShowWebhookConfig(false);
     toast({
       title: "Integration Configured",
-      description: "Zapier and HubSpot integrations saved successfully!",
+      description: "Zapier webhook URL saved successfully!",
     });
   };
 
@@ -660,12 +654,6 @@ const Booking = () => {
 
       </main>
 
-      {/* HubSpot Setup */}
-      <section className="py-8 border-t">
-        <div className="container mx-auto px-4">
-          <HubSpotSetup />
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-foreground/5 py-12 border-t border-border">
@@ -703,20 +691,6 @@ const Booking = () => {
                   placeholder="https://hooks.zapier.com/hooks/catch/..."
                   value={webhookUrl}
                   onChange={(e) => setWebhookUrl(e.target.value)}
-                  className="mb-2"
-                />
-              </div>
-
-              {/* HubSpot Configuration */}
-              <div>
-                <h4 className="font-medium mb-2">HubSpot Integration (Optional)</h4>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Enter your HubSpot Form ID to also submit leads to HubSpot:
-                </p>
-                <Input
-                  placeholder="HubSpot Form ID (e.g., 12345678-1234-1234-1234-123456789012)"
-                  value={hubspotFormId}
-                  onChange={(e) => setHubspotFormId(e.target.value)}
                   className="mb-2"
                 />
               </div>
