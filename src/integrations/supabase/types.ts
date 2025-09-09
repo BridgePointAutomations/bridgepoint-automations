@@ -151,12 +151,83 @@ export type Database = {
         }
         Relationships: []
       }
+      submission_logs: {
+        Row: {
+          created_at: string | null
+          form_type: string
+          honeypot_triggered: boolean | null
+          id: string
+          ip_address: unknown | null
+          is_suspicious: boolean | null
+          record_id: string | null
+          table_name: string
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          form_type: string
+          honeypot_triggered?: boolean | null
+          id?: string
+          ip_address?: unknown | null
+          is_suspicious?: boolean | null
+          record_id?: string | null
+          table_name: string
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          form_type?: string
+          honeypot_triggered?: boolean | null
+          id?: string
+          ip_address?: unknown | null
+          is_suspicious?: boolean | null
+          record_id?: string | null
+          table_name?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_rate_limit: {
+        Args: {
+          p_form_type: string
+          p_ip_address: unknown
+          p_max_submissions?: number
+          p_time_window?: unknown
+        }
+        Returns: boolean
+      }
+      cleanup_old_submission_logs: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      detect_honeypot: {
+        Args: { honeypot_field: string }
+        Returns: boolean
+      }
+      log_submission: {
+        Args: {
+          p_form_type: string
+          p_honeypot_triggered?: boolean
+          p_ip_address: unknown
+          p_record_id: string
+          p_table_name: string
+          p_user_agent: string
+        }
+        Returns: undefined
+      }
+      validate_email: {
+        Args: { email: string }
+        Returns: boolean
+      }
+      validate_phone: {
+        Args: { phone: string }
+        Returns: boolean
+      }
     }
     Enums: {
       company_size: "1-10" | "11-50" | "51-200" | "201-1000" | "1000+"
