@@ -109,115 +109,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           
-          {/* Contact Form */}
-          <Card className="shadow-medium">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <TrendingUp className="w-5 h-5 text-primary" />
-                <span>Free Automation Consultation</span>
-              </CardTitle>
-              <CardDescription>
-                Get a comprehensive analysis of your automation opportunities with ROI projections - no cost, no obligation.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-8">
-                <Button 
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full group"
-                  onClick={() => window.location.href = '/booking'}
-                >
-                  Schedule Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information & Benefits */}
-          <div className="space-y-8">
-            
-            {/* Contact Info */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>Get In Touch</CardTitle>
-                <CardDescription>Ready to discuss your automation needs? Contact our team directly.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">(412) 555-BRIDGE</div>
-                    <div className="text-sm text-muted-foreground">Mon-Fri 8AM-6PM EST</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">support@bridgepointautomations.com</div>
-                    <div className="text-sm text-muted-foreground">Response within 2 hours</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">Pittsburgh Metropolitan Area</div>
-                    <div className="text-sm text-muted-foreground">Serving all surrounding counties and states</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">24-Hour Response Guarantee</div>
-                    <div className="text-sm text-muted-foreground">For all audit requests</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Audit Benefits */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>What You'll Get in Your Free Consultation</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  "Complete process assessment and opportunity identification",
-                  "ROI projections for potential automation projects",
-                  "Detailed automation roadmap with timeline",
-                  "Platform recommendations tailored to your business",
-                  "No-obligation consultation with senior consultant"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card p-4 rounded-lg border border-border text-center">
-                <div className="text-2xl font-bold text-primary">24hr</div>
-                <div className="text-sm text-muted-foreground">Response Time</div>
-              </div>
-              <div className="bg-card p-4 rounded-lg border border-border text-center">
-                <div className="text-2xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">Free Consultation</div>
-              </div>
-            </div>
-            
-          </div>
-          
-        </div>
-
-        {/* Quick Contact Form */}
-        <div className="mt-16 max-w-2xl mx-auto">
+          {/* Quick Contact Form */}
           <Card className="shadow-medium">
             <CardHeader className="text-center">
               <CardTitle className="flex items-center justify-center space-x-2">
@@ -308,6 +200,86 @@ const ContactSection = () => {
               </form>
             </CardContent>
           </Card>
+
+          {/* Contact Information & Benefits */}
+          <div className="space-y-8">
+            
+            {/* Contact Info */}
+            <Card className="shadow-soft">
+              <CardHeader>
+                <CardTitle>Get In Touch</CardTitle>
+                <CardDescription>Ready to discuss your automation needs? Contact our team directly.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-primary" />
+                  <div>
+                    <div className="font-medium">(412) 555-BRIDGE</div>
+                    <div className="text-sm text-muted-foreground">Mon-Fri 8AM-6PM EST</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-primary" />
+                  <div>
+                    <div className="font-medium">support@bridgepointautomations.com</div>
+                    <div className="text-sm text-muted-foreground">Response within 2 hours</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <MapPin className="w-5 h-5 text-primary" />
+                  <div>
+                    <div className="font-medium">Pittsburgh Metropolitan Area</div>
+                    <div className="text-sm text-muted-foreground">Serving all surrounding counties and states</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <Clock className="w-5 h-5 text-primary" />
+                  <div>
+                    <div className="font-medium">24-Hour Response Guarantee</div>
+                    <div className="text-sm text-muted-foreground">For all audit requests</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Audit Benefits */}
+            <Card className="shadow-soft">
+              <CardHeader>
+                <CardTitle>What You'll Get in Your Free Consultation</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {[
+                  "Complete process assessment and opportunity identification",
+                  "ROI projections for potential automation projects",
+                  "Detailed automation roadmap with timeline",
+                  "Platform recommendations tailored to your business",
+                  "No-obligation consultation with senior consultant"
+                ].map((benefit, index) => (
+                  <div key={index} className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">{benefit}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-card p-4 rounded-lg border border-border text-center">
+                <div className="text-2xl font-bold text-primary">24hr</div>
+                <div className="text-sm text-muted-foreground">Response Time</div>
+              </div>
+              <div className="bg-card p-4 rounded-lg border border-border text-center">
+                <div className="text-2xl font-bold text-primary">100%</div>
+                <div className="text-sm text-muted-foreground">Free Consultation</div>
+              </div>
+            </div>
+            
+          </div>
+          
         </div>
 
       </div>
