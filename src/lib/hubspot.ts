@@ -36,10 +36,8 @@ export class HubSpotService {
   private apiKey: string = '';
 
   private constructor() {
-    // Initialize with your HubSpot Portal ID and API Key
-    // These will need to be configured by the user
-    this.portalId = process.env.VITE_HUBSPOT_PORTAL_ID || '';
-    this.apiKey = process.env.VITE_HUBSPOT_API_KEY || '';
+    // Configuration is handled via the HubSpotSetup component
+    // Using localStorage for runtime configuration
   }
 
   public static getInstance(): HubSpotService {
