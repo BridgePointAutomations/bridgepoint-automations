@@ -27,8 +27,8 @@ const ROICalculator = () => {
     const weeklyHours = parseFloat(hoursPerWeek);
     const wage = parseFloat(hourlyWage);
     
-    // Conservative time savings based on business size
-    let baseSavingsPercent = 0.35; // Base 35% savings
+    // Optimized time savings based on business size
+    let baseSavingsPercent = 0.50; // Base 50% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
     
@@ -36,17 +36,17 @@ const ROICalculator = () => {
       case "small":
         implementationFee = 2500;
         monthlySupport = 300;
-        baseSavingsPercent = 0.35;
+        baseSavingsPercent = 0.50;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 600;
-        baseSavingsPercent = 0.45;
+        baseSavingsPercent = 0.60;
         break;
       case "large":
         implementationFee = 9000;
         monthlySupport = 900;
-        baseSavingsPercent = 0.55;
+        baseSavingsPercent = 0.70;
         break;
     }
     
@@ -382,7 +382,7 @@ const ROICalculator = () => {
                 <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
-                  <li>• Time savings: Small (35%), Medium (45%), Large (55%)</li>
+                  <li>• Time savings: Small (50%), Medium (60%), Large (70%)</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
                   <li>• Year-over-year efficiency improvements: 10% (Year 2), 20% (Year 3)</li>
                   <li>• Ongoing support fees are separate from ROI calculation</li>

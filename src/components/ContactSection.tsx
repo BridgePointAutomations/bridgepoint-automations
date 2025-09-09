@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { 
   Phone, 
   Mail, 
@@ -9,10 +12,83 @@ import {
   ArrowRight, 
   CheckCircle,
   Calendar,
-  TrendingUp
+  TrendingUp,
+  Send
 } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "@/hooks/use-toast";
+import { clientSecurity } from "@/lib/security";
+
+interface QuickContactForm {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+  honeypot?: string;
+}
 
 const ContactSection = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<QuickContactForm>();
+
+  const onSubmit = async (data: QuickContactForm) => {
+    // Security checks
+    if (!clientSecurity.validateHoneypot(data.honeypot || "")) return;
+    if (!clientSecurity.checkRateLimit("quick_contact", 3)) return;
+    if (!clientSecurity.validateEmail(data.email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Sanitize inputs
+      const sanitizedData = {
+        name: clientSecurity.sanitizeInput(data.name),
+        email: clientSecurity.sanitizeInput(data.email),
+        company: clientSecurity.sanitizeInput(data.company),
+        message: clientSecurity.sanitizeInput(data.message),
+        form_type: "quick_contact",
+        timestamp: new Date().toISOString(),
+        source: window.location.href
+      };
+
+      // Replace with your Zapier webhook URL
+      const webhookUrl = "YOUR_ZAPIER_WEBHOOK_URL_HERE";
+      
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify(sanitizedData),
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your interest. We'll be in touch within 24 hours.",
+      });
+
+      reset();
+    } catch (error) {
+      console.error("Error submitting quick contact form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue sending your message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-accent">
       <div className="container mx-auto px-4">
@@ -138,6 +214,100 @@ const ContactSection = () => {
             
           </div>
           
+        </div>
+
+        {/* Quick Contact Form */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <Card className="shadow-medium">
+            <CardHeader className="text-center">
+              <CardTitle className="flex items-center justify-center space-x-2">
+                <Send className="w-5 h-5 text-primary" />
+                <span>Quick Contact</span>
+              </CardTitle>
+              <CardDescription>
+                Have a quick question? Send us a message and we'll get back to you within 24 hours.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name *</Label>
+                    <Input
+                      id="name"
+                      {...register("name", { required: "Name is required" })}
+                      placeholder="Your full name"
+                      className={errors.name ? "border-destructive" : ""}
+                    />
+                    {errors.name && (
+                      <p className="text-sm text-destructive">{errors.name.message}</p>
+                    )}
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      {...register("email", { 
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                          message: "Please enter a valid email"
+                        }
+                      })}
+                      placeholder="your.email@company.com"
+                      className={errors.email ? "border-destructive" : ""}
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-destructive">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="company">Company</Label>
+                  <Input
+                    id="company"
+                    {...register("company")}
+                    placeholder="Your company name (optional)"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message *</Label>
+                  <Textarea
+                    id="message"
+                    {...register("message", { required: "Message is required" })}
+                    placeholder="Tell us about your automation needs or ask us a question..."
+                    rows={4}
+                    className={errors.message ? "border-destructive" : ""}
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-destructive">{errors.message.message}</p>
+                  )}
+                </div>
+
+                {/* Honeypot field */}
+                <div className="hidden">
+                  <Input
+                    {...register("honeypot")}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
 
       </div>
