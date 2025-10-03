@@ -17,21 +17,21 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <a href="/" className="text-foreground hover:text-primary animate-smooth">
               Home
-            </a>
-            <a href="#about" className="text-foreground hover:text-primary animate-smooth">
-              About Us
             </a>
             <a href="#services" className="text-foreground hover:text-primary animate-smooth">
               Services
             </a>
-            <a href="#industries" className="text-foreground hover:text-primary animate-smooth">
-              Industries
+            <a href="/workflows" className="text-foreground hover:text-primary animate-smooth">
+              Workflows
             </a>
-            <a href="#roi-calculator" className="text-foreground hover:text-primary animate-smooth">
-              ROI Calculator
+            <a href="/package-builder" className="text-foreground hover:text-primary animate-smooth">
+              Package Builder
+            </a>
+            <a href="/resources" className="text-foreground hover:text-primary animate-smooth">
+              Resources
             </a>
             <a href="#contact" className="text-foreground hover:text-primary animate-smooth">
               Contact
@@ -75,13 +75,6 @@ const Navigation = () => {
                 Home
               </a>
               <a
-                href="#about"
-                className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                About Us
-              </a>
-              <a
                 href="#services"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
@@ -89,18 +82,25 @@ const Navigation = () => {
                 Services
               </a>
               <a
-                href="#industries"
+                href="/workflows"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
               >
-                Industries
+                Workflows
               </a>
               <a
-                href="#roi-calculator"
+                href="/package-builder"
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
               >
-                ROI Calculator
+                Package Builder
+              </a>
+              <a
+                href="/resources"
+                className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
+                onClick={() => setIsOpen(false)}
+              >
+                Resources
               </a>
               <a
                 href="#contact"
