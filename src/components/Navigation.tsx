@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 
+// Main navigation component
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
