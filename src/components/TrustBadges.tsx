@@ -4,8 +4,8 @@ export const TrustBadges = () => {
   const badges = [
     {
       icon: Shield,
-      title: "6-Month ROI Guarantee",
-      description: "Money back if you don't see ROI",
+      title: "ROI-Focused Implementation",
+      description: "Performance tracking & optimization included",
     },
     {
       icon: Award,

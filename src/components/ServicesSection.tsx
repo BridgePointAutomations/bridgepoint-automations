@@ -20,7 +20,7 @@ const ServicesSection = () => {
             Choose Your <span className="text-gradient">Automation Journey</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Structured packages designed to make enterprise automation accessible to small businesses. Each tier includes bundled support and guaranteed ROI.
+            Structured packages designed to make enterprise automation accessible to small businesses. Each tier includes bundled support with ROI-focused implementation and performance tracking.
           </p>
           <p className="text-sm text-muted-foreground/80 max-w-xl mx-auto mt-2">
             Final pricing tailored based on discovery and scope.
@@ -49,7 +49,7 @@ const ServicesSection = () => {
                   <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>
                   <div className="space-y-1">
                     <div className="text-3xl font-bold text-gradient">{pkg.priceDisplay}</div>
-                    <div className="text-sm text-muted-foreground">+ ${pkg.monthlySupport}/month ongoing support</div>
+                    <div className="text-sm text-muted-foreground">+ Starting at ${pkg.monthlySupport}/month ongoing support</div>
                   </div>
                   <CardDescription className="text-sm">
                     {pkg.description}

@@ -103,7 +103,7 @@ const ContactSection = () => {
             Ready to <span className="text-gradient">Transform Your Business?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Schedule your free automation consultation and discover how BridgePoint Automations can save your business 15-50 hours weekly with guaranteed ROI.
+            Schedule your free automation consultation and discover how BridgePoint Automations can save your business 15-50 hours weekly with ROI-focused implementation.
           </p>
         </div>
 

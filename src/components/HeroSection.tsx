@@ -25,7 +25,7 @@ const HeroSection = () => {
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-xl">
-                BridgePoint Automations delivers enterprise-level automation to small businesses using modern no-code platforms. Reduce manual work, improve efficiency, and guarantee ROI within 6 months.
+                BridgePoint Automations delivers enterprise-level automation to small businesses using modern no-code platforms. Reduce manual work, improve efficiency, with a focus on measurable ROI and continuous optimization.
               </p>
             </div>
 
@@ -37,7 +37,7 @@ const HeroSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">6-Month ROI Guarantee</span>
+                <span className="text-sm font-medium">ROI-Focused Approach</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />
@@ -74,20 +74,20 @@ const HeroSection = () => {
               <p className="text-sm text-muted-foreground mb-4">Trusted by businesses to save 15-25 hours weekly</p>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">150-250%</div>
-                  <div className="text-xs text-muted-foreground">Average ROI</div>
+                  <div className="text-2xl font-bold text-primary">2-3x</div>
+                  <div className="text-xs text-muted-foreground">Typical ROI</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">20hrs</div>
                   <div className="text-xs text-muted-foreground">Weekly Time Savings</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$35K</div>
-                  <div className="text-xs text-muted-foreground">Average Annual Savings</div>
+                  <div className="text-2xl font-bold text-primary">$15K-$50K+</div>
+                  <div className="text-xs text-muted-foreground">Typical Annual Savings</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">6mo</div>
-                  <div className="text-xs text-muted-foreground">ROI Guarantee</div>
+                  <div className="text-2xl font-bold text-primary">6-12mo</div>
+                  <div className="text-xs text-muted-foreground">Payback Period</div>
                 </div>
               </div>
             </div>

@@ -37,17 +37,17 @@ const ROICalculator = () => {
     switch (businessSize) {
       case "small":
         implementationFee = 2500;
-        monthlySupport = 300;
+        monthlySupport = 150;
         baseSavingsPercent = 0.60;
         break;
       case "medium":
         implementationFee = 5000;
-        monthlySupport = 600;
+        monthlySupport = 450;
         baseSavingsPercent = 0.70;
         break;
       case "large":
         implementationFee = 9000;
-        monthlySupport = 900;
+        monthlySupport = 750;
         baseSavingsPercent = 0.80;
         break;
     }
@@ -444,6 +444,10 @@ const ROICalculator = () => {
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
                   <li>• Year-over-year efficiency improvements: 10% (Year 2), 20% (Year 3)</li>
                 </ul>
+                <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
+                  * Projections based on typical client outcomes. Actual results vary by implementation scope, 
+                  user adoption, and business processes. Not a guarantee of specific outcomes.
+                </p>
               </div>
             </div>
           </div>

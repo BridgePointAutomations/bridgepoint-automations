@@ -24,7 +24,7 @@ export const PACKAGES: Package[] = [
     size: "small",
     price: 2500,
     priceDisplay: "Starting at $2,500",
-    monthlySupport: 300,
+    monthlySupport: 150,
     icon: Zap,
     description: "Perfect for small businesses seeking initial automation wins",
     features: [
@@ -37,7 +37,7 @@ export const PACKAGES: Package[] = [
       "Documentation package"
     ],
     platforms: ["Zapier", "Airtable", "Make (Basic)"],
-    roi: "150-250% ROI",
+    roi: "Positive ROI within 12 months",
     savings: "10-15 hours weekly",
     timeSavingsPercent: 0.60,
     popular: false
@@ -48,7 +48,7 @@ export const PACKAGES: Package[] = [
     size: "medium",
     price: 5000,
     priceDisplay: "Starting at $5,000",
-    monthlySupport: 600,
+    monthlySupport: 450,
     icon: TrendingUp,
     description: "Comprehensive automation for growing businesses",
     features: [
@@ -61,7 +61,7 @@ export const PACKAGES: Package[] = [
       "Intelligent integration with existing tools"
     ],
     platforms: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
-    roi: "200-350% ROI",
+    roi: "2-3x return typical",
     savings: "15-25 hours weekly",
     timeSavingsPercent: 0.70,
     popular: true
@@ -72,7 +72,7 @@ export const PACKAGES: Package[] = [
     size: "large",
     price: 9000,
     priceDisplay: "Starting at $9,000",
-    monthlySupport: 900,
+    monthlySupport: 750,
     icon: Users,
     description: "Enterprise automation for established businesses",
     features: [
@@ -87,7 +87,7 @@ export const PACKAGES: Package[] = [
       "Strategic change management support"
     ],
     platforms: ["Enterprise Zapier + AI", "Advanced Airtable", "Make Pro", "Activepieces", "AI Integration"],
-    roi: "250-400% ROI",
+    roi: "3-4x return typical",
     savings: "30-50 hours weekly",
     timeSavingsPercent: 0.80,
     popular: false

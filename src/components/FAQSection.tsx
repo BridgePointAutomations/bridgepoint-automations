@@ -86,11 +86,11 @@ const FAQSection = () => {
               <p>Results timeline varies by package:</p>
               <ul className="space-y-2 ml-4">
                 <li><strong>Week 1-2:</strong> Initial workflows go live</li>
-                <li><strong>Month 1:</strong> 60-80% of time savings realized</li>
+                <li><strong>Month 1-2:</strong> Initial workflows deployed, early time savings begin</li>
                 <li><strong>Month 2-3:</strong> Full optimization and training complete</li>
-                <li><strong>Month 6:</strong> ROI guarantee point - you'll see measurable returns</li>
+                <li><strong>Month 6:</strong> Performance review - track actual time/cost savings</li>
               </ul>
-              <p><strong>Guarantee:</strong> If you don't see measurable ROI within 6 months, we'll work at no charge until you do.</p>
+              <p><strong>Note:</strong> Most clients achieve positive ROI within 6-12 months. We provide detailed tracking and optimization to maximize your returns.</p>
             </div>
           )
         },
@@ -233,16 +233,15 @@ const FAQSection = () => {
             <div className="space-y-3">
               <p>Investment varies by business size and complexity:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Micro businesses (1-5 employees):</strong> $2,500-5,000 initial + $300-600/month</li>
-                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $600-900/month</li>
-                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $900+/month</li>
+                <li><strong>Micro businesses (1-5 employees):</strong> $2,500-5,000 initial + $150-450/month</li>
+                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $450-750/month</li>
+                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $750+/month</li>
               </ul>
               <p>ROI considerations:</p>
               <ul className="space-y-1 ml-4">
                 <li>Average time savings: 15-25 hours weekly</li>
                 <li>If your time is worth $25/hour: $19,500-32,500 annual savings</li>
-                <li>Typical ROI: 300-500% in first year</li>
-                <li>6-month ROI guarantee included</li>
+                <li>Most clients recover their investment within the first year, with ongoing savings thereafter</li>
               </ul>
             </div>
           )
