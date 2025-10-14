@@ -31,7 +31,9 @@ export const WorkflowVisualization = ({ title, steps, timeSaved }: WorkflowVisua
           <div key={index} className="flex items-start gap-4">
             <div className="flex flex-col items-center">
               <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                step.automated ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'
+                step.automated 
+                  ? (index % 3 === 0 ? 'bg-primary' : index % 3 === 1 ? 'bg-secondary' : 'bg-cyan') + ' text-white'
+                  : 'bg-muted text-muted-foreground'
               }`}>
                 {step.automated ? (
                   <CheckCircle className="h-5 w-5" />

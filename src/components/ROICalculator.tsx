@@ -109,7 +109,7 @@ const ROICalculator = () => {
   const selectedPackage = businessSize ? getPackageBySize(businessSize as "small" | "medium" | "large") : null;
 
   return (
-    <section id="roi-calculator" className="py-20 bg-gradient-accent">
+    <section id="roi-calculator" className="py-20 bg-gradient-to-b from-background to-accent/30">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">

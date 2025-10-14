@@ -5,8 +5,8 @@ import { ArrowRight, CheckCircle, TrendingUp } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="relative pt-20 pb-16 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-5" />
+      {/* Background Gradient with Purple Hint */}
+      <div className="absolute inset-0 bg-gradient-glow opacity-5" />
       
       <div className="container relative mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -95,7 +95,7 @@ const HeroSection = () => {
 
           {/* Right Content - Hero Visual */}
           <div className="relative">
-            <div className="aspect-square bg-gradient-accent rounded-3xl p-8 shadow-glow">
+            <div className="aspect-square bg-gradient-glow rounded-3xl p-8 shadow-glow">
               <div className="h-full bg-card rounded-2xl border border-border p-6 flex flex-col justify-center space-y-6">
                 
                 {/* Automation Flow Visualization */}
@@ -114,7 +114,7 @@ const HeroSection = () => {
                     
                     <div className="flex items-center justify-between p-3 bg-accent rounded-lg">
                       <span className="text-sm font-medium">Data Processing</span>
-                      <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-cyan rounded-full animate-pulse" />
                     </div>
                     
                     <div className="flex justify-center">

@@ -12,16 +12,27 @@
     --background: 0 0% 100%;
     --foreground: 215 25% 8%;
     
-    /* Pittsburgh-inspired Professional Palette */
-    --primary: 213 94% 68%;        /* Tech Blue */
+    /* Tech Blue Primary (unchanged - perfect for trust/tech) */
+    --primary: 213 94% 68%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 213 84% 58%;   /* Darker blue for depth */
+    --primary-dark: 213 84% 58%;
     
-    --secondary: 47 96% 53%;       /* Pittsburgh Gold accent */
-    --secondary-foreground: 215 25% 8%;
+    /* NEW: Tech Purple Secondary (modern AI/automation feel) */
+    --secondary: 258 90% 66%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-dark: 258 80% 56%;
     
-    --accent: 219 78% 95%;         /* Subtle blue background */
-    --accent-foreground: 213 94% 68%;
+    /* NEW: Cyber Cyan Accent (future-tech energy) */
+    --accent-cyan: 189 94% 54%;
+    --accent-cyan-foreground: 215 25% 8%;
+    
+    /* RENAMED: Gold to Amber (tertiary, for warnings/highlights) */
+    --amber: 43 96% 56%;
+    --amber-foreground: 215 25% 8%;
+    
+    /* Accent: Subtle purple-blue background */
+    --accent: 250 70% 96%;
+    --accent-foreground: 258 90% 66%;
     
     /* Neutral System */
     --muted: 210 40% 96%;
@@ -44,16 +55,18 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    /* Design System Enhancements */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
-    --gradient-accent: linear-gradient(120deg, hsl(var(--accent)) 0%, hsl(var(--background)) 100%);
+    /* AI/Tech Gradient System */
+    --gradient-primary: linear-gradient(135deg, hsl(213, 94%, 68%), hsl(258, 90%, 66%));
+    --gradient-hero: linear-gradient(135deg, hsl(213, 94%, 68%) 0%, hsl(258, 90%, 66%) 100%);
+    --gradient-accent: linear-gradient(120deg, hsl(250, 70%, 96%) 0%, hsl(var(--background)) 100%);
+    --gradient-tech: linear-gradient(90deg, hsl(189, 94%, 54%) 0%, hsl(213, 94%, 68%) 50%, hsl(258, 90%, 66%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(258, 90%, 66% / 0.15), transparent 70%);
     
-    /* Premium Shadows */
-    --shadow-soft: 0 2px 8px -2px hsl(var(--primary) / 0.1);
-    --shadow-medium: 0 8px 24px -4px hsl(var(--primary) / 0.15);
-    --shadow-bold: 0 16px 32px -8px hsl(var(--primary) / 0.2);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+    /* Premium Shadows (updated with purple hints) */
+    --shadow-soft: 0 2px 8px -2px hsl(258, 90%, 66% / 0.08);
+    --shadow-medium: 0 8px 24px -4px hsl(258, 90%, 66% / 0.12);
+    --shadow-bold: 0 16px 32px -8px hsl(258, 90%, 66% / 0.18);
+    --shadow-glow: 0 0 40px hsl(258, 90%, 66% / 0.2);
     
     /* Typography Scale */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -80,20 +93,24 @@
   }
 
   .dark {
-    /* Dark Mode Overrides */
+    /* Dark Mode with Purple Accents */
     --background: 215 28% 5%;
     --foreground: 210 40% 98%;
     --primary: 213 94% 68%;
     --primary-foreground: 215 25% 8%;
-    --secondary: 47 96% 53%;
-    --secondary-foreground: 215 28% 5%;
-    --accent: 215 25% 12%;
-    --accent-foreground: 213 94% 68%;
+    --secondary: 258 90% 66%;
+    --secondary-foreground: 0 0% 100%;
+    --accent-cyan: 189 94% 54%;
+    --accent-cyan-foreground: 215 28% 5%;
+    --amber: 43 96% 56%;
+    --amber-foreground: 215 28% 5%;
+    --accent: 258 25% 12%;
+    --accent-foreground: 258 90% 66%;
     --card: 215 28% 7%;
     --card-foreground: 210 40% 98%;
-    --border: 215 25% 15%;
-    --input: 215 25% 15%;
-    --ring: 213 94% 68%;
+    --border: 258 25% 15%;
+    --input: 258 25% 15%;
+    --ring: 258 90% 66%;
     --muted: 215 25% 12%;
     --muted-foreground: 215 16% 65%;
   }
@@ -171,5 +188,34 @@
   
   .hover-lift:hover {
     @apply -translate-y-1 shadow-bold;
+  }
+
+  /* Tech Color Utilities */
+  .bg-gradient-tech {
+    background: var(--gradient-tech);
+  }
+
+  .bg-gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+
+  .text-cyan {
+    color: hsl(var(--accent-cyan));
+  }
+
+  .text-amber {
+    color: hsl(var(--amber));
+  }
+
+  .border-secondary {
+    border-color: hsl(var(--secondary));
+  }
+
+  .ring-secondary {
+    --tw-ring-color: hsl(var(--secondary));
   }
 }

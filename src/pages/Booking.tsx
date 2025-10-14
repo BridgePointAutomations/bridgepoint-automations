@@ -16,7 +16,7 @@ const Booking = () => {
       
       <main className="pt-20">
         {/* Header */}
-        <section className="py-16 bg-gradient-subtle">
+        <section className="py-16 bg-gradient-to-b from-accent/30 to-background">
           <div className="container mx-auto px-4">
             <div className="flex items-center mb-6">
               <Button 
@@ -71,7 +71,7 @@ const Booking = () => {
                     </div>
                     
                     <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-medium">ROI Projection</h4>
                         <p className="text-sm text-muted-foreground">
@@ -81,7 +81,7 @@ const Booking = () => {
                     </div>
                     
                     <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-2 h-2 bg-cyan rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-medium">Automation Roadmap</h4>
                         <p className="text-sm text-muted-foreground">
@@ -101,7 +101,7 @@ const Booking = () => {
                     </div>
                     
                     <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-medium">Package Recommendations</h4>
                         <p className="text-sm text-muted-foreground">

@@ -7,7 +7,7 @@ import { PACKAGES } from "@/data/packages";
 const ServicesSection = () => {
 
   return (
-    <section id="services" className="py-20 bg-gradient-accent">
+    <section id="services" className="py-20 bg-gradient-to-b from-accent/30 to-background">
       <div className="container mx-auto px-4">
         
         {/* Section Header */}
@@ -37,13 +37,15 @@ const ServicesSection = () => {
                 className={`relative hover-lift ${pkg.popular ? 'ring-2 ring-primary shadow-glow' : 'shadow-soft'}`}
               >
                 {pkg.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-primary text-white">
+                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-primary text-white shadow-glow">
                     Most Popular
                   </Badge>
                 )}
                 
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4 text-primary">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${
+                    index === 1 ? 'bg-secondary/10 text-secondary' : index === 2 ? 'bg-cyan/10 text-cyan' : 'bg-accent text-primary'
+                  }`}>
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>

@@ -34,7 +34,16 @@ export default {
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					dark: 'hsl(var(--secondary-dark))',
+				},
+				cyan: {
+					DEFAULT: 'hsl(var(--accent-cyan))',
+					foreground: 'hsl(var(--accent-cyan-foreground))',
+				},
+				amber: {
+					DEFAULT: 'hsl(var(--amber))',
+					foreground: 'hsl(var(--amber-foreground))',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -91,6 +100,8 @@ export default {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-tech': 'var(--gradient-tech)',
+				'gradient-glow': 'var(--gradient-glow)',
 			},
 			keyframes: {
 				'accordion-down': {
