@@ -136,13 +136,6 @@ const HeroSection = () => {
               </div>
             </div>
             
-            
-            <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl p-4 shadow-medium">
-              <div className="text-center">
-                <div className="text-lg font-bold text-primary">20hrs</div>
-                <div className="text-xs text-muted-foreground">Weekly Savings</div>
-              </div>
-            </div>
           </div>
           
         </div>

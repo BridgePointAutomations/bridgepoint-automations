@@ -107,101 +107,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          
-          {/* Quick Contact Form */}
-          <Card className="shadow-medium">
-            <CardHeader className="text-center">
-              <CardTitle className="flex items-center justify-center space-x-2">
-                <Send className="w-5 h-5 text-primary" />
-                <span>Quick Contact</span>
-              </CardTitle>
-              <CardDescription>
-                Have a quick question? Send us a message and we'll get back to you within 24 hours.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input
-                      id="name"
-                      {...register("name", { required: "Name is required" })}
-                      placeholder="Your full name"
-                      className={errors.name ? "border-destructive" : ""}
-                    />
-                    {errors.name && (
-                      <p className="text-sm text-destructive">{errors.name.message}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      {...register("email", { 
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                          message: "Please enter a valid email"
-                        }
-                      })}
-                      placeholder="your.email@company.com"
-                      className={errors.email ? "border-destructive" : ""}
-                    />
-                    {errors.email && (
-                      <p className="text-sm text-destructive">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company</Label>
-                  <Input
-                    id="company"
-                    {...register("company")}
-                    placeholder="Your company name (optional)"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    {...register("message", { required: "Message is required" })}
-                    placeholder="Tell us about your automation needs or ask us a question..."
-                    rows={4}
-                    className={errors.message ? "border-destructive" : ""}
-                  />
-                  {errors.message && (
-                    <p className="text-sm text-destructive">{errors.message.message}</p>
-                  )}
-                </div>
-
-                {/* Honeypot field */}
-                <div className="hidden">
-                  <Input
-                    {...register("honeypot")}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information & Benefits */}
+        <div className="max-w-4xl mx-auto">
           <div className="space-y-8">
             
             {/* Contact Info */}
@@ -266,16 +172,17 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card p-4 rounded-lg border border-border text-center">
-                <div className="text-2xl font-bold text-primary">24hr</div>
-                <div className="text-sm text-muted-foreground">Response Time</div>
-              </div>
-              <div className="bg-card p-4 rounded-lg border border-border text-center">
-                <div className="text-2xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">Free Consultation</div>
-              </div>
+            {/* CTA Button */}
+            <div className="text-center pt-4">
+              <Button 
+                size="lg"
+                variant="hero"
+                onClick={() => window.location.href = '/booking'}
+                className="w-full sm:w-auto"
+              >
+                Schedule Your Free Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
             
           </div>

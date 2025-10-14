@@ -116,11 +116,7 @@ const Index = () => {
             <div className="space-y-4">
               <h4 className="font-semibold">Technology Partners</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Zapier (8,000+ integrations)</p>
-                <p>Airtable</p>
-                <p>Make (Integromat)</p>
-                <p>Activepieces</p>
-                <p>AI Integration Platforms</p>
+                <p>Zapier • Airtable • Make • Activepieces</p>
               </div>
             </div>
 

@@ -28,8 +28,8 @@ const PackageBuilder = () => {
 
   const basePrices = {
     small: 2500,
-    medium: 4500,
-    large: 8000,
+    medium: 5000,
+    large: 9000,
   };
 
   const toggleFeature = (featureId: string) => {
