@@ -44,7 +44,7 @@ const ServicesSection = () => {
                 
                 <CardHeader className="text-center pb-6">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${
-                    index === 1 ? 'bg-secondary/10 text-secondary' : index === 2 ? 'bg-cyan/10 text-cyan' : 'bg-accent text-primary'
+                    index === 0 ? 'bg-primary/10 text-primary' : index === 1 ? 'bg-secondary/10 text-secondary' : 'bg-cyan/10 text-cyan'
                   }`}>
                     <IconComponent className="w-6 h-6" />
                   </div>
