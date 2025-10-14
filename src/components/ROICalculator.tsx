@@ -451,6 +451,11 @@ const ROICalculator = () => {
               </div>
             </div>
           </div>
+          
+          {/* ROI Calculator Disclaimer */}
+          <div className="mt-8 max-w-4xl mx-auto text-xs text-muted-foreground p-4 bg-warning/5 border border-warning/20 rounded-lg">
+            <strong>Disclaimer:</strong> These calculations are estimates based on industry averages and your provided inputs. Actual results may vary depending on your specific business processes, implementation, and usage. BridgePoint Automations does not guarantee specific time savings or ROI outcomes. See our <a href="/disclaimer" className="underline hover:text-primary">full disclaimer</a> for details.
+          </div>
         </div>
       </div>
     </section>

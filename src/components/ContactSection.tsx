@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "@/hooks/use-toast";
 import { clientSecurity } from "@/lib/security";
+import { Link } from "react-router-dom";
 
 interface QuickContactForm {
   name: string;
@@ -183,6 +184,11 @@ const ContactSection = () => {
                 Schedule Your Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              <p className="text-xs text-muted-foreground mt-4">
+                By scheduling a consultation, you agree to our{" "}
+                <Link to="/privacy-policy" className="underline hover:text-primary">Privacy Policy</Link> and{" "}
+                <Link to="/terms-of-service" className="underline hover:text-primary">Terms of Service</Link>.
+              </p>
             </div>
             
           </div>

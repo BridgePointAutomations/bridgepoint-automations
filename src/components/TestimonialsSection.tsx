@@ -94,6 +94,9 @@ const TestimonialsSection = () => {
               <div className="text-sm text-muted-foreground">Client Satisfaction</div>
             </div>
           </div>
+          <p className="text-xs text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
+            Individual results may vary. Testimonials reflect the experiences of actual clients but are not indicative of future performance or success.
+          </p>
         </div>
       </div>
     </section>
