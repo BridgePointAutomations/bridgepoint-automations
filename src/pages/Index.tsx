@@ -11,6 +11,7 @@ import PackageFinderQuiz from "@/components/PackageFinderQuiz";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { TrustBadges } from "@/components/TrustBadges";
 import { WorkflowVisualization } from "@/components/WorkflowVisualization";
+import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles } from "lucide-react";
 
