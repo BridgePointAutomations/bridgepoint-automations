@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calculator, TrendingUp, Clock, DollarSign, Zap, Target, CheckCircle } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Calculator, TrendingUp, Clock, DollarSign, Zap, Target, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
+import { PACKAGES, getPackageBySize } from "@/data/packages";
 
 const ROICalculator = () => {
   const [businessSize, setBusinessSize] = useState("");
@@ -104,6 +106,7 @@ const ROICalculator = () => {
 
   const results = getResults();
   const currentYearData = results[`year${selectedYear}` as keyof typeof results] as any;
+  const selectedPackage = businessSize ? getPackageBySize(businessSize as "small" | "medium" | "large") : null;
 
   return (
     <section id="roi-calculator" className="py-20 bg-gradient-accent">
@@ -115,15 +118,17 @@ const ROICalculator = () => {
             ROI Calculator
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            BridgePoint ROI Calculator
+            Calculate Your Automation ROI
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
-            Calculate your automation ROI over 3 years with our comprehensive projection tool.
+            See your potential savings over 3 years with our comprehensive projection tool
           </p>
-          <div className="inline-flex items-center gap-2 text-sm text-primary font-medium">
-            <span>Implementation Fee:</span>
-            <span className="text-lg font-bold">${results.implementationFee.toLocaleString()}</span>
-          </div>
+          {results.implementationFee > 0 && (
+            <div className="inline-flex items-center gap-2 text-sm text-primary font-medium">
+              <span>Implementation Fee:</span>
+              <span className="text-lg font-bold">${results.implementationFee.toLocaleString()}</span>
+            </div>
+          )}
         </div>
 
         {/* Main Calculator */}
@@ -361,18 +366,69 @@ const ROICalculator = () => {
                 </TabsContent>
               </Tabs>
 
+              {/* Package Features Display */}
+              {selectedPackage && businessSize && hoursPerWeek && hourlyWage && (
+                <Card className="mt-6 border-primary/20 shadow-medium">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-primary" />
+                        Your {selectedPackage.tier} Includes:
+                      </CardTitle>
+                      <Badge variant="secondary" className="text-xs">
+                        {selectedPackage.priceDisplay}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-2">
+                      {selectedPackage.features.slice(0, 6).map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-sm">
+                          <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="pt-4 border-t">
+                      <Button 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={() => {
+                          const element = document.getElementById('services');
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        See Full Package Details
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
               {/* Call to Action */}
               <Card className="mt-6 bg-gradient-primary text-white shadow-bold">
-                <CardContent className="p-6 text-center">
-                  <CheckCircle className="w-8 h-8 mx-auto mb-3" />
-                  <p className="font-semibold mb-4">Ready to unlock these savings?</p>
+                <CardContent className="p-6 text-center space-y-4">
+                  <CheckCircle className="w-8 h-8 mx-auto" />
+                  <p className="font-semibold">Ready to unlock these savings?</p>
                   <Button 
                     variant="secondary" 
                     size="lg"
                     onClick={() => window.location.href = '/booking'}
-                    className="font-medium"
+                    className="font-medium w-full"
                   >
                     Book Free Automation Consultation
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => {
+                      const element = document.getElementById('package-finder');
+                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-white hover:text-white hover:bg-white/10 w-full"
+                  >
+                    Not sure which package? Take our quiz
                   </Button>
                 </CardContent>
               </Card>

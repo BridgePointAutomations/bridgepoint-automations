@@ -7,9 +7,12 @@ import ROICalculator from "@/components/ROICalculator";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
+import PackageFinderQuiz from "@/components/PackageFinderQuiz";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { TrustBadges } from "@/components/TrustBadges";
 import { WorkflowVisualization } from "@/components/WorkflowVisualization";
+import { Badge } from "@/components/ui/badge";
+import { Sparkles } from "lucide-react";
 
 const Index = () => {
   return (
@@ -26,11 +29,36 @@ const Index = () => {
 
         <ServicesSection />
         
+        {/* Package Finder Quiz Section */}
+        <section id="package-finder" className="py-20 bg-muted/20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <Badge variant="outline" className="mb-4 text-primary border-primary/20">
+                <Sparkles className="w-3 h-3 mr-1" />
+                Package Finder
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Not Sure Which Package Fits Your Needs?
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Take our quick quiz to get a personalized recommendation based on your business size
+              </p>
+            </div>
+            <div className="max-w-2xl mx-auto">
+              <PackageFinderQuiz />
+            </div>
+          </div>
+        </section>
+
+        <ROICalculator />
+        
         {/* Workflow Examples Section */}
         <section className="py-20 bg-muted/20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">See Automation in Action</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                See How These Workflows Deliver Your Savings
+              </h2>
               <p className="text-lg text-muted-foreground">
                 Real examples of workflows we implement for businesses like yours
               </p>
@@ -64,7 +92,6 @@ const Index = () => {
 
         <AboutSection />
         <IndustriesSection />
-        <ROICalculator />
         <TestimonialsSection />
         <FAQSection />
         <ContactSection />

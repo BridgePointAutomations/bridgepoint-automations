@@ -1,73 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowRight, Zap, TrendingUp, Users } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap } from "lucide-react";
+import { PACKAGES } from "@/data/packages";
 
 const ServicesSection = () => {
-  const packages = [
-    {
-      tier: "Efficiency Essentials",
-      price: "Starting at $2,500",
-      support: "$300/month",
-      icon: <Zap className="w-6 h-6" />,
-      description: "Perfect for small businesses seeking initial automation wins",
-      features: [
-        "Automation Audit",
-        "2-3 automated workflows",
-        "1 Airtable base setup",
-        "Basic dashboard creation",
-        "User training sessions",
-        "3 months bundled support",
-        "Documentation package"
-      ],
-      platforms: ["Zapier", "Airtable", "Make (Basic)"],
-      roi: "150-250% ROI",
-      savings: "10-15 hours weekly",
-      popular: false
-    },
-    {
-      tier: "Growth Builder",
-      price: "Starting at $5,000",
-      support: "$600/month",
-      icon: <TrendingUp className="w-6 h-6" />,
-      description: "Comprehensive automation for growing businesses",
-      features: [
-        "Everything in Efficiency Essentials, plus:",
-        "2-3 additional smart workflows with advanced triggers (5-6 total)",
-        "1 additional Airtable base with predictive analytics features",
-        "1 additional real-time insights dashboard",
-        "ROI tracking with performance metrics",
-        "Comprehensive training program",
-        "Intelligent integration with existing tools"
-      ],
-      platforms: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
-      roi: "200-350% ROI",
-      savings: "15-25 hours weekly",
-      popular: true
-    },
-    {
-      tier: "Enterprise Lite",
-      price: "Starting at $9,000",
-      support: "$900/month",
-      icon: <Users className="w-6 h-6" />,
-      description: "Enterprise automation for established businesses",
-      features: [
-        "Everything in Growth Builder, plus:",
-        "1-4 additional enterprise-grade workflows with machine learning (6-10 total)",
-        "Advanced multi-base system with intelligent data sync",
-        "AI-powered business intelligence suite",
-        "AI Agent included",
-        "Custom reporting with advanced analytics",
-        "Enterprise dashboard with workflow orchestration",
-        "Department-specific automation",
-        "Strategic change management support"
-      ],
-      platforms: ["Enterprise Zapier + AI", "Advanced Airtable", "Make Pro", "Activepieces", "AI Integration"],
-      roi: "250-400% ROI",
-      savings: "30-50 hours weekly",
-      popular: false
-    }
-  ];
 
   return (
     <section id="services" className="py-20 bg-gradient-accent">
@@ -92,30 +29,32 @@ const ServicesSection = () => {
 
         {/* Service Packages */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {packages.map((pkg, index) => (
-            <Card 
-              key={index} 
-              className={`relative hover-lift ${pkg.popular ? 'ring-2 ring-primary shadow-glow' : 'shadow-soft'}`}
-            >
-              {pkg.popular && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-primary text-white">
-                  Most Popular
-                </Badge>
-              )}
-              
-              <CardHeader className="text-center pb-6">
-                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4 text-primary">
-                  {pkg.icon}
-                </div>
-                <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>
-                <div className="space-y-1">
-                  <div className="text-3xl font-bold text-gradient">{pkg.price}</div>
-                  <div className="text-sm text-muted-foreground">+ {pkg.support} ongoing support</div>
-                </div>
-                <CardDescription className="text-sm">
-                  {pkg.description}
-                </CardDescription>
-              </CardHeader>
+          {PACKAGES.map((pkg, index) => {
+            const IconComponent = pkg.icon;
+            return (
+              <Card 
+                key={index} 
+                className={`relative hover-lift ${pkg.popular ? 'ring-2 ring-primary shadow-glow' : 'shadow-soft'}`}
+              >
+                {pkg.popular && (
+                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-primary text-white">
+                    Most Popular
+                  </Badge>
+                )}
+                
+                <CardHeader className="text-center pb-6">
+                  <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4 text-primary">
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>
+                  <div className="space-y-1">
+                    <div className="text-3xl font-bold text-gradient">{pkg.priceDisplay}</div>
+                    <div className="text-sm text-muted-foreground">+ ${pkg.monthlySupport}/month ongoing support</div>
+                  </div>
+                  <CardDescription className="text-sm">
+                    {pkg.description}
+                  </CardDescription>
+                </CardHeader>
 
               <CardContent className="space-y-6">
                 
@@ -164,7 +103,8 @@ const ServicesSection = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Add-on Services */}

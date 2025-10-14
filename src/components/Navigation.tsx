@@ -29,7 +29,7 @@ const Navigation = () => {
               Workflows
             </a>
             <a href="/package-builder" className="text-foreground hover:text-primary animate-smooth">
-              Package Builder
+              Find Your Package
             </a>
             <a href="/resources" className="text-foreground hover:text-primary animate-smooth">
               Resources
@@ -94,7 +94,7 @@ const Navigation = () => {
                 className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
                 onClick={() => setIsOpen(false)}
               >
-                Package Builder
+                Find Your Package
               </a>
               <a
                 href="/resources"
