@@ -6,7 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Calculator, TrendingUp, Clock, DollarSign, Zap, Target, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
+import {
+  Calculator,
+  TrendingUp,
+  Clock,
+  DollarSign,
+  Zap,
+  Target,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 import { PACKAGES, getPackageBySize } from "@/data/packages";
 
 const ROICalculator = () => {
@@ -22,85 +32,85 @@ const ROICalculator = () => {
         year1: { annualLaborSavings: 0, totalCost: 0, roi: 0, paybackMonths: 0, netSavings: 0 },
         year2: { annualLaborSavings: 0, totalCost: 0, roi: 0, cumulativeNetSavings: 0 },
         year3: { annualLaborSavings: 0, totalCost: 0, roi: 0, cumulativeNetSavings: 0 },
-        implementationFee: 0
+        implementationFee: 0,
       };
     }
 
     const weeklyHours = parseFloat(hoursPerWeek);
     const wage = parseFloat(hourlyWage);
-    
+
     // Optimized time savings based on business size
-    let baseSavingsPercent = 0.60; // Base 60% savings
+    let baseSavingsPercent = 0.6; // Base 60% savings
     let implementationFee = 2500;
     let monthlySupport = 350;
-    
+
     switch (businessSize) {
       case "small":
         implementationFee = 2500;
         monthlySupport = 150;
-        baseSavingsPercent = 0.60;
+        baseSavingsPercent = 0.6;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 450;
-        baseSavingsPercent = 0.70;
+        baseSavingsPercent = 0.7;
         break;
       case "large":
         implementationFee = 9000;
         monthlySupport = 750;
-        baseSavingsPercent = 0.80;
+        baseSavingsPercent = 0.8;
         break;
     }
-    
+
     // Calculate base annual savings
     const baseWeeklyTimeSaved = weeklyHours * baseSavingsPercent;
     const baseAnnualLaborSavings = baseWeeklyTimeSaved * 52 * wage;
     const annualSupport = monthlySupport * 12;
-    
+
     // Year 1 calculations (includes 3 months bundled support, so only 9 months additional)
     const year1Savings = baseAnnualLaborSavings;
-    const year1TotalCost = implementationFee + (monthlySupport * 9);
+    const year1TotalCost = implementationFee + monthlySupport * 9;
     const year1NetSavings = year1Savings - year1TotalCost;
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
-    const paybackMonths = year1Savings > 0 ? (implementationFee / (year1Savings / 12)) : 0;
-    
+    const paybackMonths = year1Savings > 0 ? implementationFee / (year1Savings / 12) : 0;
+
     // Year 2 calculations (10% efficiency improvement)
-    const year2SavingsMultiplier = 1.10;
+    const year2SavingsMultiplier = 1.1;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
     const year2TotalCost = annualSupport; // Only ongoing support
     const year2NetSavings = year2Savings - year2TotalCost;
     const cumulativeYear2NetSavings = year1NetSavings + year2NetSavings;
     const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
-    
+
     // Year 3 calculations (20% efficiency improvement from original)
-    const year3SavingsMultiplier = 1.20;
+    const year3SavingsMultiplier = 1.2;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
     const year3TotalCost = annualSupport; // Only ongoing support
     const year3NetSavings = year3Savings - year3TotalCost;
     const cumulativeYear3NetSavings = cumulativeYear2NetSavings + year3NetSavings;
     const year3ROI = (cumulativeYear3NetSavings / implementationFee) * 100;
-    
+
     return {
       year1: {
         annualLaborSavings: Math.round(year1Savings),
         totalCost: Math.round(year1TotalCost),
         roi: Math.min(Math.round(year1ROI), 600), // Cap ROI at 600%
         paybackMonths: Math.round(paybackMonths * 10) / 10,
-        netSavings: Math.round(year1NetSavings)
+        netSavings: Math.round(year1NetSavings),
       },
       year2: {
         annualLaborSavings: Math.round(year2Savings),
         totalCost: Math.round(year2TotalCost),
         roi: Math.min(Math.round(year2ROI), 600), // Cap ROI at 600%
-        cumulativeNetSavings: Math.round(cumulativeYear2NetSavings)
+        cumulativeNetSavings: Math.round(cumulativeYear2NetSavings),
       },
       year3: {
         annualLaborSavings: Math.round(year3Savings),
         totalCost: Math.round(year3TotalCost),
         roi: Math.min(Math.round(year3ROI), 600), // Cap ROI at 600%
-        cumulativeNetSavings: Math.round(cumulativeYear3NetSavings)
+        cumulativeNetSavings: Math.round(cumulativeYear3NetSavings),
       },
-      implementationFee
+      implementationFee,
     };
   };
 
@@ -117,9 +127,7 @@ const ROICalculator = () => {
             <Calculator className="w-4 h-4" />
             ROI Calculator
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            Calculate Your Automation ROI
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">Calculate Your Automation ROI</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
             See your potential savings over 3 years with our comprehensive projection tool
           </p>
@@ -183,11 +191,11 @@ const ROICalculator = () => {
                   </div>
 
                   <div className="pt-4">
-                    <Button 
+                    <Button
                       className="w-full"
                       onClick={() => {
-                        const element = document.getElementById('roi-results');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        const element = document.getElementById("roi-results");
+                        if (element) element.scrollIntoView({ behavior: "smooth" });
                       }}
                       disabled={!businessSize || !hoursPerWeek || !hourlyWage}
                     >
@@ -236,9 +244,7 @@ const ROICalculator = () => {
                     <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
                       <CardContent className="p-6 text-center">
                         <TrendingUp className="w-8 h-8 text-success mx-auto mb-3" />
-                        <div className="text-2xl font-bold text-success mb-1">
-                          {results.year1.roi}%
-                        </div>
+                        <div className="text-2xl font-bold text-success mb-1">{results.year1.roi}%</div>
                         <p className="text-sm text-muted-foreground">ROI Percentage</p>
                       </CardContent>
                     </Card>
@@ -247,9 +253,7 @@ const ROICalculator = () => {
                     <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
                       <CardContent className="p-6 text-center">
                         <Clock className="w-8 h-8 text-primary mx-auto mb-3" />
-                        <div className="text-2xl font-bold text-primary mb-1">
-                          {results.year1.paybackMonths}
-                        </div>
+                        <div className="text-2xl font-bold text-primary mb-1">{results.year1.paybackMonths}</div>
                         <p className="text-sm text-muted-foreground">Payback (Months)</p>
                       </CardContent>
                     </Card>
@@ -296,9 +300,7 @@ const ROICalculator = () => {
                     <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
                       <CardContent className="p-6 text-center">
                         <TrendingUp className="w-8 h-8 text-success mx-auto mb-3" />
-                        <div className="text-2xl font-bold text-success mb-1">
-                          {results.year2.roi}%
-                        </div>
+                        <div className="text-2xl font-bold text-success mb-1">{results.year2.roi}%</div>
                         <p className="text-sm text-muted-foreground">Cumulative ROI</p>
                       </CardContent>
                     </Card>
@@ -345,9 +347,7 @@ const ROICalculator = () => {
                     <Card className="shadow-soft hover:shadow-medium transition-all duration-300">
                       <CardContent className="p-6 text-center">
                         <TrendingUp className="w-8 h-8 text-success mx-auto mb-3" />
-                        <div className="text-2xl font-bold text-success mb-1">
-                          {results.year3.roi}%
-                        </div>
+                        <div className="text-2xl font-bold text-success mb-1">{results.year3.roi}%</div>
                         <p className="text-sm text-muted-foreground">Cumulative ROI</p>
                       </CardContent>
                     </Card>
@@ -390,12 +390,12 @@ const ROICalculator = () => {
                       ))}
                     </div>
                     <div className="pt-4 border-t">
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="w-full"
                         onClick={() => {
-                          const element = document.getElementById('services');
-                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                          const element = document.getElementById("services");
+                          if (element) element.scrollIntoView({ behavior: "smooth" });
                         }}
                       >
                         See Full Package Details
@@ -411,20 +411,20 @@ const ROICalculator = () => {
                 <CardContent className="p-6 text-center space-y-4">
                   <CheckCircle className="w-8 h-8 mx-auto" />
                   <p className="font-semibold">Ready to unlock these savings?</p>
-                  <Button 
-                    variant="secondary" 
+                  <Button
+                    variant="secondary"
                     size="lg"
-                    onClick={() => window.location.href = '/booking'}
+                    onClick={() => (window.location.href = "/booking")}
                     className="font-medium w-full"
                   >
                     Book Free Automation Consultation
                   </Button>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="sm"
                     onClick={() => {
-                      const element = document.getElementById('package-finder');
-                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      const element = document.getElementById("package-finder");
+                      if (element) element.scrollIntoView({ behavior: "smooth" });
                     }}
                     className="text-white hover:text-white hover:bg-white/10 w-full"
                   >
@@ -444,17 +444,20 @@ const ROICalculator = () => {
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
                   <li>• Year-over-year efficiency improvements: 10% (Year 2), 20% (Year 3)</li>
                 </ul>
-                <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-                  * Projections based on typical client outcomes. Actual results vary by implementation scope, 
-                  user adoption, and business processes. Not a guarantee of specific outcomes.
-                </p>
+                <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border"></p>
               </div>
             </div>
           </div>
-          
+
           {/* ROI Calculator Disclaimer */}
           <div className="mt-8 max-w-4xl mx-auto text-xs text-muted-foreground p-4 bg-warning/5 border border-warning/20 rounded-lg">
-            <strong>Disclaimer:</strong> These calculations are estimates based on industry averages and your provided inputs. Actual results may vary depending on your specific business processes, implementation, and usage. BridgePoint Automations does not guarantee specific time savings or ROI outcomes. See our <a href="/disclaimer" className="underline hover:text-primary">full disclaimer</a> for details.
+            <strong>Disclaimer:</strong> These calculations are estimates based on industry averages and your provided
+            inputs. Actual results may vary depending on your specific business processes, implementation, and usage.
+            BridgePoint Automations does not guarantee specific time savings or ROI outcomes. See our{" "}
+            <a href="/disclaimer" className="underline hover:text-primary">
+              full disclaimer
+            </a>{" "}
+            for details.
           </div>
         </div>
       </div>
