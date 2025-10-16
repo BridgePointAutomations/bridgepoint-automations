@@ -335,7 +335,12 @@ const PackageFinderQuiz = () => {
             </Badge>
             <CardTitle className="text-2xl mb-2">{recommendedPackage.tier}</CardTitle>
             <div className="text-3xl font-bold mb-2">{recommendedPackage.priceDisplay}</div>
-            <p className="text-sm text-white/90">+ Starting at ${recommendedPackage.monthlySupport}/month ongoing support</p>
+            <p className="text-sm text-white/90">
+              {recommendedPackage.id === 'enterprise-lite'
+                ? '✓ Premium Care & Monitoring Included'
+                : `+ Starting at $${recommendedPackage.monthlySupport}/month ongoing support`
+              }
+            </p>
           </CardHeader>
           
           <CardContent className="p-6 space-y-6">

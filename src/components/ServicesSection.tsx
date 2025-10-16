@@ -51,7 +51,12 @@ const ServicesSection = () => {
                   <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>
                   <div className="space-y-1">
                     <div className="text-3xl font-bold text-gradient">{pkg.priceDisplay}</div>
-                    <div className="text-sm text-muted-foreground">+ Starting at ${pkg.monthlySupport}/month ongoing support</div>
+                    <div className="text-sm text-muted-foreground">
+                      {pkg.id === 'enterprise-lite' 
+                        ? '✓ Premium Care & Monitoring Included' 
+                        : `+ Starting at $${pkg.monthlySupport}/month ongoing support`
+                      }
+                    </div>
                   </div>
                   <CardDescription className="text-sm">
                     {pkg.description}
