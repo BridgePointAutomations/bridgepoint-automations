@@ -24,7 +24,7 @@ export const PACKAGES: Package[] = [
     size: "small",
     price: 2500,
     priceDisplay: "Starting at $2,500",
-    monthlySupport: 150,
+    monthlySupport: 200,
     icon: Zap,
     description: "Perfect for small businesses seeking initial automation wins",
     features: [
@@ -48,7 +48,7 @@ export const PACKAGES: Package[] = [
     size: "medium",
     price: 5000,
     priceDisplay: "Starting at $5,000",
-    monthlySupport: 450,
+    monthlySupport: 400,
     icon: TrendingUp,
     description: "Comprehensive automation for growing businesses",
     features: [
