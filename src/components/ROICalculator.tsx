@@ -47,17 +47,17 @@ const ROICalculator = () => {
     switch (businessSize) {
       case "small":
         implementationFee = 2500;
-        monthlySupport = 150;
+        monthlySupport = 200;
         baseSavingsPercent = 0.6;
         break;
       case "medium":
         implementationFee = 5000;
-        monthlySupport = 450;
+        monthlySupport = 400;
         baseSavingsPercent = 0.7;
         break;
       case "large":
         implementationFee = 9000;
-        monthlySupport = 750;
+        monthlySupport = 650;
         baseSavingsPercent = 0.8;
         break;
     }
