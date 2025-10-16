@@ -129,7 +129,7 @@ const ServicesSection = () => {
                 title: "AI Agent",
                 price: "Starting at $2,000",
                 description:
-                  "Included in Enterprise Lite Package,Custom AI agent for customer service, lead qualification, or appointment scheduling",
+                  "Included in Enterprise Lite Package, Custom AI agent for customer service, lead qualification, or appointment scheduling",
               },
               {
                 title: "Industry Templates",
