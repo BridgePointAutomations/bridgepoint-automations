@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const Booking = () => {
   const [calendlyUrl, setCalendlyUrl] = useState(
-    localStorage.getItem('calendly_url') || 'https://calendly.com/your-link'
+    localStorage.getItem('calendly_url') || 'https://calendly.com/bridgepointautomations-support/30min'
   );
 
   return (
