@@ -48,17 +48,17 @@ const ROICalculator = () => {
       case "small":
         implementationFee = 3000;
         monthlySupport = 200;
-        baseSavingsPercent = 0.6;
+        baseSavingsPercent = 0.5;
         break;
       case "medium":
         implementationFee = 5000;
         monthlySupport = 400;
-        baseSavingsPercent = 0.7;
+        baseSavingsPercent = 0.6;
         break;
       case "large":
         implementationFee = 9000;
-        monthlySupport = 650;
-        baseSavingsPercent = 0.8;
+        monthlySupport = 750;
+        baseSavingsPercent = 0.7;
         break;
     }
 
@@ -438,7 +438,7 @@ const ROICalculator = () => {
                 <h4 className="font-medium mb-2 text-sm">Calculation Assumptions:</h4>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Annual savings calculated using 52 weeks</li>
-                  <li>• Time savings: Small (60%), Medium (70%), Large (80%)</li>
+                  <li>• Time savings: Small (50%), Medium (60%), Large (70%)</li>
                   <li>• Implementation fee includes 3 months of bundled support</li>
                   <li>• Year 1 costs include only 9 months of additional ongoing support</li>
                   <li>• Payback period based on implementation cost vs. monthly labor savings</li>
