@@ -36,51 +36,51 @@ export const articles: Article[] = [
       {
         type: 'heading',
         level: 2,
-        content: '1. You\'re Spending Too Much Time on Repetitive Tasks'
+        content: '1. Your Team Spends Hours on Repetitive Tasks'
       },
       {
         type: 'paragraph',
-        content: 'If you or your team spend hours each week on the same manual tasks - data entry, invoice processing, report generation - automation can free up that time for more strategic work.'
+        content: 'If your employees are manually entering data, copying information between systems, or performing the same steps day after day, you're losing valuable time and money. When your team mentions spending significant portions of their week on tasks like invoice processing, data entry, appointment scheduling, or report generation, automation can reclaim those hours. These repetitive tasks are not only time-consuming but also prone to human error, which compounds the problem. We often find that businesses can recover 20-30% of their team's time by automating these routine processes, allowing employees to focus on strategic work that actually grows the business.'
       },
       {
         type: 'heading',
         level: 2,
-        content: '2. Human Errors Are Costing You Money'
+        content: '2. You\'re Missing Deadlines or Opportunities'
       },
       {
         type: 'paragraph',
-        content: 'Manual processes are prone to mistakes. When errors in data entry, calculations, or customer communications start impacting your bottom line, it\'s time for automation.'
+        content: 'When follow-ups slip through the cracks, leads go cold, or customer requests sit unanswered, you\'re likely experiencing the limits of manual processes. If you\'ve noticed missed opportunities to upsell customers, delayed responses to inquiries, or inconsistent follow-through on important tasks, these are clear signals that your current systems can\'t keep pace with your business demands. Automation ensures nothing falls between the cracks by triggering actions based on specific conditions, sending timely reminders, and maintaining consistent communication with customers and team members.'
       },
       {
         type: 'heading',
         level: 2,
-        content: '3. You Can\'t Scale Without Hiring More Staff'
+        content: '3. Your Business Has Outgrown Spreadsheets'
       },
       {
         type: 'paragraph',
-        content: 'If growing your business means proportionally growing your team for operational tasks, automation can help you scale efficiently without the overhead.'
+        content: 'Spreadsheets are fantastic tools, but they have limits. If multiple team members are working from different versions of the same file, if you\'re struggling to find information quickly, or if errors from manual updates are becoming common, you\'ve outgrown this approach. When your team starts asking questions like "Which version is correct?" or spending excessive time reconciling data, it\'s time to implement automated systems that provide real-time, accurate information to everyone who needs it.'
       },
       {
         type: 'heading',
         level: 2,
-        content: '4. Customer Inquiries Fall Through the Cracks'
+        content: '4. Customer Service Quality Is Inconsistent'
       },
       {
         type: 'paragraph',
-        content: 'Missing follow-ups, delayed responses, or lost leads indicate that your manual systems can\'t keep up with customer demand. Automation ensures nothing slips through.'
+        content: 'Inconsistent customer experiences often stem from manual processes that depend too heavily on individual team members remembering every step. If different customers receive different levels of service, if onboarding processes vary, or if you lack visibility into customer interactions across your team, automation can standardize and improve these experiences. Automated workflows ensure every customer receives the same high-quality experience, with timely responses, consistent communication, and proper follow-through at every stage of their journey.'
       },
       {
         type: 'heading',
         level: 2,
-        content: '5. You\'re Drowning in Spreadsheets'
+        content: '5. You Can\'t Scale Without Hiring More People'
       },
       {
         type: 'paragraph',
-        content: 'Multiple spreadsheets that need manual updates and constant reconciliation are a classic sign that you need integrated, automated systems.'
+        content: 'This is perhaps the most critical sign. If every increase in business volume requires proportional increases in staff, your operational costs will always limit your growth. When you find yourself thinking "We need another person just to handle this process," but the workload doesn\'t justify a full-time position, automation bridges that gap. We help businesses scale their operations without linearly scaling their headcount, making growth more sustainable and profitable.'
       },
       {
         type: 'highlight',
-        content: 'Ready to explore automation for your business? Book a free consultation to discuss your specific needs and opportunities.'
+        content: 'Ready to explore how automation can transform your operations? Let\'s discuss which processes in your business could benefit most from automation and create a roadmap that works for you.'
       }
     ]
   },
