@@ -285,7 +285,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "law-firm-case-study-30-hours-saved",
+    slug: "case-studies-30-hours-saved",
     title: "Industry Case Studies: Automation ROI Timelines",
     excerpt:
       "Real-world automation case studies reveal ROI timelines from 5 days to 30 days. Discover proven results from businesses across industries and what drives fastest returns.",
@@ -311,6 +311,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Ultra-Fast Returns: Under 10 Days",
       },
       {
@@ -350,6 +351,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Enterprise-Scale Success Stories",
       },
       {
@@ -369,6 +371,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "ROI by Industry Sector",
       },
       {
@@ -398,6 +401,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "What Drives Fastest ROI",
       },
       {
@@ -417,6 +421,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Common Timeline Patterns",
       },
       {
@@ -436,6 +441,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Lessons from Failed Implementations",
       },
       {
@@ -455,6 +461,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Setting Realistic Expectations",
       },
       {
