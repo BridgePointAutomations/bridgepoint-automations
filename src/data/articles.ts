@@ -294,15 +294,9 @@ export const articles: Article[] = [
     date: "2024-02-28",
     author: "Bridgepoint Automations",
     content: [
- {
-  "content": [
     {
       "type": "heading",
       "content": "Industry Case Studies: Automation ROI Timelines"
-    },
-    {
-      "type": "meta_description",
-      "content": "Real-world automation case studies reveal ROI timelines from 5 days to 30 days. Discover proven results from businesses across industries and what drives fastest returns."
     },
     {
       "type": "paragraph",
