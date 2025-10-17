@@ -54,11 +54,11 @@ const HeroSection = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col md:flex-row md:flex-wrap gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="group whitespace-nowrap"
+                className="w-full group whitespace-nowrap"
                 onClick={() => window.location.href = '/booking'}
               >
                 Schedule Consultation
@@ -67,20 +67,22 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="whitespace-nowrap"
+                className="w-full whitespace-nowrap"
                 onClick={() => setAssessmentOpen(true)}
               >
                 <ClipboardCheck className="mr-2 h-5 w-5" />
                 Check Your Readiness
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="whitespace-nowrap"
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                View Services
-              </Button>
+              <div className="sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center lg:block">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="w-full sm:max-w-md lg:max-w-none whitespace-nowrap"
+                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Services
+                </Button>
+              </div>
             </div>
 
             {/* Social Proof */}
