@@ -2,42 +2,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
-import { BookOpen, Download, TrendingUp, Zap, Target, Clock } from "lucide-react";
+import { BookOpen, Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { articles } from "@/data/articles";
 
 const Resources = () => {
   const navigate = useNavigate();
-
-  const articles = [
-    {
-      title: "5 Signs Your Business Needs Automation Now",
-      excerpt: "Discover the key indicators that your business is ready for automation and how to get started.",
-      category: "Getting Started",
-      readTime: "5 min read",
-      icon: Zap,
-    },
-    {
-      title: "ROI of Business Automation: What to Expect",
-      excerpt: "Learn how automation impacts your bottom line and what realistic returns look like in the first year.",
-      category: "ROI & Strategy",
-      readTime: "8 min read",
-      icon: TrendingUp,
-    },
-    {
-      title: "Top 10 Tasks Every Small Business Should Automate",
-      excerpt: "From lead capture to invoicing, these are the high-impact automations that save the most time.",
-      category: "Best Practices",
-      readTime: "6 min read",
-      icon: Target,
-    },
-    {
-      title: "How We Saved a Law Firm 30 Hours Per Week",
-      excerpt: "A detailed walkthrough of automating document processing and client intake for a legal practice.",
-      category: "Case Study",
-      readTime: "10 min read",
-      icon: Clock,
-    },
-  ];
 
   const downloads = [
     {
@@ -81,24 +51,31 @@ const Resources = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {articles.map((article, index) => (
-              <Card key={index} className="hover-lift cursor-pointer transition-all">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <Badge variant="secondary">{article.category}</Badge>
-                    <article.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl mb-2">{article.title}</CardTitle>
-                  <CardDescription className="text-base">{article.excerpt}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">{article.readTime}</span>
-                    <Button variant="ghost" size="sm">Read More →</Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            {articles.map((article) => {
+              const IconComponent = article.icon;
+              return (
+                <Card 
+                  key={article.slug} 
+                  className="hover-lift cursor-pointer transition-all"
+                  onClick={() => navigate(`/resources/${article.slug}`)}
+                >
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-2">
+                      <Badge variant="secondary">{article.category}</Badge>
+                      <IconComponent className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl mb-2">{article.title}</CardTitle>
+                    <CardDescription className="text-base">{article.excerpt}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">{article.readTime}</span>
+                      <Button variant="ghost" size="sm">Read More →</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
 

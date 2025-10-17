@@ -8,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import Index from "./pages/Index";
 import Booking from "./pages/Booking";
 import Resources from "./pages/Resources";
+import Article from "./pages/Article";
 import PackageBuilder from "./pages/PackageBuilder";
 import Workflows from "./pages/Workflows";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/:slug" element={<Article />} />
             <Route path="/package-builder" element={<PackageBuilder />} />
             <Route path="/workflows" element={<Workflows />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
