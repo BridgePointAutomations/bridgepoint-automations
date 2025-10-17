@@ -26,7 +26,7 @@ export const articles: Article[] = [
     category: "Getting Started",
     readTime: "5 min read",
     icon: Zap,
-    date: "2024-03-15",
+    date: "2025-10-15",
     author: "Bridgepoint Automations",
     content: [
       {
