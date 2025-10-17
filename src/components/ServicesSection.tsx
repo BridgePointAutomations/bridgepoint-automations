@@ -141,7 +141,7 @@ const ServicesSection = () => {
               },
               {
                 title: "Premium Care & Monitoring",
-                price: "Starting at $650/month",
+                price: "Starting at $750/month",
                 description:
                   "Included in Enterprise Lite Package, 24/7 monitoring, proactive fixes, faster response, after-hours support",
               },
