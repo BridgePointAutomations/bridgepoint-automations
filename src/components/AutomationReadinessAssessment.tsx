@@ -371,16 +371,19 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
           </DialogDescription>
         </DialogHeader>
 
+        {/* Progress Bar - Always Visible */}
+        <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 py-4 border-b">
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Progress</span>
+              <span className="font-medium">{Object.keys(answers).length} / {questions.length}</span>
+            </div>
+            <Progress value={completionPercent} className="h-2" />
+          </div>
+        </div>
+
         {!showResults ? (
           <div className="space-y-6 py-4">
-            {/* Progress Bar */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Progress</span>
-                <span className="font-medium">{Object.keys(answers).length} / {questions.length}</span>
-              </div>
-              <Progress value={completionPercent} className="h-2" />
-            </div>
 
             {/* Instructions */}
             <Card className="border-primary/20">
