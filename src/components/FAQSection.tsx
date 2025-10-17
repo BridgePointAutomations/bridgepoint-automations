@@ -234,8 +234,8 @@ const FAQSection = () => {
               <p>Investment varies by business size and complexity:</p>
               <ul className="space-y-2 ml-4">
                 <li><strong>Micro businesses (1-5 employees):</strong> $3,000-5,000 initial + $150-450/month</li>
-                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $450-750/month</li>
-                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial + $750+/month</li>
+                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $400-750/month</li>
+                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial (includes Premium Care & Monitoring)</li>
               </ul>
               <p>ROI considerations:</p>
               <ul className="space-y-1 ml-4">

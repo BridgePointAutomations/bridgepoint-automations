@@ -103,7 +103,7 @@ const TermsOfService = () => {
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
                     <li><strong>Efficiency Essentials:</strong> $3,000 implementation + $200/month support</li>
                     <li><strong>Growth Builder:</strong> $5,000 implementation + $450/month support</li>
-                    <li><strong>Enterprise Lite:</strong> $9,000 implementation + $750/month support</li>
+                    <li><strong>Enterprise Lite:</strong> $9,000 implementation (includes Premium Care & Monitoring)</li>
                   </ul>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Payment Terms</h3>
