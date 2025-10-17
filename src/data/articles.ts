@@ -98,7 +98,7 @@ export const articles: Article[] = [
     category: "ROI & Strategy",
     readTime: "8 min read",
     icon: TrendingUp,
-    date: "2024-03-10",
+    date: "2025-10-15",
     author: "Bridgepoint Automations",
     content: [
       {
@@ -109,7 +109,7 @@ export const articles: Article[] = [
       {
         type: "heading",
         level: 2,
-        content: "Typical ROI Timeline",
+        content: "Typical First-Year ROI Ranges",
       },
       {
         type: "paragraph",
