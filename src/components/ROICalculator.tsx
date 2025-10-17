@@ -41,12 +41,12 @@ const ROICalculator = () => {
 
     // Optimized time savings based on business size
     let baseSavingsPercent = 0.6; // Base 60% savings
-    let implementationFee = 2500;
+    let implementationFee = 3000;
     let monthlySupport = 350;
 
     switch (businessSize) {
       case "small":
-        implementationFee = 2500;
+        implementationFee = 3000;
         monthlySupport = 200;
         baseSavingsPercent = 0.6;
         break;

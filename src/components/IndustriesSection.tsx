@@ -80,7 +80,7 @@ const IndustriesSection = () => {
       }
     ],
     packages: [
-      "Efficiency Essentials ($2,500): Customer communication automation",
+      "Efficiency Essentials ($3,000): Customer communication automation",
       "Growth Builder ($5,000): Add inventory management and scheduling", 
       "Enterprise Lite ($9,000): Complete shop management with reporting"
     ]
