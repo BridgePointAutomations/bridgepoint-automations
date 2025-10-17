@@ -58,29 +58,29 @@ const HeroSection = () => {
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="w-full group whitespace-nowrap"
+                className="w-full group text-sm sm:text-base px-4 sm:px-8"
                 onClick={() => window.location.href = '/booking'}
               >
-                Schedule Consultation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <span className="truncate">Schedule Consultation</span>
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full whitespace-nowrap"
+                className="w-full text-sm sm:text-base px-4 sm:px-8"
                 onClick={() => setAssessmentOpen(true)}
               >
-                <ClipboardCheck className="mr-2 h-5 w-5" />
-                Check Your Readiness
+                <ClipboardCheck className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                <span className="truncate">Check Your Readiness</span>
               </Button>
               <div className="sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center lg:block">
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="w-full sm:max-w-md lg:max-w-none whitespace-nowrap"
+                  className="w-full sm:max-w-md lg:max-w-none text-sm sm:text-base px-4 sm:px-8"
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  View Services
+                  <span className="truncate">View Services</span>
                 </Button>
               </div>
             </div>
