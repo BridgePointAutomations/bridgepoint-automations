@@ -286,17 +286,18 @@ export const articles: Article[] = [
   },
   {
     slug: "law-firm-case-study-30-hours-saved",
-    title: "How We Saved a Law Firm 30 Hours Per Week",
-    excerpt: "A detailed walkthrough of automating document processing and client intake for a legal practice.",
-    category: "Case Study",
+    title: "Industry Case Studies: Automation ROI Timelines",
+    excerpt:
+      "Real-world automation case studies reveal ROI timelines from 5 days to 30 days. Discover proven results from businesses across industries and what drives fastest returns.",
+    category: "Case Studies",
     readTime: "10 min read",
     icon: Clock,
-    date: "2024-02-28",
+    date: "2025-10-15",
     author: "Bridgepoint Automations",
     content: [
       {
         type: "heading",
-        content: "Industry Case Studies: Automation ROI Timelines",
+        content: "",
       },
       {
         type: "meta_description",
