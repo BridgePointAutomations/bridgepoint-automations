@@ -1,19 +1,23 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
-import { BookOpen, Download } from "lucide-react";
+import { BookOpen, Download, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { articles } from "@/data/articles";
+import { AutomationReadinessAssessment } from "@/components/AutomationReadinessAssessment";
 
 const Resources = () => {
   const navigate = useNavigate();
+  const [assessmentOpen, setAssessmentOpen] = useState(false);
 
   const downloads = [
     {
       title: "Automation Readiness Assessment",
-      description: "A comprehensive 15-point checklist to evaluate if your business is ready for automation.",
-      size: "PDF • 2.3 MB",
+      description: "Take our interactive 15-question assessment to discover if your business is ready for automation.",
+      size: "Interactive • 5 min",
+      isInteractive: true,
     },
     {
       title: "Small Business Automation Guide",
@@ -96,10 +100,20 @@ const Resources = () => {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">{download.size}</span>
-                    <Button size="sm" variant="outline">
-                      <Download className="h-4 w-4 mr-2" />
-                      Download
-                    </Button>
+                    {download.isInteractive ? (
+                      <Button 
+                        size="sm" 
+                        variant="default"
+                        onClick={() => setAssessmentOpen(true)}
+                      >
+                        Start Assessment <ArrowRight className="h-4 w-4 ml-2" />
+                      </Button>
+                    ) : (
+                      <Button size="sm" variant="outline">
+                        <Download className="h-4 w-4 mr-2" />
+                        Download
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -125,6 +139,11 @@ const Resources = () => {
           </CardContent>
         </Card>
       </main>
+
+      <AutomationReadinessAssessment
+        isOpen={assessmentOpen}
+        onClose={() => setAssessmentOpen(false)}
+      />
     </div>
   );
 };

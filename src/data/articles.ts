@@ -300,11 +300,6 @@ export const articles: Article[] = [
         content: "",
       },
       {
-        type: "meta_description",
-        content:
-          "Real-world automation case studies reveal ROI timelines from 5 days to 30 days. Discover proven results from businesses across industries and what drives fastest returns.",
-      },
-      {
         type: "paragraph",
         content:
           "Understanding theoretical ROI is valuable, but seeing real implementation results provides the confidence needed to move forward. We've analyzed comprehensive industry data tracking thousands of automation implementations to show you exactly how quickly businesses achieve returns across different processes and sectors.",
