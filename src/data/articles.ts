@@ -330,6 +330,7 @@ export const articles: Article[] = [
       },
       {
         type: "heading",
+        level: 2,
         content: "Fast Returns: 10-20 Days",
       },
       {
