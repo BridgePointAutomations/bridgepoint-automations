@@ -96,7 +96,7 @@ export const articles: Article[] = [
     title: "ROI of Business Automation: What to Expect",
     excerpt: "Learn how automation impacts your bottom line and what realistic returns look like in the first year.",
     category: "ROI & Strategy",
-    readTime: "8 min read",
+    readTime: "2 min read",
     icon: TrendingUp,
     date: "2025-10-15",
     author: "Bridgepoint Automations",
