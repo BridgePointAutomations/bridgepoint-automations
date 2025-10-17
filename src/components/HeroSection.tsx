@@ -54,11 +54,11 @@ const HeroSection = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-4">
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="group"
+                className="group sm:flex-1 lg:flex-initial"
                 onClick={() => window.location.href = '/booking'}
               >
                 Schedule Consultation
@@ -67,6 +67,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
+                className="sm:flex-1 lg:flex-initial"
                 onClick={() => setAssessmentOpen(true)}
               >
                 <ClipboardCheck className="mr-2 h-5 w-5" />
@@ -75,6 +76,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
+                className="sm:flex-1 lg:flex-initial"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Service Packages
