@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle, TrendingUp, ClipboardCheck } from "lucide-react";
+import { AutomationReadinessAssessment } from "./AutomationReadinessAssessment";
 
 const HeroSection = () => {
+  const [assessmentOpen, setAssessmentOpen] = useState(false);
+
   return (
     <section className="relative pt-20 pb-16 overflow-hidden">
       {/* Background Gradient with Purple Hint */}
@@ -59,6 +63,14 @@ const HeroSection = () => {
               >
                 Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => setAssessmentOpen(true)}
+              >
+                <ClipboardCheck className="mr-2 h-5 w-5" />
+                Check Your Readiness
               </Button>
               <Button 
                 variant="outline" 
@@ -140,6 +152,11 @@ const HeroSection = () => {
           
         </div>
       </div>
+
+      <AutomationReadinessAssessment 
+        isOpen={assessmentOpen}
+        onClose={() => setAssessmentOpen(false)}
+      />
     </section>
   );
 };
