@@ -58,29 +58,29 @@ const HeroSection = () => {
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="w-full group text-xs sm:text-sm px-3 sm:px-6"
+                className="w-full group text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
                 onClick={() => window.location.href = '/booking'}
               >
-                <span className="truncate">Schedule Consultation</span>
+                Book Consultation
                 <ArrowRight className="ml-2 h-4 w-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full text-xs sm:text-sm px-3 sm:px-6"
+                className="w-full text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
                 onClick={() => setAssessmentOpen(true)}
               >
                 <ClipboardCheck className="mr-2 h-4 w-4 flex-shrink-0" />
-                <span className="truncate">Check Your Readiness</span>
+                Readiness Check
               </Button>
               <div className="sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center lg:block">
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="w-full sm:max-w-md lg:max-w-none text-xs sm:text-sm px-3 sm:px-6"
+                  className="w-full sm:max-w-md lg:max-w-none text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <span className="truncate">View Services</span>
+                  View Services
                 </Button>
               </div>
             </div>
