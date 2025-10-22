@@ -39,25 +39,28 @@ const ROICalculator = () => {
     const weeklyHours = parseFloat(hoursPerWeek);
     const wage = parseFloat(hourlyWage);
 
+    // Get package info for selected size
+    const pkg = getPackageBySize(businessSize as "small" | "medium" | "large");
+    if (!pkg) return {
+      year1: { annualLaborSavings: 0, totalCost: 0, roi: 0, paybackMonths: 0, netSavings: 0 },
+      year2: { annualLaborSavings: 0, totalCost: 0, roi: 0, cumulativeNetSavings: 0 },
+      year3: { annualLaborSavings: 0, totalCost: 0, roi: 0, cumulativeNetSavings: 0 },
+      implementationFee: 0,
+    };
+
     // Optimized time savings based on business size
     let baseSavingsPercent = 0.6; // Base 60% savings
-    let implementationFee = 3000;
-    let monthlySupport = 350;
+    const monthlySubscription = pkg.monthlyPrice;
+    const setupFee = pkg.setupFee; // $0 for all tiers
 
     switch (businessSize) {
       case "small":
-        implementationFee = 3000;
-        monthlySupport = 200;
         baseSavingsPercent = 0.5;
         break;
       case "medium":
-        implementationFee = 5000;
-        monthlySupport = 400;
         baseSavingsPercent = 0.6;
         break;
       case "large":
-        implementationFee = 9000;
-        monthlySupport = 750;
         baseSavingsPercent = 0.7;
         break;
     }
@@ -65,30 +68,30 @@ const ROICalculator = () => {
     // Calculate base annual savings
     const baseWeeklyTimeSaved = weeklyHours * baseSavingsPercent;
     const baseAnnualLaborSavings = baseWeeklyTimeSaved * 52 * wage;
-    const annualSupport = monthlySupport * 12;
+    const annualSubscription = monthlySubscription * 12;
 
-    // Year 1 calculations (includes 3 months bundled support, so only 9 months additional)
+    // Year 1 calculations (monthly subscription for 12 months, no setup fee)
     const year1Savings = baseAnnualLaborSavings;
-    const year1TotalCost = implementationFee + monthlySupport * 9;
+    const year1TotalCost = annualSubscription; // Just monthly subscription
     const year1NetSavings = year1Savings - year1TotalCost;
     const year1ROI = year1TotalCost > 0 ? (year1NetSavings / year1TotalCost) * 100 : 0;
-    const paybackMonths = year1Savings > 0 ? implementationFee / (year1Savings / 12) : 0;
+    const paybackMonths = year1Savings > 0 ? year1TotalCost / (year1Savings / 12) : 0;
 
     // Year 2 calculations (10% efficiency improvement)
     const year2SavingsMultiplier = 1.1;
     const year2Savings = baseAnnualLaborSavings * year2SavingsMultiplier;
-    const year2TotalCost = annualSupport; // Only ongoing support
+    const year2TotalCost = annualSubscription;
     const year2NetSavings = year2Savings - year2TotalCost;
     const cumulativeYear2NetSavings = year1NetSavings + year2NetSavings;
-    const year2ROI = (cumulativeYear2NetSavings / implementationFee) * 100;
+    const year2ROI = year1TotalCost > 0 ? (cumulativeYear2NetSavings / year1TotalCost) * 100 : 0;
 
     // Year 3 calculations (20% efficiency improvement from original)
     const year3SavingsMultiplier = 1.2;
     const year3Savings = baseAnnualLaborSavings * year3SavingsMultiplier;
-    const year3TotalCost = annualSupport; // Only ongoing support
+    const year3TotalCost = annualSubscription;
     const year3NetSavings = year3Savings - year3TotalCost;
     const cumulativeYear3NetSavings = cumulativeYear2NetSavings + year3NetSavings;
-    const year3ROI = (cumulativeYear3NetSavings / implementationFee) * 100;
+    const year3ROI = year1TotalCost > 0 ? (cumulativeYear3NetSavings / year1TotalCost) * 100 : 0;
 
     return {
       year1: {
@@ -110,7 +113,7 @@ const ROICalculator = () => {
         roi: Math.min(Math.round(year3ROI), 600), // Cap ROI at 600%
         cumulativeNetSavings: Math.round(cumulativeYear3NetSavings),
       },
-      implementationFee,
+      implementationFee: setupFee,
     };
   };
 
@@ -131,12 +134,10 @@ const ROICalculator = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
             See your potential savings over 3 years with our comprehensive projection tool
           </p>
-          {results.implementationFee > 0 && (
-            <div className="inline-flex items-center gap-2 text-sm text-primary font-medium">
-              <span>Implementation Fee:</span>
-              <span className="text-lg font-bold">${results.implementationFee.toLocaleString()}</span>
-            </div>
-          )}
+          <div className="inline-flex items-center gap-2 text-sm text-success font-medium">
+            <span>Setup Fee:</span>
+            <span className="text-lg font-bold">$0</span>
+          </div>
         </div>
 
         {/* Main Calculator */}
@@ -376,18 +377,36 @@ const ROICalculator = () => {
                         Your {selectedPackage.tier} Includes:
                       </CardTitle>
                       <Badge variant="secondary" className="text-xs">
-                        {selectedPackage.priceDisplay}
+                        ${selectedPackage.monthlyPrice.toLocaleString()}/month
                       </Badge>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-2">
-                      {selectedPackage.features.slice(0, 6).map((feature, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-sm">
-                          <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{selectedPackage.workflowInfrastructure.workflowBuilds} workflows</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{selectedPackage.workflowInfrastructure.airtableBases} Airtable bases</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{selectedPackage.capacity.monthlyTasks} tasks/mo</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{selectedPackage.supportMaintenance.responseTime}</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{selectedPackage.supportMaintenance.modificationHours} mod hours/mo</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>${0} setup fee</span>
+                      </div>
                     </div>
                     <div className="pt-4 border-t">
                       <Button

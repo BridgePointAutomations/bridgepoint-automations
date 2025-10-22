@@ -53,14 +53,16 @@ const ServicesSection = () => {
                   >
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <CardTitle className="text-xl mb-2">{pkg.tier} Package</CardTitle>
+                  <CardTitle className="text-xl mb-2">{pkg.tier}</CardTitle>
                   <div className="space-y-1">
-                    <div className="text-3xl font-bold text-gradient">{pkg.priceDisplay}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {pkg.id === 'enterprise-lite' 
-                        ? '✓ Premium Care & Monitoring Included' 
-                        : `+ Starting at $${pkg.monthlySupport}/month ongoing support`
-                      }
+                    <div className="text-3xl font-bold text-gradient">
+                      ${pkg.monthlyPrice.toLocaleString()}<span className="text-base text-muted-foreground">/month</span>
+                    </div>
+                    <div className="text-sm font-medium text-success">
+                      $0 Setup Fee
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {pkg.commitmentTerms.minimumMonths} month minimum
                     </div>
                   </div>
                   <CardDescription className="text-sm">{pkg.description}</CardDescription>
@@ -70,30 +72,48 @@ const ServicesSection = () => {
                   {/* Key Metrics */}
                   <div className="grid grid-cols-2 gap-4 p-4 bg-accent rounded-lg">
                     <div className="text-center">
-                      <div className="font-semibold text-primary">{pkg.roi}</div>
+                      <div className="font-semibold text-primary">{pkg.expectedResults.roiMultiplier}</div>
                       <div className="text-xs text-muted-foreground">Expected ROI</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-semibold text-primary">{pkg.savings}</div>
+                      <div className="font-semibold text-primary">{pkg.expectedResults.timeSaved}</div>
                       <div className="text-xs text-muted-foreground">Time Savings</div>
                     </div>
                   </div>
 
                   {/* Features List */}
                   <div className="space-y-3">
-                    {pkg.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
-                      </div>
-                    ))}
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.workflowInfrastructure.workflowBuilds} workflow builds</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.workflowInfrastructure.airtableBases} Airtable base{pkg.workflowInfrastructure.airtableBases > 1 ? 's' : ''}</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.capacity.monthlyTasks} monthly tasks</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.supportMaintenance.responseTime} support</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.supportMaintenance.modificationHours} modification hours/month</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.setupOnboarding.auditHours} hour automation audit</span>
+                    </div>
                   </div>
 
                   {/* Platforms */}
                   <div className="pt-4 border-t border-border">
                     <div className="text-xs font-medium text-muted-foreground mb-2">Platforms Used:</div>
                     <div className="flex flex-wrap gap-1">
-                      {pkg.platforms.map((platform, idx) => (
+                      {pkg.workflowInfrastructure.platformsSupported.map((platform, idx) => (
                         <Badge key={idx} variant="secondary" className="text-xs">
                           {platform}
                         </Badge>

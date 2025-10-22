@@ -71,7 +71,8 @@ const PackageFinderQuiz = () => {
       "over500k": 600000
     };
     const avgRevenue = revenueMap[monthlyRevenue] || 0;
-    const investmentPercent = (recommendedPackage.price / (avgRevenue * 12)) * 100;
+    const annualInvestment = recommendedPackage.monthlyPrice * 12;
+    const investmentPercent = (annualInvestment / (avgRevenue * 12)) * 100;
     return investmentPercent > 5; // Show warning if investment is > 5% of annual revenue
   };
 
@@ -334,12 +335,11 @@ const PackageFinderQuiz = () => {
               Recommended For You
             </Badge>
             <CardTitle className="text-2xl mb-2">{recommendedPackage.tier}</CardTitle>
-            <div className="text-3xl font-bold mb-2">{recommendedPackage.priceDisplay}</div>
+            <div className="text-3xl font-bold mb-2">
+              ${recommendedPackage.monthlyPrice.toLocaleString()}/month
+            </div>
             <p className="text-sm text-white/90">
-              {recommendedPackage.id === 'enterprise-lite'
-                ? '✓ Premium Care & Monitoring Included'
-                : `+ Starting at $${recommendedPackage.monthlySupport}/month ongoing support`
-              }
+              $0 Setup Fee • {recommendedPackage.commitmentTerms.minimumMonths} month minimum
             </p>
           </CardHeader>
           
@@ -369,11 +369,11 @@ const PackageFinderQuiz = () => {
             {/* Key Metrics */}
             <div className="grid grid-cols-2 gap-4 p-4 bg-accent rounded-lg">
               <div className="text-center">
-                <div className="font-semibold text-primary">{recommendedPackage.roi}</div>
+                <div className="font-semibold text-primary">{recommendedPackage.expectedResults.roiMultiplier}</div>
                 <div className="text-xs text-muted-foreground">Typical ROI</div>
               </div>
               <div className="text-center">
-                <div className="font-semibold text-primary">{recommendedPackage.savings}</div>
+                <div className="font-semibold text-primary">{recommendedPackage.expectedResults.timeSaved}</div>
                 <div className="text-xs text-muted-foreground">Time Savings</div>
               </div>
             </div>
@@ -382,12 +382,30 @@ const PackageFinderQuiz = () => {
             <div>
               <h4 className="font-semibold mb-3">What's Included:</h4>
               <div className="space-y-2">
-                {recommendedPackage.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
-                ))}
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.workflowInfrastructure.workflowBuilds} automated workflows</span>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.workflowInfrastructure.airtableBases} Airtable base{recommendedPackage.workflowInfrastructure.airtableBases > 1 ? 's' : ''}</span>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.capacity.monthlyTasks} monthly task executions</span>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.supportMaintenance.responseTime} response time</span>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.supportMaintenance.modificationHours} modification hours/month</span>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{recommendedPackage.setupOnboarding.auditHours} hour automation audit</span>
+                </div>
               </div>
             </div>
 
@@ -395,7 +413,7 @@ const PackageFinderQuiz = () => {
             <div>
               <h4 className="font-semibold mb-2">Platforms Used:</h4>
               <div className="flex flex-wrap gap-2">
-                {recommendedPackage.platforms.map((platform, idx) => (
+                {recommendedPackage.workflowInfrastructure.platformsSupported.map((platform, idx) => (
                   <Badge key={idx} variant="secondary" className="text-xs">
                     {platform}
                   </Badge>
