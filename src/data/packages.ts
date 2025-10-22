@@ -79,7 +79,7 @@ export const PACKAGES: Package[] = [
     id: "essentials",
     tier: "Essentials",
     size: "small",
-    monthlyPrice: 1097,
+    monthlyPrice: 1247,
     setupFee: 0,
     icon: Zap,
     description: "Perfect for small businesses seeking initial automation wins",
@@ -91,7 +91,7 @@ export const PACKAGES: Package[] = [
       annualPrepayDiscount: {
         monthsFree: 2,
         percentSavings: 17,
-        totalSavings: 3108,
+        totalSavings: 2494,
       },
     },
     setupOnboarding: {
@@ -158,7 +158,7 @@ export const PACKAGES: Package[] = [
     id: "growth-accelerator",
     tier: "Growth Accelerator",
     size: "medium",
-    monthlyPrice: 2097,
+    monthlyPrice: 2247,
     setupFee: 0,
     icon: TrendingUp,
     description: "Comprehensive automation for growing businesses",
@@ -170,7 +170,7 @@ export const PACKAGES: Package[] = [
       annualPrepayDiscount: {
         monthsFree: 2,
         percentSavings: 17,
-        totalSavings: 5508,
+        totalSavings: 4494,
       },
     },
     setupOnboarding: {
@@ -239,7 +239,7 @@ export const PACKAGES: Package[] = [
     id: "enterprise-scale",
     tier: "Enterprise Scale",
     size: "large",
-    monthlyPrice: 4097,
+    monthlyPrice: 4247,
     setupFee: 0,
     icon: Users,
     description: "Enterprise automation for established businesses",
@@ -251,7 +251,7 @@ export const PACKAGES: Package[] = [
       annualPrepayDiscount: {
         monthsFree: 2,
         percentSavings: 17,
-        totalSavings: 10308,
+        totalSavings: 8494,
       },
     },
     setupOnboarding: {

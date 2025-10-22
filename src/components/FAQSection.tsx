@@ -218,21 +218,21 @@ const FAQSection = () => {
               <p>Investment varies by business size and automation scope:</p>
               <ul className="space-y-3 ml-4">
                 <li>
-                  <strong>Essentials Package:</strong> $1,097/month ($0 setup fee)
+                  <strong>Essentials Package:</strong> $1,247/month ($0 setup fee)
                   <ul className="ml-4 mt-1 space-y-1 text-sm">
                     <li>Ideal for: 1-10 employees</li>
                     <li>Includes: 2-3 workflow builds, 10,000 monthly tasks</li>
                   </ul>
                 </li>
                 <li>
-                  <strong>Growth Accelerator:</strong> $2,097/month ($0 setup fee)
+                  <strong>Growth Accelerator:</strong> $2,247/month ($0 setup fee)
                   <ul className="ml-4 mt-1 space-y-1 text-sm">
                     <li>Ideal for: 10-50 employees</li>
                     <li>Includes: 5 workflow builds, 50,000 monthly tasks, AI integration</li>
                   </ul>
                 </li>
                 <li>
-                  <strong>Enterprise Scale:</strong> $4,097/month ($0 setup fee)
+                  <strong>Enterprise Scale:</strong> $4,247/month ($0 setup fee)
                   <ul className="ml-4 mt-1 space-y-1 text-sm">
                     <li>Ideal for: 50+ employees</li>
                     <li>Includes: Unlimited workflows, 250,000 monthly tasks, full AI suite</li>
