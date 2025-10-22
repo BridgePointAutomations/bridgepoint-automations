@@ -1,11 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowRight, Zap, X, Bot, Sparkles, FileCode } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap, X, Bot, Sparkles, FileCode, ChevronDown, ChevronUp } from "lucide-react";
 import { PACKAGES } from "@/data/packages";
 import { PricingComparisonTable } from "@/components/PricingComparisonTable";
+import { useState } from "react";
 
 const ServicesSection = () => {
+  const [showComparison, setShowComparison] = useState(false);
+
+  const toggleComparison = () => {
+    setShowComparison(!showComparison);
+    if (!showComparison) {
+      setTimeout(() => {
+        document.getElementById('pricing-comparison')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-accent/30 to-background">
       <div className="container mx-auto px-4">
@@ -138,13 +150,13 @@ const ServicesSection = () => {
 
                   {/* View All Features Link */}
                   <div className="pt-2 text-center">
-                    <a 
-                      href="#pricing-comparison" 
+                    <button 
+                      onClick={toggleComparison}
                       className="text-sm text-primary hover:underline font-medium inline-flex items-center gap-1"
                     >
-                      See all features
-                      <ArrowRight className="w-3 h-3" />
-                    </a>
+                      {showComparison ? 'Hide all features' : 'See all features'}
+                      {showComparison ? <ChevronUp className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
+                    </button>
                   </div>
 
                   {/* Platforms */}
@@ -175,15 +187,17 @@ const ServicesSection = () => {
         </div>
 
         {/* Full Pricing Comparison Table */}
-        <div id="pricing-comparison" className="mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">Complete Feature Comparison</h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              See every feature side-by-side to make the best decision for your business
-            </p>
+        {showComparison && (
+          <div id="pricing-comparison" className="mb-16 animate-in fade-in slide-in-from-top-4 duration-500">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-2">Complete Feature Comparison</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                See every feature side-by-side to make the best decision for your business
+              </p>
+            </div>
+            <PricingComparisonTable />
           </div>
-          <PricingComparisonTable />
-        </div>
+        )}
 
         {/* Add-on Services */}
         <div className="mt-24">
