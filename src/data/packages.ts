@@ -30,6 +30,7 @@ export interface Package {
     aiIntegrations: number | string; // Support "Full AI suite"
     platformsSupported: string[];
     platformCount: number | string; // 3, 7, "Unlimited"
+    platformIntegrations: number | string; // 2, 4, "Unlimited"
   };
   capacity: {
     monthlyTasks: string;
@@ -40,7 +41,7 @@ export interface Package {
     responseTime: string;
     modificationHours: number;
     modificationHoursRollover: string;
-    strategySessions: string; // "Quarterly", "Monthly", "Bi-weekly"
+    strategySessions: string; // "Bi-annual", "Quarterly", "Monthly"
   };
   developmentTeam: {
     customDevelopment: boolean | string; // false, "Limited", "5 hrs/month"
@@ -93,6 +94,7 @@ export const PACKAGES: Package[] = [
       aiIntegrations: 0,
       platformsSupported: ["Zapier", "Airtable", "Make"],
       platformCount: 3,
+      platformIntegrations: 2,
     },
     capacity: {
       monthlyTasks: "10,000",
@@ -103,7 +105,7 @@ export const PACKAGES: Package[] = [
       responseTime: "24 hours",
       modificationHours: 1,
       modificationHoursRollover: "No rollover",
-      strategySessions: "Quarterly",
+      strategySessions: "Bi-annual",
     },
     developmentTeam: {
       customDevelopment: false,
@@ -162,6 +164,7 @@ export const PACKAGES: Package[] = [
       aiIntegrations: 1,
       platformsSupported: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces", "Slack", "QuickBooks", "Salesforce"],
       platformCount: 7,
+      platformIntegrations: 4,
     },
     capacity: {
       monthlyTasks: "25,000",
@@ -172,7 +175,7 @@ export const PACKAGES: Package[] = [
       responseTime: "4 hours",
       modificationHours: 3,
       modificationHoursRollover: "1-month rollover",
-      strategySessions: "Monthly",
+      strategySessions: "Quarterly",
     },
     developmentTeam: {
       customDevelopment: "Limited",
@@ -231,6 +234,7 @@ export const PACKAGES: Package[] = [
       aiIntegrations: "Full AI suite",
       platformsSupported: ["Enterprise Zapier", "Advanced Airtable", "Make Pro", "Activepieces", "AI Platforms", "HubSpot", "Salesforce", "Custom APIs"],
       platformCount: "Unlimited",
+      platformIntegrations: "Unlimited",
     },
     capacity: {
       monthlyTasks: "100,000",
@@ -241,7 +245,7 @@ export const PACKAGES: Package[] = [
       responseTime: "2 hours",
       modificationHours: 8,
       modificationHoursRollover: "3-month rollover",
-      strategySessions: "Bi-weekly",
+      strategySessions: "Monthly",
     },
     developmentTeam: {
       customDevelopment: "5 hrs/month",

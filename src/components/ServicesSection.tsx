@@ -89,7 +89,7 @@ const ServicesSection = () => {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.setupOnboarding.auditHours} hour initial audit</span>
+                      <span className="text-sm">Automation audit included</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />

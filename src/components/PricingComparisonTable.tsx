@@ -54,9 +54,11 @@ export const PricingComparisonTable = () => {
               </td>
             </tr>
             <tr className="border-b border-border">
-              <td className="p-4 sticky left-0 bg-background z-10">Automation Audit Hours</td>
+              <td className="p-4 sticky left-0 bg-background z-10">Automation Audit</td>
               {PACKAGES.map((pkg) => (
-                <td key={pkg.id} className="p-4 text-center">{pkg.setupOnboarding.auditHours} hours</td>
+                <td key={pkg.id} className="p-4 text-center">
+                  <Check className="h-5 w-5 text-success mx-auto" />
+                </td>
               ))}
             </tr>
             <tr className="border-b border-border">
@@ -95,6 +97,14 @@ export const PricingComparisonTable = () => {
                   ) : (
                     pkg.workflowInfrastructure.aiIntegrations
                   )}
+                </td>
+              ))}
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">Platform Integrations</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center font-semibold">
+                  {pkg.workflowInfrastructure.platformIntegrations}
                 </td>
               ))}
             </tr>
@@ -142,7 +152,7 @@ export const PricingComparisonTable = () => {
             <tr className="border-b border-border">
               <td className="p-4 sticky left-0 bg-background z-10">Strategy Sessions</td>
               {PACKAGES.map((pkg) => (
-                <td key={pkg.id} className="p-4 text-center">{pkg.supportMaintenance.strategySessions}/month</td>
+                <td key={pkg.id} className="p-4 text-center">{pkg.supportMaintenance.strategySessions}</td>
               ))}
             </tr>
 
@@ -228,7 +238,7 @@ export const PricingComparisonTable = () => {
               <div>
                 <h4 className="font-semibold mb-2">Setup & Infrastructure</h4>
                 <ul className="space-y-1 text-muted-foreground">
-                  <li>• {pkg.setupOnboarding.auditHours} hour audit</li>
+                  <li>• Automation audit included</li>
                   <li>• {pkg.workflowInfrastructure.workflowBuilds} workflow builds</li>
                   <li>• {pkg.workflowInfrastructure.airtableBases} Airtable bases</li>
                   <li>• {pkg.capacity.monthlyTasks} monthly tasks</li>
@@ -240,7 +250,7 @@ export const PricingComparisonTable = () => {
                 <ul className="space-y-1 text-muted-foreground">
                   <li>• {pkg.supportMaintenance.responseTime}</li>
                   <li>• {pkg.supportMaintenance.modificationHours} modification hours/month</li>
-                  <li>• {pkg.supportMaintenance.strategySessions} strategy sessions/month</li>
+                  <li>• {pkg.supportMaintenance.strategySessions} strategy sessions</li>
                 </ul>
               </div>
 

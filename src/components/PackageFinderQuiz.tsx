@@ -62,20 +62,6 @@ const PackageFinderQuiz = () => {
     }
   };
 
-  const showAffordabilityWarning = () => {
-    if (!monthlyRevenue || !recommendedPackage) return false;
-    const revenueMap: { [key: string]: number } = {
-      "under25k": 20000,
-      "25k-100k": 60000,
-      "100k-500k": 300000,
-      "over500k": 600000
-    };
-    const avgRevenue = revenueMap[monthlyRevenue] || 0;
-    const annualInvestment = recommendedPackage.monthlyPrice * 12;
-    const investmentPercent = (annualInvestment / (avgRevenue * 12)) * 100;
-    return investmentPercent > 5; // Show warning if investment is > 5% of annual revenue
-  };
-
   return (
     <div className="w-full">
       {/* Step 1: Business Size */}
@@ -350,19 +336,6 @@ const PackageFinderQuiz = () => {
             {getCustomMessage() && (
               <div className="p-4 bg-accent rounded-lg">
                 <p className="text-sm font-medium text-primary">{getCustomMessage()}</p>
-              </div>
-            )}
-
-            {/* Affordability Warning */}
-            {showAffordabilityWarning() && (
-              <div className="p-4 bg-warning/10 border border-warning/20 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-warning mt-0.5 flex-shrink-0" />
-                  <div className="text-sm">
-                    <p className="font-medium text-warning mb-1">Investment Consideration</p>
-                    <p className="text-muted-foreground">This package represents a significant investment relative to your current revenue. Consider starting with a smaller package and scaling up as ROI is realized.</p>
-                  </div>
-                </div>
               </div>
             )}
             
