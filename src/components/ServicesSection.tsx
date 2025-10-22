@@ -258,9 +258,27 @@ const ServicesSection = () => {
                 </div>
                 <h4 className="font-semibold mb-2">Premium Care</h4>
                 <p className="text-2xl font-bold text-amber mb-2">Starting at $500/mo</p>
-                <p className="text-sm text-muted-foreground">
-                  Priority support, dedicated account manager, and proactive optimization
+                <p className="text-sm text-muted-foreground mb-3">
+                  Enterprise-level support and maintenance features
                 </p>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>2 hour response time</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>8 modification hours/month</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>3-month hour rollover</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>Monthly strategy sessions</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
