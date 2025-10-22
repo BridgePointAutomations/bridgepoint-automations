@@ -9,13 +9,13 @@ import { useState } from "react";
 export const PricingComparisonTable = () => {
   const navigate = useNavigate();
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    setup: true,
-    workflow: true,
-    ai: true,
-    capacity: true,
-    support: true,
-    commitment: true,
-    results: true,
+    setup: false,
+    workflow: false,
+    ai: false,
+    capacity: false,
+    support: false,
+    commitment: false,
+    results: false,
   });
 
   const toggleSection = (section: string) => {
