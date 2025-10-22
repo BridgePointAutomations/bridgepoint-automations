@@ -80,21 +80,6 @@ const FAQSection = () => {
       icon: <TrendingUp className="w-5 h-5" />,
       faqs: [
         {
-          question: "How quickly will I see results from automation?",
-          answer: (
-            <div className="space-y-3">
-              <p>Results timeline varies by package:</p>
-              <ul className="space-y-2 ml-4">
-                <li><strong>Week 1-2:</strong> Initial workflows go live</li>
-                <li><strong>Month 1-2:</strong> Initial workflows deployed, early time savings begin</li>
-                <li><strong>Month 2-3:</strong> Full optimization and training complete</li>
-                <li><strong>Month 6:</strong> Performance review - track actual time/cost savings</li>
-              </ul>
-              <p><strong>Note:</strong> Most clients achieve positive ROI within 6-12 months. We provide detailed tracking and optimization to maximize your returns.</p>
-            </div>
-          )
-        },
-        {
           question: "What if my team resists the new automated processes?",
           answer: (
             <div className="space-y-3">
@@ -103,7 +88,6 @@ const FAQSection = () => {
                 <li><strong>Gradual rollout:</strong> Introduce automation step-by-step</li>
                 <li><strong>Hands-on training:</strong> We train your team personally</li>
                 <li><strong>Clear benefits:</strong> Show exactly how automation helps each person</li>
-                <li><strong>Support period:</strong> 3 months of questions and adjustments included</li>
                 <li><strong>Documentation:</strong> Easy-to-follow guides for all processes</li>
               </ul>
             </div>
@@ -136,17 +120,17 @@ const FAQSection = () => {
             <div className="space-y-3">
               <p>Timeline depends on your selected package:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Efficiency Essentials:</strong> 2-3 weeks implementation</li>
-                <li><strong>Growth Builder:</strong> 4-6 weeks implementation</li>
-                <li><strong>Enterprise Lite:</strong> 6-8 weeks implementation</li>
+                <li><strong>Essentials:</strong> Typically 2-3 weeks implementation</li>
+                <li><strong>Growth Accelerator:</strong> Typically 4-6 weeks implementation</li>
+                <li><strong>Enterprise Scale:</strong> Typically 6-8 weeks implementation</li>
               </ul>
               <p>Each includes:</p>
               <ul className="space-y-1 ml-4">
                 <li>Discovery and planning (1 week)</li>
                 <li>Development and testing (varies by complexity)</li>
                 <li>Training and rollout (1 week)</li>
-                <li>3 months support period</li>
               </ul>
+              <p className="mt-3"><strong>Note:</strong> Timelines are estimates based on typical implementations. Actual duration depends on workflow complexity, data migration needs, and team availability.</p>
             </div>
           )
         },
@@ -162,7 +146,7 @@ const FAQSection = () => {
                 <li><strong>Regular maintenance:</strong> Proactive updates and optimization</li>
                 <li><strong>Documentation:</strong> Troubleshooting guides for common issues</li>
               </ul>
-              <p><strong>Support included:</strong> 3 months with every package, ongoing support available</p>
+              <p><strong>Ongoing support:</strong> Included via your monthly modification hours and regular strategy sessions as part of your subscription</p>
             </div>
           )
         },
@@ -231,18 +215,37 @@ const FAQSection = () => {
           question: "How much should a small business budget for automation?",
           answer: (
             <div className="space-y-3">
-              <p>Investment varies by business size and complexity:</p>
-              <ul className="space-y-2 ml-4">
-                <li><strong>Micro businesses (1-5 employees):</strong> $3,000-5,000 initial + $150-450/month</li>
-                <li><strong>Small businesses (6-20 employees):</strong> $5,000-9,000 initial + $400-750/month</li>
-                <li><strong>Growing businesses (20+ employees):</strong> $9,000+ initial (includes Premium Care & Monitoring)</li>
+              <p>Investment varies by business size and automation scope:</p>
+              <ul className="space-y-3 ml-4">
+                <li>
+                  <strong>Essentials Package:</strong> $1,097/month ($0 setup fee)
+                  <ul className="ml-4 mt-1 space-y-1 text-sm">
+                    <li>Ideal for: 1-10 employees</li>
+                    <li>Includes: 2-3 workflow builds, 10,000 monthly tasks</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Growth Accelerator:</strong> $2,097/month ($0 setup fee)
+                  <ul className="ml-4 mt-1 space-y-1 text-sm">
+                    <li>Ideal for: 10-50 employees</li>
+                    <li>Includes: 5 workflow builds, 50,000 monthly tasks, AI integration</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Enterprise Scale:</strong> $4,097/month ($0 setup fee)
+                  <ul className="ml-4 mt-1 space-y-1 text-sm">
+                    <li>Ideal for: 50+ employees</li>
+                    <li>Includes: Unlimited workflows, 250,000 monthly tasks, full AI suite</li>
+                  </ul>
+                </li>
               </ul>
-              <p>ROI considerations:</p>
+              <p className="mt-3"><strong>Potential ROI</strong> (actual results vary by business):</p>
               <ul className="space-y-1 ml-4">
-                <li>Average time savings: 15-25 hours weekly</li>
-                <li>If your time is worth $25/hour: $19,500-32,500 annual savings</li>
-                <li>Most clients recover their investment within the first year, with ongoing savings thereafter</li>
+                <li>Average time savings: 10-20 hours weekly per package tier</li>
+                <li>If your time is valued at $25-50/hour: Potential savings of $13,000-52,000 annually</li>
+                <li>Typical payback period: 6-12 months depending on implementation scope and usage</li>
               </ul>
+              <p className="mt-3 text-sm"><strong>Note:</strong> Results depend on workflow complexity, adoption rate, and business processes. All figures are estimates based on typical client experiences.</p>
             </div>
           )
         },
@@ -252,7 +255,7 @@ const FAQSection = () => {
             <div className="space-y-3">
               <p>Yes! This is actually our recommended approach:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Start with Efficiency Essentials:</strong> 2-3 high-impact workflows</li>
+                <li><strong>Start with Essentials:</strong> 2-3 high-impact workflows</li>
                 <li><strong>See immediate results:</strong> Build confidence and momentum</li>
                 <li><strong>Upgrade as you grow:</strong> Add more complex automation</li>
                 <li><strong>Preserve investment:</strong> Everything we build scales up</li>
@@ -260,9 +263,9 @@ const FAQSection = () => {
               </ul>
               <p><strong>Common progression:</strong></p>
               <ul className="space-y-1 ml-4">
-                <li>Month 1-6: Efficiency Essentials</li>
-                <li>Month 6-12: Upgrade to Growth Builder</li>
-                <li>Year 2+: Enterprise Lite as business scales</li>
+                <li>Month 1-6: Essentials</li>
+                <li>Month 6-12: Upgrade to Growth Accelerator</li>
+                <li>Year 2+: Enterprise Scale as business scales</li>
               </ul>
             </div>
           )

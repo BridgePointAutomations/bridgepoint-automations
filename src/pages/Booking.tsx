@@ -138,9 +138,6 @@ const Booking = () => {
                         title="Schedule Appointment"
                       />
                     </div>
-                    <p className="text-xs text-center text-muted-foreground mt-4">
-                      Can't find a time that works? Call us at (412) 555-BRIDGE
-                    </p>
                   </CardContent>
                 </Card>
               </div>
