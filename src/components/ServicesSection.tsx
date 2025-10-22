@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowRight, Zap } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap, X } from "lucide-react";
 import { PACKAGES } from "@/data/packages";
+import { PricingComparisonTable } from "@/components/PricingComparisonTable";
 
 const ServicesSection = () => {
   return (
@@ -18,11 +19,10 @@ const ServicesSection = () => {
             Choose Your <span className="text-gradient">Automation Journey</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Structured packages designed to make enterprise automation accessible to small businesses. Each tier
-            includes bundled support with ROI-focused implementation and performance tracking.
+            Transparent, all-inclusive subscription packages. Every feature clearly defined so you know exactly what you're getting.
           </p>
           <p className="text-sm text-muted-foreground/80 max-w-xl mx-auto mt-2">
-            Final pricing tailored based on discovery and scope.
+            $0 setup fees • No hidden costs • Cancel anytime after minimum commitment
           </p>
         </div>
 
@@ -81,15 +81,42 @@ const ServicesSection = () => {
                     </div>
                   </div>
 
-                  {/* Features List */}
-                  <div className="space-y-3">
+                  {/* Features List - Expanded to 10 key features */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm"><strong>$0 Setup Fee</strong> - Start immediately</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{pkg.setupOnboarding.auditHours} hour initial audit</span>
+                    </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{pkg.workflowInfrastructure.workflowBuilds} workflow builds</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.workflowInfrastructure.airtableBases} Airtable base{pkg.workflowInfrastructure.airtableBases > 1 ? 's' : ''}</span>
+                      <span className="text-sm">{pkg.workflowInfrastructure.airtableBases} Airtable</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      {pkg.workflowInfrastructure.aiIntegrations === 0 ? (
+                        <X className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                      ) : (
+                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      )}
+                      <span className="text-sm">
+                        {pkg.workflowInfrastructure.aiIntegrations === 0 
+                          ? "No AI integrations" 
+                          : typeof pkg.workflowInfrastructure.aiIntegrations === 'string'
+                          ? pkg.workflowInfrastructure.aiIntegrations
+                          : `${pkg.workflowInfrastructure.aiIntegrations} AI integration${pkg.workflowInfrastructure.aiIntegrations > 1 ? 's' : ''}`
+                        }
+                      </span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{typeof pkg.workflowInfrastructure.platformCount === 'string' ? pkg.workflowInfrastructure.platformCount : pkg.workflowInfrastructure.platformCount} platforms</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
@@ -97,16 +124,27 @@ const ServicesSection = () => {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.responseTime} support</span>
+                      <span className="text-sm">{pkg.supportMaintenance.responseTime} response</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.modificationHours} modification hours/month</span>
+                      <span className="text-sm">{pkg.supportMaintenance.modificationHours} hrs modifications/mo</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.setupOnboarding.auditHours} hour automation audit</span>
+                      <span className="text-sm">{pkg.supportMaintenance.strategySessions} strategy sessions</span>
                     </div>
+                  </div>
+
+                  {/* View All Features Link */}
+                  <div className="pt-2 text-center">
+                    <a 
+                      href="#pricing-comparison" 
+                      className="text-sm text-primary hover:underline font-medium inline-flex items-center gap-1"
+                    >
+                      See all features
+                      <ArrowRight className="w-3 h-3" />
+                    </a>
                   </div>
 
                   {/* Platforms */}
@@ -134,6 +172,17 @@ const ServicesSection = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* Full Pricing Comparison Table */}
+        <div id="pricing-comparison" className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">Complete Feature Comparison</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              See every feature side-by-side to make the best decision for your business
+            </p>
+          </div>
+          <PricingComparisonTable />
         </div>
 
         {/* Add-on Services */}

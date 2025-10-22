@@ -90,10 +90,10 @@ export const PricingComparisonTable = () => {
               <td className="p-4 sticky left-0 bg-background z-10">AI Integrations</td>
               {PACKAGES.map((pkg) => (
                 <td key={pkg.id} className="p-4 text-center">
-                  {pkg.workflowInfrastructure.aiIntegrations > 0 ? (
-                    pkg.workflowInfrastructure.aiIntegrations
-                  ) : (
+                  {pkg.workflowInfrastructure.aiIntegrations === 0 ? (
                     <X className="h-5 w-5 text-muted-foreground mx-auto" />
+                  ) : (
+                    pkg.workflowInfrastructure.aiIntegrations
                   )}
                 </td>
               ))}

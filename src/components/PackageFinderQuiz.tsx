@@ -388,7 +388,7 @@ const PackageFinderQuiz = () => {
                 </div>
                 <div className="flex items-start space-x-2">
                   <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                  <span className="text-sm">{recommendedPackage.workflowInfrastructure.airtableBases} Airtable base{recommendedPackage.workflowInfrastructure.airtableBases > 1 ? 's' : ''}</span>
+                  <span className="text-sm">{recommendedPackage.workflowInfrastructure.airtableBases} Airtable</span>
                 </div>
                 <div className="flex items-start space-x-2">
                   <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />

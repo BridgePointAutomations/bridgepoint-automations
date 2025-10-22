@@ -25,10 +25,11 @@ export interface Package {
     description: string;
   };
   workflowInfrastructure: {
-    workflowBuilds: number;
-    airtableBases: number;
-    aiIntegrations: number;
+    workflowBuilds: number | string; // Support "Unlimited"
+    airtableBases: string; // "1 basic", "2 with analytics", "Unlimited + advanced"
+    aiIntegrations: number | string; // Support "Full AI suite"
     platformsSupported: string[];
+    platformCount: number | string; // 3, 7, "Unlimited"
   };
   capacity: {
     monthlyTasks: string;
@@ -39,15 +40,16 @@ export interface Package {
     responseTime: string;
     modificationHours: number;
     modificationHoursRollover: string;
-    strategySessions: number;
+    strategySessions: string; // "Quarterly", "Monthly", "Bi-weekly"
   };
   developmentTeam: {
-    customDevelopment: boolean;
+    customDevelopment: boolean | string; // false, "Limited", "5 hrs/month"
     trainingIncluded: boolean;
+    trainingDescription: string; // "2 hours initial", "Comprehensive", "White-glove + ongoing"
     accountTeam: string;
   };
   guarantees: {
-    sla: string;
+    sla: string | boolean; // Support false for "None"
   };
   targetAudience: {
     employeeCount: string;
@@ -81,34 +83,36 @@ export const PACKAGES: Package[] = [
       },
     },
     setupOnboarding: {
-      auditHours: 8,
+      auditHours: 3,
       setupIncluded: true,
       description: "Complete automation audit and roadmap",
     },
     workflowInfrastructure: {
       workflowBuilds: 3,
-      airtableBases: 1,
+      airtableBases: "1 basic",
       aiIntegrations: 0,
       platformsSupported: ["Zapier", "Airtable", "Make"],
+      platformCount: 3,
     },
     capacity: {
-      monthlyTasks: "Up to 10,000",
+      monthlyTasks: "10,000",
       alertThresholds: [80, 95],
       overagePolicy: "Alert at 80% & 95%, help optimize to stay within tier",
     },
     supportMaintenance: {
-      responseTime: "24-hour response",
-      modificationHours: 3,
-      modificationHoursRollover: "2 months",
-      strategySessions: 1,
+      responseTime: "24 hours",
+      modificationHours: 1,
+      modificationHoursRollover: "No rollover",
+      strategySessions: "Quarterly",
     },
     developmentTeam: {
       customDevelopment: false,
       trainingIncluded: true,
+      trainingDescription: "2 hours initial",
       accountTeam: "Email support",
     },
     guarantees: {
-      sla: "99% uptime guarantee",
+      sla: false,
     },
     targetAudience: {
       employeeCount: "1-10 employees",
@@ -116,7 +120,7 @@ export const PACKAGES: Package[] = [
     },
     expectedResults: {
       timeSaved: "10-15 hours weekly",
-      roiMultiplier: "Positive ROI within 12 months",
+      roiMultiplier: "2-3x",
     },
     alwaysIncluded: [
       "Bug fixes and error resolution",
@@ -148,42 +152,44 @@ export const PACKAGES: Package[] = [
       },
     },
     setupOnboarding: {
-      auditHours: 16,
+      auditHours: 8,
       setupIncluded: true,
       description: "Comprehensive audit with advanced workflow mapping",
     },
     workflowInfrastructure: {
-      workflowBuilds: 5,
-      airtableBases: 2,
+      workflowBuilds: 7,
+      airtableBases: "2 with analytics",
       aiIntegrations: 1,
-      platformsSupported: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces"],
+      platformsSupported: ["Advanced Zapier", "Airtable Pro", "Make", "Activepieces", "Slack", "QuickBooks", "Salesforce"],
+      platformCount: 7,
     },
     capacity: {
-      monthlyTasks: "Up to 25,000",
+      monthlyTasks: "25,000",
       alertThresholds: [80, 95],
       overagePolicy: "Alert at 80% & 95%, help optimize or prorated upgrade",
     },
     supportMaintenance: {
-      responseTime: "12-hour response",
-      modificationHours: 5,
-      modificationHoursRollover: "3 months",
-      strategySessions: 2,
+      responseTime: "4 hours",
+      modificationHours: 3,
+      modificationHoursRollover: "1-month rollover",
+      strategySessions: "Monthly",
     },
     developmentTeam: {
-      customDevelopment: true,
+      customDevelopment: "Limited",
       trainingIncluded: true,
-      accountTeam: "Dedicated account manager",
+      trainingDescription: "Comprehensive",
+      accountTeam: "Priority specialist",
     },
     guarantees: {
-      sla: "99.5% uptime guarantee",
+      sla: false,
     },
     targetAudience: {
       employeeCount: "10-50 employees",
       businessStage: "Growing businesses scaling operations",
     },
     expectedResults: {
-      timeSaved: "15-25 hours weekly",
-      roiMultiplier: "2-3x return typical",
+      timeSaved: "20-30 hours weekly",
+      roiMultiplier: "2.5-4x",
     },
     alwaysIncluded: [
       "Bug fixes and error resolution",
@@ -215,42 +221,44 @@ export const PACKAGES: Package[] = [
       },
     },
     setupOnboarding: {
-      auditHours: 32,
+      auditHours: 20,
       setupIncluded: true,
       description: "Enterprise-grade audit with department-specific analysis",
     },
     workflowInfrastructure: {
-      workflowBuilds: 8,
-      airtableBases: 4,
-      aiIntegrations: 2,
-      platformsSupported: ["Enterprise Zapier", "Advanced Airtable", "Make Pro", "Activepieces", "AI Platforms"],
+      workflowBuilds: "Unlimited",
+      airtableBases: "Unlimited + advanced",
+      aiIntegrations: "Full AI suite",
+      platformsSupported: ["Enterprise Zapier", "Advanced Airtable", "Make Pro", "Activepieces", "AI Platforms", "HubSpot", "Salesforce", "Custom APIs"],
+      platformCount: "Unlimited",
     },
     capacity: {
-      monthlyTasks: "Up to 50,000",
+      monthlyTasks: "100,000",
       alertThresholds: [80, 95],
       overagePolicy: "Priority optimization support with flexible scaling",
     },
     supportMaintenance: {
-      responseTime: "4-hour response",
-      modificationHours: 10,
-      modificationHoursRollover: "3 months",
-      strategySessions: 4,
+      responseTime: "2 hours",
+      modificationHours: 8,
+      modificationHoursRollover: "3-month rollover",
+      strategySessions: "Bi-weekly",
     },
     developmentTeam: {
-      customDevelopment: true,
+      customDevelopment: "5 hrs/month",
       trainingIncluded: true,
-      accountTeam: "Dedicated account team with strategic advisor",
+      trainingDescription: "White-glove + ongoing",
+      accountTeam: "Dedicated team",
     },
     guarantees: {
-      sla: "99.9% uptime guarantee with priority support",
+      sla: "99.5% uptime",
     },
     targetAudience: {
       employeeCount: "50+ employees",
       businessStage: "Established businesses requiring enterprise solutions",
     },
     expectedResults: {
-      timeSaved: "30-50 hours weekly",
-      roiMultiplier: "3-4x return typical",
+      timeSaved: "40-60 hours weekly",
+      roiMultiplier: "3-5x",
     },
     alwaysIncluded: [
       "Bug fixes and error resolution",
