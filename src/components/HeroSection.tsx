@@ -25,11 +25,11 @@ const HeroSection = () => {
               
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 Transform Your Business with{" "}
-                <span className="text-gradient">Smart Automation</span>
+                <span className="text-gradient">AI-Powered Automation</span>
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-xl">
-                BridgePoint Automations delivers enterprise-level automation to small businesses using modern no-code platforms. Reduce manual work, improve efficiency, with a focus on measurable ROI and continuous optimization.
+                BridgePoint Automations delivers AI-enhanced workflows, intelligent chatbots, and LLM-powered automation to small businesses. Reduce manual work by up to 77% with cutting-edge no-code platforms, measurable ROI, and continuous optimization.
               </p>
             </div>
 
@@ -45,7 +45,7 @@ const HeroSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">8,000+ App Integrations</span>
+                <span className="text-sm font-medium">AI-Enhanced Workflows</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowRight, Zap, X } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap, X, Bot, Sparkles, FileCode } from "lucide-react";
 import { PACKAGES } from "@/data/packages";
 import { PricingComparisonTable } from "@/components/PricingComparisonTable";
 
@@ -186,61 +186,83 @@ const ServicesSection = () => {
         </div>
 
         {/* Add-on Services */}
-        <div className="bg-card rounded-2xl p-8 shadow-soft">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">Premium Add-On Services</h3>
-            <p className="text-muted-foreground">
-              Optional enhancements to packages, not standalone services. Pricing customized during discovery calls
-              based on your specific ROI and workflow gaps.
+        <div className="mt-24">
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4">
+              Optional Premium Add-ons
+            </Badge>
+            <h3 className="text-3xl font-bold mb-4">Enhance Your Package</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Take your automation to the next level with these specialized services
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "AI Agent",
-                price: "Starting at $2,000",
-                description:
-                  "Included in Enterprise Lite Package, Custom AI agent for customer service, lead qualification, or appointment scheduling",
-              },
-              {
-                title: "Industry Templates",
-                price: "Starting at $1,200",
-                description: "Pre-built automation templates for specific industries (Airtable bases + workflows)",
-              },
-              {
-                title: "Premium Care & Monitoring",
-                price: "Starting at $750/month",
-                description:
-                  "Included in Enterprise Lite Package, 24/7 monitoring, proactive fixes, faster response, after-hours support",
-              },
-              {
-                title: "Integration Quick Wins",
-                price: "Starting at $600",
-                description: "Additional integrations (QuickBooks, Slack, DocuSign, etc.)",
-              },
-              {
-                title: "Template Library",
-                price: "Starting at $750",
-                description: "Access to a growing library of automation templates (lifetime access)",
-              },
-              {
-                title: "Quarterly Optimization",
-                price: "$500/session",
-                description: "Performance review, new opportunity identification, ROI reporting",
-              },
-              {
-                title: "ROI Dashboard",
-                price: "Included in Growth+, available as add-on starting at $800",
-                description: "Custom ROI dashboard (Airtable/BI) with optional ongoing maintenance",
-              },
-            ].map((addon, index) => (
-              <div key={index} className="p-4 bg-accent rounded-lg">
-                <h4 className="font-semibold mb-1">{addon.title}</h4>
-                <div className="text-primary font-medium mb-2">{addon.price}</div>
-                <p className="text-sm text-muted-foreground">{addon.description}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="hover:shadow-medium transition-shadow">
+              <CardContent className="pt-6">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Bot className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="font-semibold mb-2">AI Agents</h4>
+                <p className="text-2xl font-bold text-primary mb-2">Starting at $400/mo</p>
+                <p className="text-sm text-muted-foreground">
+                  Advanced AI-powered automation with OpenAI, Anthropic, or Google integrations
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-medium transition-shadow border-secondary/20">
+              <CardContent className="pt-6">
+                <div className="h-12 w-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+                  <Sparkles className="h-6 w-6 text-secondary" />
+                </div>
+                <h4 className="font-semibold mb-2">AI Content Creation</h4>
+                <p className="text-2xl font-bold text-secondary mb-2">Starting at $300/mo</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Automated blog posts, social media, email campaigns, and marketing copy
+                </p>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>SEO-optimized content</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>Brand voice training</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="h-3 w-3 text-success" />
+                    <span>Multi-platform publishing</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-medium transition-shadow">
+              <CardContent className="pt-6">
+                <div className="h-12 w-12 rounded-lg bg-cyan/10 flex items-center justify-center mb-4">
+                  <FileCode className="h-6 w-6 text-cyan" />
+                </div>
+                <h4 className="font-semibold mb-2">Industry Templates</h4>
+                <p className="text-2xl font-bold text-cyan mb-2">Starting at $250/mo</p>
+                <p className="text-sm text-muted-foreground">
+                  Pre-built automation workflows optimized for your specific industry
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-medium transition-shadow">
+              <CardContent className="pt-6">
+                <div className="h-12 w-12 rounded-lg bg-amber/10 flex items-center justify-center mb-4">
+                  <Zap className="h-6 w-6 text-amber" />
+                </div>
+                <h4 className="font-semibold mb-2">Premium Care</h4>
+                <p className="text-2xl font-bold text-amber mb-2">Starting at $500/mo</p>
+                <p className="text-sm text-muted-foreground">
+                  Priority support, dedicated account manager, and proactive optimization
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

@@ -52,6 +52,17 @@ export interface Package {
   guarantees: {
     sla: string | boolean; // Support false for "None"
   };
+  aiCapabilities: {
+    description: string;
+    chatbots: boolean;
+    documentProcessing: boolean;
+    customLLM: boolean;
+  };
+  contentCreation: {
+    included: boolean;
+    type?: string;
+    features?: string[];
+  };
   targetAudience: {
     employeeCount: string;
     businessStage: string;
@@ -115,6 +126,15 @@ export const PACKAGES: Package[] = [
     },
     guarantees: {
       sla: false,
+    },
+    aiCapabilities: {
+      description: "AI-ready infrastructure with integration support",
+      chatbots: false,
+      documentProcessing: false,
+      customLLM: false,
+    },
+    contentCreation: {
+      included: false,
     },
     targetAudience: {
       employeeCount: "1-10 employees",
@@ -186,6 +206,17 @@ export const PACKAGES: Package[] = [
     guarantees: {
       sla: false,
     },
+    aiCapabilities: {
+      description: "1 AI integration - Perfect for customer service chatbots or intelligent document processing",
+      chatbots: true,
+      documentProcessing: true,
+      customLLM: false,
+    },
+    contentCreation: {
+      included: true,
+      type: "Basic AI Content",
+      features: ["Email templates", "Social media posts", "Product descriptions"],
+    },
     targetAudience: {
       employeeCount: "10-50 employees",
       businessStage: "Growing businesses scaling operations",
@@ -255,6 +286,17 @@ export const PACKAGES: Package[] = [
     },
     guarantees: {
       sla: "99.5% uptime",
+    },
+    aiCapabilities: {
+      description: "Complete AI toolkit: Multiple chatbots, document intelligence, predictive analytics, and custom LLM workflows",
+      chatbots: true,
+      documentProcessing: true,
+      customLLM: true,
+    },
+    contentCreation: {
+      included: true,
+      type: "Advanced AI Content Suite",
+      features: ["Blog articles", "Marketing copy", "SEO content", "Video scripts", "Custom brand voice training"],
     },
     targetAudience: {
       employeeCount: "50+ employees",

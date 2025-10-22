@@ -108,6 +108,72 @@ export const PricingComparisonTable = () => {
                 </td>
               ))}
             </tr>
+            
+            {/* AI Capabilities Section */}
+            <tr className="bg-accent/50">
+              <td colSpan={4} className="p-3 font-semibold text-sm sticky left-0">
+                AI-Powered Features
+              </td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">AI Capabilities</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center text-sm">
+                  {pkg.aiCapabilities.description}
+                </td>
+              ))}
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">AI Chatbots</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center">
+                  {pkg.aiCapabilities.chatbots ? (
+                    <Check className="h-5 w-5 text-success mx-auto" />
+                  ) : (
+                    <X className="h-5 w-5 text-muted-foreground/30 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">Document Processing</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center">
+                  {pkg.aiCapabilities.documentProcessing ? (
+                    <Check className="h-5 w-5 text-success mx-auto" />
+                  ) : (
+                    <X className="h-5 w-5 text-muted-foreground/30 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">Custom LLM Workflows</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center">
+                  {pkg.aiCapabilities.customLLM ? (
+                    <Check className="h-5 w-5 text-success mx-auto" />
+                  ) : (
+                    <X className="h-5 w-5 text-muted-foreground/30 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr className="border-b border-border">
+              <td className="p-4 sticky left-0 bg-background z-10">AI Content Creation</td>
+              {PACKAGES.map((pkg) => (
+                <td key={pkg.id} className="p-4 text-center text-sm">
+                  {pkg.contentCreation.included ? (
+                    <div>
+                      <Check className="h-5 w-5 text-success mx-auto mb-1" />
+                      <div className="text-xs text-muted-foreground">{pkg.contentCreation.type}</div>
+                    </div>
+                  ) : (
+                    <span className="text-xs text-muted-foreground">Add-on available</span>
+                  )}
+                </td>
+              ))}
+            </tr>
             <tr className="border-b border-border">
               <td className="p-4 sticky left-0 bg-background z-10">Platforms Supported</td>
               {PACKAGES.map((pkg) => (

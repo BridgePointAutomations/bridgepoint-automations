@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import IntegrationShowcase from "@/components/IntegrationShowcase";
 import AboutSection from "@/components/AboutSection";
 import IndustriesSection from "@/components/IndustriesSection";
 import ROICalculator from "@/components/ROICalculator";
@@ -35,6 +36,8 @@ const Index = () => {
         </section>
 
         <ServicesSection />
+        
+        <IntegrationShowcase />
         
         {/* Package Finder Quiz Section */}
         <section id="package-finder" className="py-20 bg-muted/20">
