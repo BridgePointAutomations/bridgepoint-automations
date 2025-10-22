@@ -232,7 +232,7 @@ const FAQSection = () => {
                   </ul>
                 </li>
                 <li>
-                  <strong>Enterprise Scale:</strong> $4,247/month ($0 setup fee)
+                  <strong>Enterprise Scale:</strong> $5,247/month ($0 setup fee)
                   <ul className="ml-4 mt-1 space-y-1 text-sm">
                     <li>Ideal for: 50+ employees</li>
                     <li>Includes: Unlimited workflows, 250,000 monthly tasks, full AI suite</li>

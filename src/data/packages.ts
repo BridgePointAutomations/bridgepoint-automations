@@ -239,7 +239,7 @@ export const PACKAGES: Package[] = [
     id: "enterprise-scale",
     tier: "Enterprise Scale",
     size: "large",
-    monthlyPrice: 4247,
+    monthlyPrice: 5247,
     setupFee: 0,
     icon: Users,
     description: "Enterprise automation for established businesses",
@@ -251,7 +251,7 @@ export const PACKAGES: Package[] = [
       annualPrepayDiscount: {
         monthsFree: 2,
         percentSavings: 17,
-        totalSavings: 8494,
+        totalSavings: 10494,
       },
     },
     setupOnboarding: {
