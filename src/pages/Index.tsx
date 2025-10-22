@@ -5,7 +5,6 @@ import ServicesSection from "@/components/ServicesSection";
 import IntegrationShowcase from "@/components/IntegrationShowcase";
 import AboutSection from "@/components/AboutSection";
 import IndustriesSection from "@/components/IndustriesSection";
-import ROICalculator from "@/components/ROICalculator";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
@@ -59,10 +58,8 @@ const Index = () => {
             </div>
           </div>
         </section>
-
-        <ROICalculator />
         
-        {/* Assessment CTA Section - After ROI Calculator */}
+        {/* Assessment CTA Section */}
         <section className="py-16 bg-gradient-to-r from-primary/10 via-cyan/10 to-primary/10">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
