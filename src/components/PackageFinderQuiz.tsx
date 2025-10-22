@@ -404,17 +404,6 @@ const PackageFinderQuiz = () => {
                 Schedule Free Consultation
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => {
-                  const element = document.getElementById('roi-calculator');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Calculate My Exact ROI
-              </Button>
 
               <Button 
                 variant="ghost" 
