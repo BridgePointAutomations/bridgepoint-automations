@@ -1,42 +1,64 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  ArrowRight, 
-  CheckCircle,
-  Calendar,
-  TrendingUp,
-  Send
-} from "lucide-react";
+import { Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { clientSecurity } from "@/lib/security";
-import { Link } from "react-router-dom";
 
-interface QuickContactForm {
-  name: string;
-  email: string;
-  company: string;
-  message: string;
-  honeypot?: string;
-}
+const contactSchema = z.object({
+  name: z.string()
+    .trim()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name is too long"),
+  email: z.string()
+    .trim()
+    .email("Please enter a valid email address")
+    .max(255, "Email is too long"),
+  phone: z.string()
+    .trim()
+    .max(20, "Phone number is too long")
+    .optional()
+    .or(z.literal("")),
+  message: z.string()
+    .trim()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message is too long"),
+  honeypot: z.string().optional()
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<QuickContactForm>();
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      honeypot: ""
+    }
+  });
+  
+  const messageLength = watch("message")?.length || 0;
 
-  const onSubmit = async (data: QuickContactForm) => {
+  const onSubmit = async (data: ContactFormData) => {
     // Security checks
     if (!clientSecurity.validateHoneypot(data.honeypot || "")) return;
-    if (!clientSecurity.checkRateLimit("quick_contact", 3)) return;
+    if (!clientSecurity.checkRateLimit("quick_contact", 3)) {
+      toast({
+        title: "Too Many Requests",
+        description: "Please wait a moment before submitting again.",
+        variant: "destructive",
+      });
+      return;
+    }
     if (!clientSecurity.validateEmail(data.email)) {
       toast({
         title: "Invalid Email",
@@ -53,9 +75,9 @@ const ContactSection = () => {
       const sanitizedData = {
         name: clientSecurity.sanitizeInput(data.name),
         email: clientSecurity.sanitizeInput(data.email),
-        company: clientSecurity.sanitizeInput(data.company),
+        phone: clientSecurity.sanitizeInput(data.phone || ""),
         message: clientSecurity.sanitizeInput(data.message),
-        form_type: "quick_contact",
+        form_type: "contact",
         timestamp: new Date().toISOString(),
         source: window.location.href
       };
@@ -63,7 +85,7 @@ const ContactSection = () => {
       // Replace with your Zapier webhook URL
       const webhookUrl = "YOUR_ZAPIER_WEBHOOK_URL_HERE";
       
-      const response = await fetch(webhookUrl, {
+      await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,15 +96,15 @@ const ContactSection = () => {
 
       toast({
         title: "Message Sent!",
-        description: "Thank you for your interest. We'll be in touch within 24 hours.",
+        description: "Thank you for reaching out. We'll respond within 24 hours.",
       });
 
       reset();
     } catch (error) {
-      console.error("Error submitting quick contact form:", error);
+      console.error("Error submitting contact form:", error);
       toast({
         title: "Submission Error",
-        description: "There was an issue sending your message. Please try again or contact us directly.",
+        description: "There was an issue sending your message. Please try again or email us directly.",
         variant: "destructive",
       });
     } finally {
@@ -93,108 +115,137 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-accent">
       <div className="container mx-auto px-4">
-        
-        {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
-          <Badge variant="outline" className="text-primary border-primary/20">
-            <Calendar className="w-3 h-3 mr-1" />
-            Get Started Today
-          </Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold">
-            Ready to <span className="text-gradient">Transform Your Business?</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Schedule your free automation consultation and discover how BridgePoint Automations can save your business 15-50 hours weekly with ROI-focused implementation.
-          </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
             
-            {/* Contact Info */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>Get In Touch</CardTitle>
-                <CardDescription>Ready to discuss your automation needs? Contact our team directly.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">(412) 555-BRIDGE</div>
-                    <div className="text-sm text-muted-foreground">Mon-Fri 8AM-6PM EST</div>
-                  </div>
+            {/* Left Column - Heading & Contact Info */}
+            <div className="lg:col-span-2">
+              <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+                Let's <span className="text-gradient">talk!</span>
+              </h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <div className="text-sm text-muted-foreground mb-1">Email</div>
+                  <a 
+                    href="mailto:support@bridgepointautomations.com" 
+                    className="text-lg text-primary hover:text-primary/80 transition-colors"
+                  >
+                    support@bridgepointautomations.com
+                  </a>
                 </div>
                 
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">support@bridgepointautomations.com</div>
-                    <div className="text-sm text-muted-foreground">Response within 2 hours</div>
-                  </div>
+                <div>
+                  <div className="text-sm text-muted-foreground mb-1">Phone</div>
+                  <a 
+                    href="tel:+14125552743" 
+                    className="text-lg text-primary hover:text-primary/80 transition-colors"
+                  >
+                    (412) 555-BRIDGE
+                  </a>
                 </div>
-                
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">Pittsburgh Metropolitan Area</div>
-                    <div className="text-sm text-muted-foreground">Serving all surrounding counties and states</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">24-Hour Response Guarantee</div>
-                    <div className="text-sm text-muted-foreground">For all audit requests</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Audit Benefits */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>What You'll Get in Your Free Consultation</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  "Complete process assessment and opportunity identification",
-                  "ROI projections for potential automation projects",
-                  "Detailed automation roadmap with timeline",
-                  "Platform recommendations tailored to your business",
-                  "No-obligation consultation with senior consultant"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* CTA Button */}
-            <div className="text-center pt-4">
-              <Button 
-                size="lg"
-                variant="hero"
-                onClick={() => window.location.href = '/booking'}
-                className="w-full sm:w-auto"
-              >
-                Schedule Your Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <p className="text-xs text-muted-foreground mt-4">
-                By scheduling a consultation, you agree to our{" "}
-                <Link to="/privacy-policy" className="underline hover:text-primary">Privacy Policy</Link> and{" "}
-                <Link to="/terms-of-service" className="underline hover:text-primary">Terms of Service</Link>.
-              </p>
+              </div>
             </div>
-            
-          </div>
-          
-        </div>
 
+            {/* Right Column - Simple Form */}
+            <div className="lg:col-span-3">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                
+                {/* Name Field */}
+                <div>
+                  <Label htmlFor="name" className="text-sm text-muted-foreground mb-2 block">
+                    Name *
+                  </Label>
+                  <Input
+                    id="name"
+                    {...register("name")}
+                    className="bg-white border-input focus:ring-2 focus:ring-ring focus:border-transparent"
+                    disabled={isSubmitting}
+                  />
+                  {errors.name && (
+                    <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                  )}
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <Label htmlFor="email" className="text-sm text-muted-foreground mb-2 block">
+                    Email *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    className="bg-white border-input focus:ring-2 focus:ring-ring focus:border-transparent"
+                    disabled={isSubmitting}
+                  />
+                  {errors.email && (
+                    <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
+                  )}
+                </div>
+
+                {/* Phone Field */}
+                <div>
+                  <Label htmlFor="phone" className="text-sm text-muted-foreground mb-2 block">
+                    Phone
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    {...register("phone")}
+                    className="bg-white border-input focus:ring-2 focus:ring-ring focus:border-transparent"
+                    disabled={isSubmitting}
+                  />
+                  {errors.phone && (
+                    <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>
+                  )}
+                </div>
+
+                {/* Message Field */}
+                <div>
+                  <Label htmlFor="message" className="text-sm text-muted-foreground mb-2 block">
+                    Message *
+                  </Label>
+                  <Textarea
+                    id="message"
+                    {...register("message")}
+                    className="bg-white border-input focus:ring-2 focus:ring-ring focus:border-transparent min-h-[150px] resize-none"
+                    disabled={isSubmitting}
+                  />
+                  <div className="flex justify-between items-center mt-1">
+                    <div>
+                      {errors.message && (
+                        <p className="text-sm text-destructive">{errors.message.message}</p>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      {messageLength} / 1000
+                    </p>
+                  </div>
+                </div>
+
+                {/* Honeypot Field (Hidden) */}
+                <input
+                  type="text"
+                  {...register("honeypot")}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-3 h-auto text-base font-medium transition-colors duration-200"
+                >
+                  {isSubmitting ? "Sending..." : "Submit"}
+                  {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
