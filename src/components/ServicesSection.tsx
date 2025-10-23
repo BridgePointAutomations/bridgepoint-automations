@@ -152,6 +152,28 @@ const ServicesSection = () => {
           })}
         </div>
 
+        {/* Toggle Button for Comparison */}
+        <div className="text-center mb-12">
+          <Button 
+            variant="outline"
+            size="lg"
+            onClick={toggleComparison}
+            className="inline-flex items-center gap-2"
+          >
+            {showComparison ? (
+              <>
+                Hide Comparison
+                <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                See All Features
+                <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </Button>
+        </div>
+
         {/* Full Pricing Comparison Table */}
         {showComparison && (
           <div id="pricing-comparison" className="mb-16 animate-in fade-in slide-in-from-top-4 duration-500">
@@ -162,16 +184,6 @@ const ServicesSection = () => {
               </p>
             </div>
             <PricingComparisonTable />
-            <div className="text-center mt-8">
-              <Button 
-                variant="outline"
-                onClick={toggleComparison}
-                className="inline-flex items-center gap-2"
-              >
-                Hide Comparison
-                <ChevronUp className="w-4 h-4" />
-              </Button>
-            </div>
           </div>
         )}
 

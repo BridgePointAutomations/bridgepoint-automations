@@ -9,7 +9,7 @@ import { useState } from "react";
 export const PricingComparisonTable = () => {
   const navigate = useNavigate();
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    setup: false,
+    setup: true, // Start with first section expanded
     workflow: false,
     ai: false,
     capacity: false,
@@ -25,8 +25,39 @@ export const PricingComparisonTable = () => {
     }));
   };
 
+  const allExpanded = Object.values(expandedSections).every(val => val);
+  
+  const toggleAllSections = () => {
+    const newState = !allExpanded;
+    setExpandedSections({
+      setup: newState,
+      workflow: newState,
+      ai: newState,
+      capacity: newState,
+      support: newState,
+      commitment: newState,
+      results: newState,
+    });
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-full space-y-4">
+      {/* Instructions and Controls */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+        <p className="text-sm text-muted-foreground flex items-center gap-2">
+          <ChevronDown className="h-4 w-4" />
+          Click on any section header to view detailed features
+        </p>
+        <Button 
+          variant="outline" 
+          size="sm"
+          onClick={toggleAllSections}
+          className="whitespace-nowrap"
+        >
+          {allExpanded ? "Collapse All" : "Expand All"}
+        </Button>
+      </div>
+
       {/* Desktop View */}
       <div className="hidden lg:block overflow-x-auto">
         <table className="w-full border-collapse">
@@ -66,10 +97,10 @@ export const PricingComparisonTable = () => {
           <tbody>
             {/* Setup & Onboarding */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('setup')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('setup')}>
                 <div className="flex items-center justify-between">
                   <span>Setup & Onboarding</span>
-                  {expandedSections.setup ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.setup ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -96,10 +127,10 @@ export const PricingComparisonTable = () => {
 
             {/* Workflow & Infrastructure */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('workflow')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('workflow')}>
                 <div className="flex items-center justify-between">
                   <span>Workflow & Infrastructure</span>
-                  {expandedSections.workflow ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.workflow ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -151,10 +182,10 @@ export const PricingComparisonTable = () => {
             
             {/* AI Capabilities Section */}
             <tr className="bg-muted/30">
-              <td colSpan={4} className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" onClick={() => toggleSection('ai')}>
+              <td colSpan={4} className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" onClick={() => toggleSection('ai')}>
                 <div className="flex items-center justify-between">
                   <span>AI-Powered Features</span>
-                  {expandedSections.ai ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.ai ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -224,10 +255,10 @@ export const PricingComparisonTable = () => {
 
             {/* Capacity */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('capacity')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('capacity')}>
                 <div className="flex items-center justify-between">
                   <span>Capacity</span>
-                  {expandedSections.capacity ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.capacity ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -242,10 +273,10 @@ export const PricingComparisonTable = () => {
 
             {/* Support & Maintenance */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('support')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('support')}>
                 <div className="flex items-center justify-between">
                   <span>Support & Maintenance</span>
-                  {expandedSections.support ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.support ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -274,10 +305,10 @@ export const PricingComparisonTable = () => {
 
             {/* Commitment Terms */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('commitment')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('commitment')}>
                 <div className="flex items-center justify-between">
                   <span>Commitment Terms</span>
-                  {expandedSections.commitment ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.commitment ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
@@ -308,10 +339,10 @@ export const PricingComparisonTable = () => {
 
             {/* Expected Results */}
             <tr className="bg-muted/30">
-              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50" colSpan={4} onClick={() => toggleSection('results')}>
+              <td className="p-4 font-semibold sticky left-0 bg-muted/30 z-10 cursor-pointer hover:bg-muted/50 transition-colors" colSpan={4} onClick={() => toggleSection('results')}>
                 <div className="flex items-center justify-between">
                   <span>Expected Results</span>
-                  {expandedSections.results ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {expandedSections.results ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </div>
               </td>
             </tr>
