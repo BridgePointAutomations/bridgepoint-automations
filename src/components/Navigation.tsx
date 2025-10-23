@@ -28,9 +28,6 @@ const Navigation = () => {
             <a href="/workflows" className="text-foreground hover:text-primary animate-smooth">
               Workflows
             </a>
-            <a href="/package-builder" className="text-foreground hover:text-primary animate-smooth">
-              Find Your Package
-            </a>
             <a href="/resources" className="text-foreground hover:text-primary animate-smooth">
               Resources
             </a>
@@ -88,13 +85,6 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Workflows
-              </a>
-              <a
-                href="/package-builder"
-                className="block px-3 py-2 text-foreground hover:text-primary animate-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                Find Your Package
               </a>
               <a
                 href="/resources"

@@ -54,56 +54,41 @@ const HeroSection = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="w-full group text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
+                className="group"
                 onClick={() => window.location.href = '/booking'}
               >
-                Book Consultation
-                <ArrowRight className="ml-2 h-4 w-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+                Book Free Consultation
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
                 onClick={() => setAssessmentOpen(true)}
               >
-                <ClipboardCheck className="mr-2 h-4 w-4 flex-shrink-0" />
-                Readiness Check
+                <ClipboardCheck className="mr-2 h-4 w-4" />
+                Take Readiness Assessment
               </Button>
-              <div className="sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center lg:block">
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="w-full sm:max-w-md lg:max-w-none text-xs sm:text-sm px-3 sm:px-4 h-auto py-3"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View Services
-                </Button>
-              </div>
             </div>
 
             {/* Social Proof */}
             <div className="pt-8 border-t border-border">
               <p className="text-sm text-muted-foreground mb-4">Trusted by businesses to save 15-25 hours weekly</p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">2-3x</div>
-                  <div className="text-xs text-muted-foreground">Typical ROI</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">20hrs</div>
-                  <div className="text-xs text-muted-foreground">Weekly Time Savings</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$15K-$50K+</div>
-                  <div className="text-xs text-muted-foreground">Typical Annual Savings</div>
+                  <div className="text-2xl font-bold text-primary">15+ hours</div>
+                  <div className="text-xs text-muted-foreground">Saved Weekly</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">6-12mo</div>
-                  <div className="text-xs text-muted-foreground">Payback Period</div>
+                  <div className="text-xs text-muted-foreground">ROI Timeline</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">$50K+</div>
+                  <div className="text-xs text-muted-foreground">Annual Savings</div>
                 </div>
               </div>
             </div>

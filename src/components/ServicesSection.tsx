@@ -81,35 +81,11 @@ const ServicesSection = () => {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Key Metrics */}
-                  <div className="grid grid-cols-2 gap-4 p-4 bg-accent rounded-lg">
-                    <div className="text-center">
-                      <div className="font-semibold text-primary">{pkg.expectedResults.roiMultiplier}</div>
-                      <div className="text-xs text-muted-foreground">Expected ROI</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-semibold text-primary">{pkg.expectedResults.timeSaved}</div>
-                      <div className="text-xs text-muted-foreground">Time Savings</div>
-                    </div>
-                  </div>
-
-                  {/* Features List - Expanded to 10 key features */}
+                  {/* Key Features - Reduced to 6 */}
                   <div className="space-y-2.5">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm"><strong>$0 Setup Fee</strong> - Start immediately</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Automation audit included</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{pkg.workflowInfrastructure.workflowBuilds} workflow builds</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.workflowInfrastructure.airtableBases} Airtable</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       {pkg.workflowInfrastructure.aiIntegrations === 0 ? (
@@ -128,7 +104,7 @@ const ServicesSection = () => {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{typeof pkg.workflowInfrastructure.platformCount === 'string' ? pkg.workflowInfrastructure.platformCount : pkg.workflowInfrastructure.platformCount} platforms</span>
+                      <span className="text-sm">{typeof pkg.workflowInfrastructure.platformCount === 'string' ? pkg.workflowInfrastructure.platformCount : pkg.workflowInfrastructure.platformCount} platforms supported</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
@@ -136,11 +112,7 @@ const ServicesSection = () => {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.responseTime} response</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.modificationHours} hrs modifications/mo</span>
+                      <span className="text-sm">{pkg.supportMaintenance.responseTime} support response</span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
@@ -148,15 +120,9 @@ const ServicesSection = () => {
                     </div>
                   </div>
 
-                  {/* View All Features Link */}
-                  <div className="pt-2 text-center">
-                    <button 
-                      onClick={toggleComparison}
-                      className="text-sm text-primary hover:underline font-medium inline-flex items-center gap-1"
-                    >
-                      {showComparison ? 'Hide all features' : 'See all features'}
-                      {showComparison ? <ChevronUp className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
-                    </button>
+                  {/* Expected Results - De-emphasized */}
+                  <div className="text-xs text-muted-foreground text-center py-2 border-t border-border">
+                    Expected: {pkg.expectedResults.timeSaved} saved • {pkg.expectedResults.roiMultiplier} ROI
                   </div>
 
                   {/* Platforms */}
@@ -196,6 +162,16 @@ const ServicesSection = () => {
               </p>
             </div>
             <PricingComparisonTable />
+            <div className="text-center mt-8">
+              <Button 
+                variant="outline"
+                onClick={toggleComparison}
+                className="inline-flex items-center gap-2"
+              >
+                Hide Comparison
+                <ChevronUp className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         )}
 

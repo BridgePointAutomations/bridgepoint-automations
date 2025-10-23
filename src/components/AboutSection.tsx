@@ -11,8 +11,8 @@ const AboutSection = () => {
     },
     {
       icon: <Target className="w-6 h-6" />,
-      title: "ROI-Focused",
-      description: "Every automation we build is designed with measurable ROI in mind. Most clients see positive returns within 6-12 months, with dedicated performance tracking and optimization."
+      title: "Results-Driven",
+      description: "Every automation is designed with measurable outcomes and continuous optimization to ensure lasting value for your business."
     },
     {
       icon: <Award className="w-6 h-6" />,
