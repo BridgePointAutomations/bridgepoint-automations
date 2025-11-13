@@ -99,13 +99,13 @@ const TermsOfService = () => {
                   <p className="text-muted-foreground mb-4">We offer three main AI automation packages with $0 setup fees:</p>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
                     <li>
-                      <strong>AI Starter:</strong> $1,497/month - Includes 2 custom workflows, 10,000 monthly tasks, 24-hour support response (3-month minimum commitment, 14-day money-back guarantee)
+                      <strong>AI Starter:</strong> $1,497/month - Includes 2 custom workflows, 10,000 monthly tasks, 24-hour support response
                     </li>
                     <li>
-                      <strong>AI Growth:</strong> $2,497/month - Includes 5 advanced workflows + 1 AI chatbot, 25,000 monthly tasks, 12-hour priority support (6-month minimum commitment, 30-day money-back guarantee)
+                      <strong>AI Growth:</strong> $2,497/month - Includes 5 advanced workflows + 1 AI chatbot, 25,000 monthly tasks, 12-hour priority support
                     </li>
                     <li>
-                      <strong>AI Powerhouse:</strong> $4,997/month - Includes 10 complex workflows + 3 AI chatbots, 100,000 monthly tasks, 4-hour dedicated support (12-month minimum commitment, 60-day money-back guarantee)
+                      <strong>AI Powerhouse:</strong> $4,997/month - Includes 10 complex workflows + 3 AI chatbots, 100,000 monthly tasks, 4-hour dedicated support
                     </li>
                   </ul>
 
@@ -115,20 +115,11 @@ const TermsOfService = () => {
                     <li>Monthly subscription fees are billed in advance on the 1st of each month</li>
                     <li>Payment is due within 15 days of invoice date</li>
                     <li>Late payments may incur a 1.5% monthly finance charge</li>
-                    <li>Minimum commitment periods apply based on selected package</li>
                   </ul>
 
-                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Money-Back Guarantee & Cancellation</h3>
-                  <p className="text-muted-foreground mb-3">
-                    Each package includes a money-back guarantee period:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
-                    <li>AI Starter: 14-day money-back guarantee</li>
-                    <li>AI Growth: 30-day money-back guarantee</li>
-                    <li>AI Powerhouse: 60-day money-back guarantee</li>
-                  </ul>
+                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Cancellation Policy</h3>
                   <p className="text-muted-foreground">
-                    After the guarantee period, services may be canceled with 30 days written notice, subject to minimum commitment terms. No refund for the current billing period after the guarantee period expires.
+                    Services may be canceled at any time with 30 days written notice. No refunds are provided for the current billing period. All monthly fees are non-refundable once the billing period has commenced.
                   </p>
                 </CardContent>
               </Card>
@@ -186,7 +177,7 @@ const TermsOfService = () => {
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">By You</h3>
                   <p className="text-muted-foreground mb-4">
-                    You may request cancellation of services with 30 days written notice. Cancellations are subject to minimum commitment periods for each package. If you cancel within the money-back guarantee period, you are eligible for a full refund. After the guarantee period, no refunds are provided for the current or remaining commitment period.
+                    You may cancel services at any time with 30 days written notice. Monthly fees are non-refundable for the current billing period.
                   </p>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">By Us</h3>

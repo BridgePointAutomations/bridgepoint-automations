@@ -11,8 +11,6 @@ export interface Package {
   keyBenefits: [string, string, string];
   outcomeStatement: string;
   popular: boolean;
-  commitmentMonths: number;
-  moneyBackGuaranteeDays: number;
 }
 
 export const PACKAGES: Package[] = [
@@ -31,8 +29,6 @@ export const PACKAGES: Package[] = [
     ],
     outcomeStatement: "Save 10-15 hours weekly",
     popular: false,
-    commitmentMonths: 3,
-    moneyBackGuaranteeDays: 14,
   },
   {
     id: "ai-growth",
@@ -49,8 +45,6 @@ export const PACKAGES: Package[] = [
     ],
     outcomeStatement: "Save 20-30 hours weekly with AI",
     popular: true,
-    commitmentMonths: 6,
-    moneyBackGuaranteeDays: 30,
   },
   {
     id: "ai-powerhouse",
@@ -67,8 +61,6 @@ export const PACKAGES: Package[] = [
     ],
     outcomeStatement: "Save 40-60 hours weekly across your team",
     popular: false,
-    commitmentMonths: 12,
-    moneyBackGuaranteeDays: 60,
   },
 ];
 
