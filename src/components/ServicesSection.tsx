@@ -58,7 +58,7 @@ const ServicesSection = () => {
                       <span className="text-base text-muted-foreground font-normal">/mo</span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      $0 setup • Live in 7 business days
+                      $0 setup • Live in less than a month
                     </div>
                   </div>
                 </CardHeader>
