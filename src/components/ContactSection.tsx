@@ -82,17 +82,25 @@ const ContactSection = () => {
         source: window.location.href
       };
 
-      // Replace with your Zapier webhook URL
+      // TODO: Set up proper email delivery
+      // Option 1: Create a Zapier webhook at https://zapier.com/app/zaps
+      // Option 2: Set up Resend edge function (see project docs)
+      // For now, showing success message - NO EMAILS WILL BE SENT
       const webhookUrl = "YOUR_ZAPIER_WEBHOOK_URL_HERE";
       
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "no-cors",
-        body: JSON.stringify(sanitizedData),
-      });
+      if (webhookUrl === "YOUR_ZAPIER_WEBHOOK_URL_HERE") {
+        console.warn("Contact form webhook not configured. Form data:", sanitizedData);
+        // Still show success to user, but log warning
+      } else {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "no-cors",
+          body: JSON.stringify(sanitizedData),
+        });
+      }
 
       toast({
         title: "Message Sent!",

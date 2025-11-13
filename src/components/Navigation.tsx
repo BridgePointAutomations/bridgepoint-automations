@@ -44,7 +44,7 @@ const Navigation = () => {
               className="group"
               onClick={() => window.location.href = '/booking'}
             >
-              Get Started
+              Book Free Audit
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -107,7 +107,7 @@ const Navigation = () => {
                   className="w-full"
                   onClick={() => {window.location.href = '/booking'; setIsOpen(false);}}
                 >
-                  Get Started
+                  Book Free Audit
                 </Button>
               </div>
             </div>

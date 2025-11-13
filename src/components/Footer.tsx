@@ -36,7 +36,7 @@ const Footer = () => {
               <li><Link to="/#services" className="text-muted-foreground hover:text-primary transition-colors">CRM Integration</Link></li>
               <li><Link to="/#services" className="text-muted-foreground hover:text-primary transition-colors">Workflow Optimization</Link></li>
               <li><Link to="/workflows" className="text-muted-foreground hover:text-primary transition-colors">Automation Workflows</Link></li>
-              <li><Link to="/package-builder" className="text-muted-foreground hover:text-primary transition-colors">Custom Packages</Link></li>
+              <li><Link to="/booking" className="text-muted-foreground hover:text-primary transition-colors">Book Consultation</Link></li>
             </ul>
           </div>
 
