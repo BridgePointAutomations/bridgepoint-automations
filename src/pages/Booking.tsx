@@ -128,7 +128,22 @@ const Booking = () => {
                   <CardHeader>
                     <CardTitle>Select Your Appointment Time</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="space-y-4">
+                    {/* Pre-Frame Message */}
+                    <div className="bg-accent/50 border border-primary/20 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="space-y-1">
+                          <p className="font-semibold text-sm">This is a zero-pressure consultation</p>
+                          <p className="text-sm text-muted-foreground">
+                            No sales pitch. No obligations. Just actionable insights about how automation can help your business. 
+                            Even if you don't move forward with us, you'll walk away with a clear roadmap.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Calendly iframe */}
                     <div className="w-full h-[600px] overflow-hidden rounded-lg border">
                       <iframe
                         src={calendlyUrl}

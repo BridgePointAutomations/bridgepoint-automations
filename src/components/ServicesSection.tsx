@@ -89,6 +89,22 @@ const ServicesSection = () => {
                     Book Free Consultation
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
+                  
+                  {/* Trust Signals */}
+                  <div className="flex flex-col gap-1.5 pt-2">
+                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-success" />
+                      <span>No credit card required</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-success" />
+                      <span>Cancel anytime</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-success" />
+                      <span>{pkg.moneyBackGuaranteeDays}-day money-back guarantee</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             );

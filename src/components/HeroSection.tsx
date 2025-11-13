@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, TrendingUp, ClipboardCheck } from "lucide-react";
-import { AutomationReadinessAssessment } from "./AutomationReadinessAssessment";
+import { ArrowRight, CheckCircle, TrendingUp } from "lucide-react";
+import RiskReversalBadges from "./RiskReversalBadges";
 
 const HeroSection = () => {
-  const [assessmentOpen, setAssessmentOpen] = useState(false);
-
   return (
     <section className="relative pt-20 pb-16 overflow-hidden">
       {/* Background Gradient with Purple Hint */}
@@ -53,24 +50,23 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* Primary CTA */}
+            <div className="space-y-4">
               <Button 
                 size="lg" 
-                className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-6 text-lg group shadow-lg hover:shadow-xl transition-all"
+                className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-6 text-lg group shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
                 onClick={() => window.location.href = '/booking'}
               >
-                Get Your Free Automation Plan →
+                Book Your Free Audit
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-secondary text-secondary hover:bg-secondary/10 font-semibold px-8 py-6 text-lg"
-                asChild
-              >
-                <a href="#services">View Packages</a>
-              </Button>
+              <p className="text-sm text-muted-foreground">
+                45-minute consultation • Zero pressure • Instant ROI projection
+              </p>
             </div>
+            
+            {/* Risk Reversal */}
+            <RiskReversalBadges />
 
             {/* Social Proof */}
             <div className="pt-8 border-t border-border">
@@ -139,11 +135,6 @@ const HeroSection = () => {
           
         </div>
       </div>
-
-      <AutomationReadinessAssessment 
-        isOpen={assessmentOpen}
-        onClose={() => setAssessmentOpen(false)}
-      />
     </section>
   );
 };
