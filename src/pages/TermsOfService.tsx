@@ -91,36 +91,44 @@ const TermsOfService = () => {
                 </CardContent>
               </Card>
 
-              <Card className="mb-8">
+               <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">5. Service Packages and Payment Terms</h2>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Packages</h3>
-                  <p className="text-muted-foreground mb-4">We offer three main service packages:</p>
+                  <p className="text-muted-foreground mb-4">We offer three main AI automation packages with $0 setup fees:</p>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
                     <li>
-                      <strong>Efficiency Essentials:</strong> $3,000 implementation + $200/month support
+                      <strong>AI Starter:</strong> $1,497/month - Includes 2 custom workflows, 10,000 monthly tasks, 24-hour support response (3-month minimum commitment, 14-day money-back guarantee)
                     </li>
                     <li>
-                      <strong>Growth Builder:</strong> $5,000 implementation + $400/month support
+                      <strong>AI Growth:</strong> $2,497/month - Includes 5 advanced workflows + 1 AI chatbot, 25,000 monthly tasks, 12-hour priority support (6-month minimum commitment, 30-day money-back guarantee)
                     </li>
                     <li>
-                      <strong>Enterprise Lite:</strong> $9,000 implementation (includes Premium Care & Monitoring)
+                      <strong>AI Powerhouse:</strong> $4,997/month - Includes 10 complex workflows + 3 AI chatbots, 100,000 monthly tasks, 4-hour dedicated support (12-month minimum commitment, 60-day money-back guarantee)
                     </li>
                   </ul>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Payment Terms</h3>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
-                    <li>Implementation fees are due 50% upfront, 50% upon completion</li>
-                    <li>Monthly support fees are billed in advance on the 1st of each month</li>
+                    <li>All packages have $0 setup fees</li>
+                    <li>Monthly subscription fees are billed in advance on the 1st of each month</li>
                     <li>Payment is due within 15 days of invoice date</li>
                     <li>Late payments may incur a 1.5% monthly finance charge</li>
+                    <li>Minimum commitment periods apply based on selected package</li>
                   </ul>
 
-                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Refund Policy</h3>
+                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Money-Back Guarantee & Cancellation</h3>
+                  <p className="text-muted-foreground mb-3">
+                    Each package includes a money-back guarantee period:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+                    <li>AI Starter: 14-day money-back guarantee</li>
+                    <li>AI Growth: 30-day money-back guarantee</li>
+                    <li>AI Powerhouse: 60-day money-back guarantee</li>
+                  </ul>
                   <p className="text-muted-foreground">
-                    Implementation fees are non-refundable once work has commenced. Monthly support fees may be canceled
-                    with 30 days written notice, with no refund for the current billing period.
+                    After the guarantee period, services may be canceled with 30 days written notice, subject to minimum commitment terms. No refund for the current billing period after the guarantee period expires.
                   </p>
                 </CardContent>
               </Card>
@@ -172,14 +180,13 @@ const TermsOfService = () => {
                 </CardContent>
               </Card>
 
-              <Card className="mb-8">
+               <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">9. Termination</h2>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">By You</h3>
                   <p className="text-muted-foreground mb-4">
-                    You may terminate ongoing support services with 30 days written notice. Implementation projects
-                    cannot be terminated once work has commenced without forfeiting payments made.
+                    You may request cancellation of services with 30 days written notice. Cancellations are subject to minimum commitment periods for each package. If you cancel within the money-back guarantee period, you are eligible for a full refund. After the guarantee period, no refunds are provided for the current or remaining commitment period.
                   </p>
 
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">By Us</h3>
@@ -188,6 +195,7 @@ const TermsOfService = () => {
                     <li>Breach these Terms of Service</li>
                     <li>Fail to pay invoices within 30 days</li>
                     <li>Engage in abusive or illegal conduct</li>
+                    <li>Violate our acceptable use policies</li>
                   </ul>
                 </CardContent>
               </Card>
