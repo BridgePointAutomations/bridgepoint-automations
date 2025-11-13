@@ -58,7 +58,9 @@ const ServicesSection = () => {
                       <span className="text-base text-muted-foreground font-normal">/mo</span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      $0 setup • Live in less than a month
+                      {index === 0 && "$0 setup • Live in less than a month"}
+                      {index === 1 && "$0 setup • Dedicated account manager"}
+                      {index === 2 && "$0 setup • White-glove implementation"}
                     </div>
                   </div>
                 </CardHeader>
