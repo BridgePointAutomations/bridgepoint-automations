@@ -109,8 +109,12 @@ const Workflows = () => {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full">
-                  Learn More About This Workflow
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => navigate('/booking')}
+                >
+                  Book Free Audit
                 </Button>
               </CardContent>
             </Card>
