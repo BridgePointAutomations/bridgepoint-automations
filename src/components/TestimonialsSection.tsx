@@ -8,7 +8,7 @@ const TestimonialsSection = () => {
       name: "Sarah Mitchell",
       role: "Owner",
       business: "Pittsburgh Auto Service",
-      content: "BridgePoint transformed our customer follow-up process. We went from manually calling customers about maintenance to having everything automated through Airtable and Zapier. We're saving 15 hours a week and our customers love the professional touch.",
+      content: "BridgePoint transformed our customer follow-up process. We went from manually calling customers about maintenance to having everything automated. We're saving 15 hours a week and our customers love the professional touch.",
       rating: 5,
       savings: "15 hrs/week saved"
     },

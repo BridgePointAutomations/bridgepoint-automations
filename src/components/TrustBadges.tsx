@@ -10,7 +10,7 @@ export const TrustBadges = () => {
     {
       icon: Award,
       title: "Certified Automation Expert",
-      description: "Make.com & Zapier certified",
+      description: "Enterprise automation certified",
     },
     {
       icon: Clock,

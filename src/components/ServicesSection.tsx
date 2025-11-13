@@ -126,16 +126,12 @@ const ServicesSection = () => {
                     Expected: {pkg.expectedResults.timeSaved} saved • {pkg.expectedResults.roiMultiplier} ROI
                   </div>
 
-                  {/* Platforms */}
+                  {/* Platform Capability */}
                   <div className="pt-4 border-t border-border">
-                    <div className="text-xs font-medium text-muted-foreground mb-2">Platforms Used:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {pkg.workflowInfrastructure.platformsSupported.map((platform, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
-                          {platform}
-                        </Badge>
-                      ))}
-                    </div>
+                    <div className="text-xs font-medium text-muted-foreground mb-2">Technology Stack:</div>
+                    <Badge variant="outline" className="text-xs">
+                      Platform Selected During Discovery
+                    </Badge>
                   </div>
 
                   {/* CTA Button */}

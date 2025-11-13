@@ -5,71 +5,70 @@ import { HelpCircle, Settings, TrendingUp, Rocket } from "lucide-react";
 const FAQSection = () => {
   const faqSections = [
     {
-      title: "Automation Platforms & Features",
+      title: "Our Automation Approach",
       icon: <Settings className="w-5 h-5" />,
       faqs: [
         {
-          question: "What can Zapier actually do for my business?",
+          question: "What tools and platforms do you use?",
           answer: (
             <div className="space-y-3">
-              <p>Zapier is the backbone of most automation workflows. It can:</p>
+              <p>We select the best automation platform for YOUR specific needs during our discovery audit. This approach ensures:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Connect 8,000+ apps</strong> including Gmail, Slack, QuickBooks, CRM systems</li>
-                <li><strong>Trigger actions automatically</strong> when specific events happen</li>
-                <li><strong>Process data</strong> between different systems without manual copying</li>
-                <li><strong>Send notifications</strong> via email, SMS, or team chat when tasks complete</li>
+                <li><strong>Perfect fit:</strong> Match tools to your existing software ecosystem</li>
+                <li><strong>Cost efficiency:</strong> No paying for features you don't need</li>
+                <li><strong>Scalability:</strong> Platform grows with your business</li>
+                <li><strong>Security & compliance:</strong> Meet your industry requirements</li>
               </ul>
-              <p><strong>Example:</strong> When a new customer signs up on your website, automatically create them in your CRM, send a welcome email, add them to your mailing list, and notify your sales team.</p>
+              <p><strong>Why we don't prescribe tools upfront:</strong> Every business is unique. Your current CRM, email provider, accounting software, and industry requirements all influence which platform delivers the best ROI.</p>
+              <p className="mt-3"><strong>During your free audit,</strong> we'll recommend the optimal platform stack and explain exactly why it's the right choice for you.</p>
             </div>
           )
         },
         {
-          question: "How is Airtable different from Excel or Google Sheets?",
+          question: "How do you connect my existing business software?",
           answer: (
             <div className="space-y-3">
-              <p>Airtable combines the simplicity of spreadsheets with database power:</p>
+              <p>Our automation platforms can connect virtually any business software:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Relational data:</strong> Link records across different tables</li>
-                <li><strong>Rich field types:</strong> Attachments, checkboxes, dropdowns, formulas</li>
-                <li><strong>Multiple views:</strong> Grid, calendar, kanban, gallery views of same data</li>
-                <li><strong>Built-in automation:</strong> Trigger actions when records are created/updated</li>
-                <li><strong>Real-time collaboration:</strong> Multiple people can work simultaneously</li>
-                <li><strong>API access:</strong> Connects with other tools seamlessly</li>
+                <li><strong>8,000+ pre-built connectors:</strong> QuickBooks, Salesforce, Gmail, Slack, Shopify, etc.</li>
+                <li><strong>Custom API integrations:</strong> Connect proprietary or industry-specific software</li>
+                <li><strong>Legacy system support:</strong> Even older software can be integrated</li>
+                <li><strong>Real-time sync:</strong> Data flows instantly between systems</li>
+                <li><strong>Secure connections:</strong> Bank-level encryption and authentication</li>
               </ul>
-              <p><strong>Perfect for:</strong> Customer databases, project tracking, inventory management, employee records</p>
+              <p><strong>Free compatibility check:</strong> We'll evaluate your current software stack during the audit.</p>
             </div>
           )
         },
         {
-          question: "What makes Make (formerly Integromat) special?",
+          question: "Are you locked into specific automation vendors?",
           answer: (
             <div className="space-y-3">
-              <p>Make excels at complex automation scenarios:</p>
+              <p>No! Our vendor-agnostic approach benefits you:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Visual workflow builder:</strong> See your automation logic clearly</li>
-                <li><strong>Advanced data manipulation:</strong> Transform, filter, and route data</li>
-                <li><strong>Error handling:</strong> Built-in retry logic and error reporting</li>
-                <li><strong>Conditional logic:</strong> "If this, then that" with multiple conditions</li>
-                <li><strong>Webhook support:</strong> Real-time triggers from any system</li>
-                <li><strong>Bulk operations:</strong> Process hundreds of records efficiently</li>
+                <li><strong>Best-in-class solutions:</strong> We use whichever platform excels for your use case</li>
+                <li><strong>No kickbacks:</strong> We don't receive commissions from platform vendors</li>
+                <li><strong>Future-proof:</strong> Can migrate to new platforms as technology evolves</li>
+                <li><strong>Cost optimization:</strong> Choose based on your budget and task volume</li>
               </ul>
-              <p><strong>Best for:</strong> Complex multi-step processes, data synchronization, advanced business logic</p>
+              <p><strong>Multi-platform expertise:</strong> Our team is certified across multiple enterprise automation platforms, ensuring you get unbiased recommendations.</p>
             </div>
           )
         },
         {
-          question: "What is Activepieces and when do you use it?",
+          question: "What makes your automation different from DIY solutions?",
           answer: (
             <div className="space-y-3">
-              <p>Activepieces is our open-source automation platform for:</p>
+              <p>While DIY automation tools exist, our service provides:</p>
               <ul className="space-y-2 ml-4">
-                <li><strong>Custom integrations:</strong> Connect systems that others can't</li>
-                <li><strong>Data privacy:</strong> Keep sensitive data on your own servers</li>
-                <li><strong>Cost efficiency:</strong> No per-task pricing for high-volume automation</li>
-                <li><strong>Custom connectors:</strong> Build integrations for proprietary software</li>
-                <li><strong>Enterprise features:</strong> Advanced security and compliance options</li>
+                <li><strong>Expert architecture:</strong> We design workflows for scalability and reliability</li>
+                <li><strong>Error handling:</strong> Built-in retry logic, fallbacks, and monitoring</li>
+                <li><strong>Ongoing maintenance:</strong> Platform updates, bug fixes, optimization</li>
+                <li><strong>Complex logic:</strong> Multi-step processes with conditional branching</li>
+                <li><strong>Security best practices:</strong> Proper authentication, data encryption, compliance</li>
+                <li><strong>Training & documentation:</strong> Your team learns to monitor and modify workflows</li>
               </ul>
-              <p><strong>Ideal for:</strong> Businesses with unique software, high-volume processes, or strict data requirements</p>
+              <p><strong>Bottom line:</strong> You get enterprise-grade automation without hiring a full-time developer.</p>
             </div>
           )
         }
