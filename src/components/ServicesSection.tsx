@@ -1,24 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowRight, Zap, X, ChevronDown, ChevronUp } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap } from "lucide-react";
 import { PACKAGES } from "@/data/packages";
-import { PricingComparisonTable } from "@/components/PricingComparisonTable";
-import { useState } from "react";
-import RiskReversal from "./RiskReversal";
 
 const ServicesSection = () => {
-  const [showComparison, setShowComparison] = useState(false);
-
-  const toggleComparison = () => {
-    setShowComparison(!showComparison);
-    if (!showComparison) {
-      setTimeout(() => {
-        document.getElementById('pricing-comparison')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
-  };
-
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-accent/30 to-background">
       <div className="container mx-auto px-4">
@@ -29,18 +15,15 @@ const ServicesSection = () => {
             Automation Packages
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold">
-            Simple Pricing, <span className="text-gradient">Powerful Results</span>
+            Choose Your <span className="text-gradient">AI Growth Path</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            No hidden fees. Cancel anytime. 30-day money-back guarantee.
+            Start small, scale as you grow. All packages include $0 setup fee.
           </p>
         </div>
 
-        {/* Risk Reversal Badges */}
-        <RiskReversal />
-
         {/* Service Packages */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-8">
           {PACKAGES.map((pkg, index) => {
             const IconComponent = pkg.icon;
             return (
@@ -54,9 +37,9 @@ const ServicesSection = () => {
                   </Badge>
                 )}
 
-                <CardHeader className="text-center pb-6">
+                <CardHeader className="text-center pb-4">
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 ${
                       index === 0
                         ? "bg-primary/10 text-primary"
                         : index === 1
@@ -67,71 +50,33 @@ const ServicesSection = () => {
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <CardTitle className="text-xl mb-2">{pkg.tier}</CardTitle>
+                  <p className="text-sm text-muted-foreground font-medium mb-4">{pkg.headline}</p>
+                  
                   <div className="space-y-1">
-                    <div className="text-3xl font-bold text-gradient">
-                      ${pkg.monthlyPrice.toLocaleString()}<span className="text-base text-muted-foreground">/month</span>
-                    </div>
-                    <div className="text-sm font-medium text-success">
-                      $0 Setup Fee
+                    <div className="text-4xl font-bold text-gradient">
+                      ${pkg.monthlyPrice.toLocaleString()}
+                      <span className="text-base text-muted-foreground font-normal">/mo</span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {pkg.commitmentTerms.minimumMonths} month minimum
+                      $0 setup • {pkg.commitmentMonths}mo min • {pkg.moneyBackGuaranteeDays}-day guarantee
                     </div>
                   </div>
-                  <CardDescription className="text-sm">{pkg.description}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Key Features - Reduced to 6 */}
-                  <div className="space-y-2.5">
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.workflowInfrastructure.workflowBuilds} workflow builds</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      {pkg.workflowInfrastructure.aiIntegrations === 0 ? (
-                        <X className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                      ) : (
-                        <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      )}
-                      <span className="text-sm">
-                        {pkg.workflowInfrastructure.aiIntegrations === 0 
-                          ? "No AI integrations" 
-                          : typeof pkg.workflowInfrastructure.aiIntegrations === 'string'
-                          ? pkg.workflowInfrastructure.aiIntegrations
-                          : `${pkg.workflowInfrastructure.aiIntegrations} AI integration${pkg.workflowInfrastructure.aiIntegrations > 1 ? 's' : ''}`
-                        }
-                      </span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{typeof pkg.workflowInfrastructure.platformCount === 'string' ? pkg.workflowInfrastructure.platformCount : pkg.workflowInfrastructure.platformCount} platforms supported</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.capacity.monthlyTasks} monthly tasks</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.responseTime} support response</span>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{pkg.supportMaintenance.strategySessions} strategy sessions</span>
-                    </div>
+                  {/* 3 Key Benefits */}
+                  <div className="space-y-3">
+                    {pkg.keyBenefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">{benefit}</span>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Expected Results - De-emphasized */}
-                  <div className="text-xs text-muted-foreground text-center py-2 border-t border-border">
-                    Expected: {pkg.expectedResults.timeSaved} saved • {pkg.expectedResults.roiMultiplier} ROI
-                  </div>
-
-                  {/* Platform Capability */}
-                  <div className="pt-4 border-t border-border">
-                    <div className="text-xs font-medium text-muted-foreground mb-2">Technology Stack:</div>
-                    <Badge variant="outline" className="text-xs">
-                      Platform Selected During Discovery
-                    </Badge>
+                  {/* Outcome Statement */}
+                  <div className="text-center py-4 border-t border-b border-border">
+                    <p className="text-sm font-semibold text-foreground">{pkg.outcomeStatement}</p>
                   </div>
 
                   {/* CTA Button */}
@@ -141,7 +86,7 @@ const ServicesSection = () => {
                     size="lg"
                     onClick={() => (window.location.href = "/booking")}
                   >
-                    Start Saving Time Today
+                    Book Free Consultation
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardContent>
@@ -149,41 +94,6 @@ const ServicesSection = () => {
             );
           })}
         </div>
-
-        {/* Toggle Button for Comparison */}
-        <div className="text-center mb-12">
-          <Button 
-            variant="outline"
-            size="lg"
-            onClick={toggleComparison}
-            className="inline-flex items-center gap-2"
-          >
-            {showComparison ? (
-              <>
-                Hide Comparison
-                <ChevronUp className="w-4 h-4" />
-              </>
-            ) : (
-              <>
-                See All Features
-                <ChevronDown className="w-4 h-4" />
-              </>
-            )}
-          </Button>
-        </div>
-
-        {/* Full Pricing Comparison Table */}
-        {showComparison && (
-          <div id="pricing-comparison" className="mb-16 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Complete Feature Comparison</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                See every feature side-by-side to make the best decision for your business
-              </p>
-            </div>
-            <PricingComparisonTable />
-          </div>
-        )}
       </div>
     </section>
   );
