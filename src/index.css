@@ -17,18 +17,26 @@
     --primary-foreground: 0 0% 100%;
     --primary-dark: 174 62% 25%;
     
-    /* Secondary: Bright Emerald (growth/CTAs) */
-    --secondary: 160 70% 45%;
+    /* Secondary: Enhanced Emerald (growth/CTAs) */
+    --secondary: 160 78% 42%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-dark: 160 70% 38%;
+    --secondary-dark: 160 78% 35%;
     
     /* Accent: Electric Mint (energy/highlights) */
     --accent-cyan: 168 85% 65%;
     --accent-cyan-foreground: 200 15% 20%;
     
-    /* Tertiary: Sunset Orange (warnings/ROI) */
+    /* Amber System - Conversion & ROI Focus */
     --amber: 30 85% 58%;
     --amber-foreground: 200 15% 20%;
+    --amber-bright: 30 95% 58%;
+    --amber-rich: 30 90% 52%;
+    --amber-deep: 30 90% 45%;
+    
+    /* CTA Colors - High-Impact Conversion */
+    --cta-primary: 30 90% 52%;
+    --cta-primary-dark: 30 90% 45%;
+    --cta-primary-foreground: 0 0% 100%;
     
     /* Accent: Pale mint background */
     --accent: 160 45% 95%;
@@ -56,17 +64,30 @@
     --destructive-foreground: 0 0% 100%;
     
     /* Growth Gradient System */
-    --gradient-primary: linear-gradient(135deg, hsl(174, 62%, 32%), hsl(160, 70%, 45%));
-    --gradient-hero: linear-gradient(90deg, hsl(174, 62%, 32%) 0%, hsl(160, 70%, 45%) 50%, hsl(168, 85%, 65%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(174, 62%, 32%), hsl(160, 78%, 42%));
+    --gradient-hero: linear-gradient(90deg, hsl(174, 62%, 32%) 0%, hsl(160, 78%, 42%) 50%, hsl(168, 85%, 65%) 100%);
     --gradient-accent: linear-gradient(120deg, hsl(160, 45%, 95%) 0%, hsl(var(--background)) 100%);
-    --gradient-tech: linear-gradient(90deg, hsl(168, 85%, 65%) 0%, hsl(160, 70%, 45%) 50%, hsl(174, 62%, 32%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(160, 70%, 45% / 0.12), transparent 70%);
+    --gradient-tech: linear-gradient(90deg, hsl(168, 85%, 65%) 0%, hsl(160, 78%, 42%) 50%, hsl(174, 62%, 32%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(160, 78%, 42% / 0.12), transparent 70%);
     
-    /* Premium Shadows with Emerald Hints */
-    --shadow-soft: 0 2px 8px -2px hsl(160, 70%, 45% / 0.08);
-    --shadow-medium: 0 8px 24px -4px hsl(160, 70%, 45% / 0.12);
-    --shadow-bold: 0 16px 32px -8px hsl(160, 70%, 45% / 0.16);
-    --shadow-glow: 0 0 40px hsl(160, 70%, 45% / 0.2);
+    /* Conversion Gradients - Amber Focus */
+    --gradient-cta: linear-gradient(135deg, hsl(30, 90%, 52%), hsl(35, 90%, 48%));
+    --gradient-conversion: linear-gradient(135deg, hsl(30, 90%, 52%) 0%, hsl(160, 78%, 42%) 100%);
+    
+    /* Enhanced Shadow System - Premium Depth */
+    --shadow-soft: 0 2px 8px -2px hsl(160, 78%, 42% / 0.08);
+    --shadow-medium: 0 8px 24px -4px hsl(160, 78%, 42% / 0.12);
+    --shadow-bold: 0 16px 32px -8px hsl(160, 78%, 42% / 0.2);
+    --shadow-glow: 0 0 40px hsl(160, 78%, 42% / 0.28);
+    
+    /* Layered Shadow System */
+    --shadow-lifted: 0 1px 3px hsl(160, 78%, 42% / 0.08), 0 4px 12px hsl(160, 78%, 42% / 0.12);
+    --shadow-floating: 0 4px 8px hsl(160, 78%, 42% / 0.08), 0 12px 32px hsl(160, 78%, 42% / 0.16), 0 0 0 1px hsl(160, 25%, 85%);
+    --shadow-premium: 0 8px 16px hsl(160, 78%, 42% / 0.12), 0 16px 48px hsl(160, 78%, 42% / 0.2), 0 0 0 1px hsl(160, 25%, 90%);
+    
+    /* CTA Shadows - Amber Accents */
+    --shadow-cta: 0 4px 12px hsl(30, 90%, 52% / 0.3), 0 8px 24px hsl(30, 90%, 52% / 0.2);
+    --shadow-cta-hover: 0 6px 16px hsl(30, 90%, 52% / 0.4), 0 12px 32px hsl(30, 90%, 52% / 0.25);
     
     /* Typography Scale */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -93,24 +114,30 @@
   }
 
   .dark {
-    /* Dark Mode with Emerald Accents */
+    /* Dark Mode with Enhanced Emerald & Amber */
     --background: 200 20% 8%;
     --foreground: 40 30% 95%;
     --primary: 174 62% 45%;
     --primary-foreground: 200 20% 8%;
-    --secondary: 160 70% 55%;
+    --secondary: 160 78% 52%;
     --secondary-foreground: 200 20% 8%;
     --accent-cyan: 168 85% 70%;
     --accent-cyan-foreground: 200 20% 8%;
     --amber: 30 85% 58%;
     --amber-foreground: 200 20% 8%;
+    --amber-bright: 30 95% 62%;
+    --amber-rich: 30 85% 60%;
+    --amber-deep: 30 85% 52%;
+    --cta-primary: 30 85% 60%;
+    --cta-primary-dark: 30 85% 52%;
+    --cta-primary-foreground: 0 0% 100%;
     --accent: 160 25% 15%;
-    --accent-foreground: 160 70% 55%;
+    --accent-foreground: 160 78% 52%;
     --card: 200 20% 10%;
     --card-foreground: 40 30% 95%;
     --border: 160 25% 20%;
     --input: 160 25% 20%;
-    --ring: 160 70% 55%;
+    --ring: 160 78% 52%;
     --muted: 200 15% 18%;
     --muted-foreground: 200 10% 60%;
   }
@@ -217,5 +244,55 @@
 
   .ring-secondary {
     --tw-ring-color: hsl(var(--secondary));
+  }
+
+  /* Enhanced Shadow Utilities */
+  .shadow-lifted {
+    box-shadow: var(--shadow-lifted);
+  }
+
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+
+  .shadow-premium {
+    box-shadow: var(--shadow-premium);
+  }
+
+  .shadow-cta {
+    box-shadow: var(--shadow-cta);
+  }
+
+  .shadow-cta-hover {
+    box-shadow: var(--shadow-cta-hover);
+  }
+
+  /* CTA & Conversion Utilities */
+  .bg-cta-primary {
+    background: hsl(var(--cta-primary));
+  }
+
+  .bg-gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  .bg-gradient-conversion {
+    background: var(--gradient-conversion);
+  }
+
+  .text-cta {
+    color: hsl(var(--cta-primary));
+  }
+
+  .border-cta {
+    border-color: hsl(var(--cta-primary));
+  }
+
+  .text-amber-rich {
+    color: hsl(var(--amber-rich));
+  }
+
+  .text-amber-bright {
+    color: hsl(var(--amber-bright));
   }
 }
