@@ -53,7 +53,7 @@ const ServicesSection = () => {
                   <p className="text-sm text-muted-foreground font-medium mb-4">{pkg.headline}</p>
                   
                   <div className="space-y-1">
-                    <div className="text-4xl font-bold text-gradient">
+                    <div className="text-4xl font-bold text-amber-rich">
                       ${pkg.monthlyPrice.toLocaleString()}
                       <span className="text-base text-muted-foreground font-normal">/mo</span>
                     </div>
