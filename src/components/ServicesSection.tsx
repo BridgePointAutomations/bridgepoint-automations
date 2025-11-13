@@ -29,7 +29,7 @@ const ServicesSection = () => {
             return (
               <Card
                 key={index}
-                className={`relative hover-lift ${pkg.popular ? "ring-2 ring-primary shadow-glow" : "shadow-soft"}`}
+                className={`relative hover-lift shadow-premium ${pkg.popular ? "ring-2 ring-primary" : ""}`}
               >
                 {pkg.popular && (
                   <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-primary text-white shadow-glow">
