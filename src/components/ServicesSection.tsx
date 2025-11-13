@@ -58,7 +58,7 @@ const ServicesSection = () => {
                       <span className="text-base text-muted-foreground font-normal">/mo</span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      $0 setup • {pkg.commitmentMonths}mo min • {pkg.moneyBackGuaranteeDays}-day guarantee
+                      $0 setup • Live in 7 business days
                     </div>
                   </div>
                 </CardHeader>
@@ -102,7 +102,7 @@ const ServicesSection = () => {
                     </div>
                     <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                       <CheckCircle className="w-3.5 h-3.5 text-success" />
-                      <span>{pkg.moneyBackGuaranteeDays}-day money-back guarantee</span>
+                      <span>Free workflow optimization included</span>
                     </div>
                   </div>
                 </CardContent>
