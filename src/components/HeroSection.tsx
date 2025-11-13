@@ -56,21 +56,19 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                variant="hero" 
                 size="lg" 
-                className="group"
+                className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-6 text-lg group shadow-lg hover:shadow-xl transition-all"
                 onClick={() => window.location.href = '/booking'}
               >
-                Book Free Consultation
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                Get Your Free Automation Plan →
               </Button>
               <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => setAssessmentOpen(true)}
+                size="lg" 
+                variant="outline"
+                className="border-2 border-secondary text-secondary hover:bg-secondary/10 font-semibold px-8 py-6 text-lg"
+                asChild
               >
-                <ClipboardCheck className="mr-2 h-4 w-4" />
-                Take Readiness Assessment
+                <a href="#services">View Packages</a>
               </Button>
             </div>
 

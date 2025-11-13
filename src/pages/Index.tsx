@@ -2,28 +2,23 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import IntegrationShowcase from "@/components/IntegrationShowcase";
-import AboutSection from "@/components/AboutSection";
-import IndustriesSection from "@/components/IndustriesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
+import UrgencyBanner from "@/components/UrgencyBanner";
 
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { TrustBadges } from "@/components/TrustBadges";
 import { WorkflowVisualization } from "@/components/WorkflowVisualization";
 import { AutomationReadinessAssessment } from "@/components/AutomationReadinessAssessment";
 import Footer from "@/components/Footer";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowRight } from "lucide-react";
 
 const Index = () => {
   const [assessmentOpen, setAssessmentOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
+      <UrgencyBanner />
       <Navigation />
       <ExitIntentPopup />
       <main>
@@ -35,8 +30,6 @@ const Index = () => {
         </section>
 
         <ServicesSection />
-        
-        <IntegrationShowcase />
         
         {/* Workflow Examples Section */}
         <section className="py-20 bg-muted/20">
@@ -76,8 +69,6 @@ const Index = () => {
           </div>
         </section>
 
-        <AboutSection />
-        <IndustriesSection />
         <TestimonialsSection />
         <FAQSection />
         <ContactSection />
