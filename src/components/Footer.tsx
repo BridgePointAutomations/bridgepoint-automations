@@ -24,8 +24,8 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
               </span>
             </Link>
             <p className="text-slate-600 leading-relaxed">
-              Helping small businesses grow with custom websites and smart automation.
-              Simple, effective, and built for you.
+              Helping small businesses grow with custom websites and smart automation. Simple, effective, and built for
+              you.
             </p>
             <div className="flex gap-4">
               {[Twitter, Linkedin, Instagram].map((Icon, index) => (
@@ -44,9 +44,30 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6">Services</h4>
             <ul className="space-y-4">
-              <li><a href="#services" className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group">Website Development</a></li>
-              <li><a href="#services" className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group">Business Automation</a></li>
-              <li><a href="#services" className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group">AI Solutions</a></li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group"
+                >
+                  Website Development
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group"
+                >
+                  Business Automation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-slate-600 hover:text-primary transition-colors flex items-center gap-2 group"
+                >
+                  AI Solutions
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -54,12 +75,20 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6">Company</h4>
             <ul className="space-y-4">
-              <li><a href="#process" className="text-slate-600 hover:text-primary transition-colors">Our Process</a></li>
-              <li><a href="#contact" className="text-slate-600 hover:text-primary transition-colors">Contact Us</a></li>
+              <li>
+                <a href="#process" className="text-slate-600 hover:text-primary transition-colors">
+                  Our Process
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="text-slate-600 hover:text-primary transition-colors">
+                  Contact Us
+                </a>
+              </li>
               <li>
                 <button
                   className="text-slate-600 hover:text-primary transition-colors text-left"
-                  onClick={() => onOpenBooking ? onOpenBooking() : (window.location.href = '/booking')}
+                  onClick={() => (onOpenBooking ? onOpenBooking() : (window.location.href = "/booking"))}
                 >
                   Book Audit
                 </button>
@@ -73,15 +102,25 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
             <div className="space-y-4">
               <div className="flex items-start gap-3 text-slate-600">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <span>Pittsburgh, PA<br />Innovation District</span>
+                <span>
+                  Pittsburgh, PA
+                  <br />
+                  Innovation District
+                </span>
               </div>
-              <a href="tel:4125552743" className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors">
+              <a
+                href="tel:4125552743"
+                className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors"
+              >
                 <Phone className="w-5 h-5 text-primary" />
                 <span>(412) 555-2743</span>
               </a>
-              <a href="mailto:hello@bridgepoint.ai" className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors">
+              <a
+                href="mailto:support@bridgepointautomations.com"
+                className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors"
+              >
                 <Mail className="w-5 h-5 text-primary" />
-                <span>hello@bridgepoint.ai</span>
+                <span>support@bridgepointautomations.com</span>
               </a>
             </div>
           </div>
@@ -89,13 +128,17 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500">
-            © {currentYear} BridgePoint Automations. All rights reserved.
-          </p>
+          <p className="text-sm text-slate-500">© {currentYear} BridgePoint Automations. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-slate-500">
-            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
-            <Link to="/cookie-policy" className="hover:text-primary transition-colors">Cookie Policy</Link>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-of-service" className="hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
+            <Link to="/cookie-policy" className="hover:text-primary transition-colors">
+              Cookie Policy
+            </Link>
           </div>
         </div>
       </div>
