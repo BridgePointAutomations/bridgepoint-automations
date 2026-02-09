@@ -70,7 +70,7 @@ const ServicesSection = ({ onOpenBooking }: ServicesSectionProps) => {
             Our Services
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-slate-900">
-            Everything You Need to <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Grow Online</span>
+            Everything You Need to <span className="text-gradient">Grow Online</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Simple, effective technology solutions designed specifically for small businesses.
