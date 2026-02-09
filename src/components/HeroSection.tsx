@@ -1,138 +1,109 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, TrendingUp } from "lucide-react";
-import RiskReversalBadges from "./RiskReversalBadges";
+import { ArrowRight, Bot, Zap, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onOpenBooking?: () => void;
+}
+
+const HeroSection = ({ onOpenBooking }: HeroSectionProps) => {
   return (
-    <section className="relative pt-20 pb-16 overflow-hidden">
-      {/* Background Gradient with Purple Hint */}
-      <div className="absolute inset-0 bg-gradient-glow opacity-5" />
-      
-      <div className="container relative mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <Badge variant="outline" className="text-primary border-primary/20">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Serving Small Business Communities
-              </Badge>
-              
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                Transform Your Business with{" "}
-                <span className="text-gradient">AI-Powered Automation</span>
-              </h1>
-              
-              <p className="text-lg text-muted-foreground max-w-xl">
-                BridgePoint Automations delivers AI-enhanced workflows, intelligent chatbots, and LLM-powered automation to small businesses. Reduce manual work by up to 77% with cutting-edge no-code platforms, measurable ROI, and continuous optimization.
-              </p>
-            </div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 bg-background z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        <div className="absolute top-0 left-0 right-0 h-[500px] bg-primary/10 blur-[100px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full mix-blend-screen" />
+      </div>
 
-            {/* Value Props */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">77% Profit Margins</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">ROI-Focused Approach</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">AI-Enhanced Workflows</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-success" />
-                <span className="text-sm font-medium">Expert Local Support</span>
-              </div>
-            </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/50 border border-slate-200 backdrop-blur-md mb-8"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm font-medium text-slate-600">
+              Now Offering Custom Websites
+            </span>
+          </motion.div>
 
-            {/* Primary CTA */}
-            <div className="space-y-4">
-              <Button 
-                size="lg" 
-                className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-6 text-lg group shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
-                onClick={() => window.location.href = '/booking'}
-              >
-                Book Your Free Audit
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <p className="text-sm text-muted-foreground">
-                45-minute consultation • Zero pressure • Instant ROI projection
-              </p>
-            </div>
-            
-            {/* Risk Reversal */}
-            <RiskReversalBadges />
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight"
+          >
+            <span className="block text-slate-900 mb-2 tracking-tight">Transform Your Business with</span>
+            <span className="text-gradient">
+              Smart Technology
+            </span>
+          </motion.h1>
 
-            {/* Social Proof */}
-            <div className="pt-8 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-4">Trusted by businesses to save 15-25 hours weekly</p>
-              <div className="grid grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">15+ hours</div>
-                  <div className="text-xs text-muted-foreground">Saved Weekly</div>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
+            We build modern websites and automation systems that save you time, reduce costs, and help you grow.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-14 px-8 rounded-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 btn-shine"
+              onClick={() => onOpenBooking ? onOpenBooking() : (window.location.href = '/booking')}
+            >
+              Get Started
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto h-14 px-8 rounded-lg border-slate-200 bg-white/50 backdrop-blur-sm hover:bg-slate-50 text-slate-900 transition-all duration-300"
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              View Services
+            </Button>
+          </motion.div>
+
+          {/* Stats / Proof */}
+          <motion.div
+            initial={{ opacity: 0, mt: 20 }}
+            animate={{ opacity: 1, mt: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-100 pt-8"
+          >
+            {[
+              { label: "Efficiency Boost", value: "300%", icon: Zap },
+              { label: "Active Clients", value: "50+", icon: Bot },
+              { label: "Hours Saved", value: "10k+", icon: Cpu },
+              { label: "Growth Avg", value: "10x", icon: ArrowRight },
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="flex justify-center mb-2 text-primary group-hover:text-primary/80 transition-colors duration-300">
+                  <stat.icon className="w-6 h-6" />
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">6-12mo</div>
-                  <div className="text-xs text-muted-foreground">ROI Timeline</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$50K+</div>
-                  <div className="text-xs text-muted-foreground">Annual Savings</div>
-                </div>
+                <div className="text-3xl font-bold text-slate-900 mb-1 font-mono">{stat.value}</div>
+                <div className="text-sm text-slate-500 uppercase tracking-wider font-mono">{stat.label}</div>
               </div>
-            </div>
-          </div>
-
-          {/* Right Content - Hero Visual */}
-          <div className="relative">
-            <div className="aspect-square bg-gradient-glow rounded-3xl p-8 shadow-glow">
-              <div className="h-full bg-card rounded-2xl border border-border p-6 flex flex-col justify-center space-y-6">
-                
-                {/* Automation Flow Visualization */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-center mb-6">Automation in Action</h3>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-accent rounded-lg">
-                      <span className="text-sm font-medium">Lead Capture</span>
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                    </div>
-                    
-                    <div className="flex justify-center">
-                      <ArrowRight className="w-5 h-5 text-muted-foreground" />
-                    </div>
-                    
-                    <div className="flex items-center justify-between p-3 bg-accent rounded-lg">
-                      <span className="text-sm font-medium">Data Processing</span>
-                      <div className="w-2 h-2 bg-cyan rounded-full animate-pulse" />
-                    </div>
-                    
-                    <div className="flex justify-center">
-                      <ArrowRight className="w-5 h-5 text-muted-foreground" />
-                    </div>
-                    
-                    <div className="flex items-center justify-between p-3 bg-accent rounded-lg">
-                      <span className="text-sm font-medium">Customer Notification</span>
-                      <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-center pt-4 border-t border-border">
-                  <p className="text-sm text-muted-foreground">
-                    Save 15-25 hours weekly with automated workflows
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

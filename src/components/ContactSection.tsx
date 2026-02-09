@@ -45,7 +45,7 @@ const ContactSection = () => {
       honeypot: ""
     }
   });
-  
+
   const messageLength = watch("message")?.length || 0;
 
   const onSubmit = async (data: ContactFormData) => {
@@ -87,7 +87,7 @@ const ContactSection = () => {
       // Option 2: Set up Resend edge function (see project docs)
       // For now, showing success message - NO EMAILS WILL BE SENT
       const webhookUrl = "YOUR_ZAPIER_WEBHOOK_URL_HERE";
-      
+
       if (webhookUrl === "YOUR_ZAPIER_WEBHOOK_URL_HERE") {
         console.warn("Contact form webhook not configured. Form data:", sanitizedData);
         // Still show success to user, but log warning
@@ -125,28 +125,28 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Column - Heading & Contact Info */}
             <div className="lg:col-span-2">
               <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
                 Let's <span className="text-gradient">talk!</span>
               </h2>
-              
+
               <div className="space-y-4">
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Email</div>
-                  <a 
-                    href="mailto:support@bridgepointautomations.com" 
+                  <a
+                    href="mailto:support@bridgepointautomations.com"
                     className="text-lg text-primary hover:text-primary/80 transition-colors"
                   >
                     support@bridgepointautomations.com
                   </a>
                 </div>
-                
+
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Phone</div>
-                  <a 
-                    href="tel:+14125552743" 
+                  <a
+                    href="tel:+14125552743"
                     className="text-lg text-primary hover:text-primary/80 transition-colors"
                   >
                     (412) 555-BRIDGE
@@ -158,7 +158,7 @@ const ContactSection = () => {
             {/* Right Column - Simple Form */}
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                
+
                 {/* Name Field */}
                 <div>
                   <Label htmlFor="name" className="text-sm text-muted-foreground mb-2 block">
@@ -245,7 +245,7 @@ const ContactSection = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-3 h-auto text-base font-medium transition-colors duration-200"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 h-auto text-base font-bold transition-colors duration-200 shadow-lg shadow-primary/20"
                 >
                   {isSubmitting ? "Sending..." : "Submit"}
                   {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
