@@ -84,8 +84,8 @@ const HeroSection = ({ onOpenBooking }: HeroSectionProps) => {
 
           {/* Stats / Proof */}
           <motion.div
-            initial={{ opacity: 0, mt: 20 }}
-            animate={{ opacity: 1, mt: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
             className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-100 pt-8"
           >

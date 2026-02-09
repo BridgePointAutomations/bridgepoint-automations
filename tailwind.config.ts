@@ -106,9 +106,9 @@ export default {
 					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--primary) / 0.5)' },
 					'50%': { boxShadow: '0 0 40px hsl(var(--primary) / 0.7)' }
 				},
-				'shimmer': {
-					'0%': { backgroundPosition: '200% 0' },
-					'100%': { backgroundPosition: '-200% 0' }
+			'flow': {
+					'0%': { backgroundPosition: '0% center' },
+					'100%': { backgroundPosition: '300% center' }
 				}
 			},
 			animation: {
@@ -117,7 +117,7 @@ export default {
 				'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				'float': 'float 6s ease-in-out infinite',
 				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-				'shimmer': 'shimmer 8s linear infinite',
+				'flow': 'flow 6s linear infinite',
 			}
 		}
 	},
