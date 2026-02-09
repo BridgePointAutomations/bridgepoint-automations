@@ -41,7 +41,7 @@ export const TransparencyPromise = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
           <Shield className="h-8 w-8 text-primary" />
         </div>
-        <h2 className="text-3xl font-bold mb-4">Our Transparency Promise</h2>
+        <h2 className="text-3xl font-bold mb-4">Our <span className="text-gradient">Transparency Promise</span></h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           No surprises. No hidden fees. No unexpected charges. Just honest, straightforward pricing 
           and communication every step of the way.
