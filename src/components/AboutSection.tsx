@@ -41,6 +41,12 @@ const AboutSection = () => {
           </h2>
         </div>
 
+        {/* Company Description */}
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            BridgePoint Automations is a Pittsburgh-based automation agency helping small businesses streamline their operations through AI-powered workflows, intelligent chatbots, and no-code integrations. We bridge the gap between complex technology and everyday business needs, delivering enterprise-grade automation solutions at accessible prices. Our mission is to give local businesses the tools to save time, cut costs, and scale — without the overhead of a full IT department.
+          </p>
+        </div>
 
         {/* Values Grid */}
         <div className="grid md:grid-cols-2 gap-6">
