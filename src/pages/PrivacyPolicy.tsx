@@ -4,10 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Privacy Policy"
+        description="Learn how BridgePoint Automations collects, uses, and protects your personal information. Our privacy commitment to our clients."
+        canonical="/privacy-policy"
+      />
       <Navigation />
 
       <main className="flex-1">

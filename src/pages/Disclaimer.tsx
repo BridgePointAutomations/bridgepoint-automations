@@ -3,12 +3,18 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, Mail } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const Disclaimer = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Disclaimer"
+        description="Important legal disclaimers regarding BridgePoint Automations services, ROI calculations, and third-party platform integrations."
+        canonical="/disclaimer"
+      />
       <Navigation />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
@@ -33,7 +39,7 @@ const Disclaimer = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto prose prose-slate">
-              
+
               <Card className="mb-8 bg-warning/10 border-warning">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">1. Professional Advice Disclaimer</h2>

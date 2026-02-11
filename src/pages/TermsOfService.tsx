@@ -3,10 +3,16 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { FileText, Mail } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const TermsOfService = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Terms of Service"
+        description="Read the Terms of Service for BridgePoint Automations. Understanding your rights and responsibilities when using our automation services."
+        canonical="/terms-of-service"
+      />
       <Navigation />
 
       <main className="flex-1">

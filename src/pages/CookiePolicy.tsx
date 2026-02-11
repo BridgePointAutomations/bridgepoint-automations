@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Cookie, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { clearCookieConsent } from "@/lib/cookieConsent";
+import { SEO } from "@/components/SEO";
 
 const CookiePolicy = () => {
   const handleManagePreferences = () => {
@@ -14,6 +15,11 @@ const CookiePolicy = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Cookie Policy"
+        description="Understand how BridgePoint Automations uses cookies and tracking technologies to improve your experience. Manage your cookie preferences."
+        canonical="/cookie-policy"
+      />
       <Navigation />
 
       <main className="flex-1">

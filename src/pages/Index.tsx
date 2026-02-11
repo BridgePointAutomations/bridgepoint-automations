@@ -11,6 +11,7 @@ import { AutomationReadinessAssessment } from "@/components/AutomationReadinessA
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SEO } from "@/components/SEO";
 
 const Index = () => {
   const [assessmentOpen, setAssessmentOpen] = useState(false);
@@ -20,6 +21,29 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Business Automation Experts | Zapier, Make & Airtable Consultants"
+        description="Transform your small business with enterprise-level automation. We specialize in Zapier, Airtable & Make integrations to save you 20+ hours weekly. Guaranteed ROI > 300%."
+        keywords="business automation, small business automation, Zapier consultant, Airtable expert, Make integrations, business process automation, automation services, Pittsburgh automation"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "BridgePoint Automations",
+          "description": "Business process automation services for small businesses using Zapier, Airtable, and Make platforms",
+          "url": "https://bridgepoint-automations.com",
+          "telephone": "(412) 555-2743",
+          "email": "support@bridgepointautomations.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "PA",
+            "addressLocality": "Pittsburgh",
+            "addressCountry": "US"
+          },
+          "areaServed": "Pittsburgh Metropolitan Area",
+          "serviceType": "Business Process Automation",
+          "priceRange": "$2000-$9000"
+        }}
+      />
       <Navigation onOpenBooking={handleOpenBooking} />
       <ScrollToTop />
       <main>

@@ -3,12 +3,18 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accessibility, Mail, CheckCircle } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const AccessibilityStatement = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Accessibility Statement"
+        description="BridgePoint Automations is committed to digital accessibility. Read our statement on ensuring our services are accessible to everyone."
+        canonical="/accessibility"
+      />
       <Navigation />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
@@ -33,7 +39,7 @@ const AccessibilityStatement = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto prose prose-slate">
-              
+
               <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">Our Commitment</h2>
@@ -52,7 +58,7 @@ const AccessibilityStatement = () => {
                   <p className="text-muted-foreground mb-4">
                     Our website includes the following accessibility features:
                   </p>
-                  
+
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
