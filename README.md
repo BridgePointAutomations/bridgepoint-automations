@@ -1,73 +1,45 @@
-# Welcome to your Lovable project
+# BridgePoint Automations
 
-## Project info
+Welcome to the BridgePoint Automations website repository. This project is a modern, responsive web application built with React, Vite, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/295190af-0916-44e0-bfa5-27508ff78aea
+## Project Structure
 
-## How can I edit this code?
+This project uses the following key technologies:
 
-There are several ways of editing your application.
+- **Framework:** React + Vite
+- **Styling:** Tailwind CSS + shadcn/ui
+- **Language:** TypeScript
+- **Deployment:** GitHub Pages (via GitHub Actions)
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/295190af-0916-44e0-bfa5-27508ff78aea) and start prompting.
+To run this project locally:
 
-Changes made via Lovable will be committed automatically to this repo.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/BridgePointAutomations/bridgepoint-automations.git
+    cd bridgepoint-automations
+    ```
 
-**Use your preferred IDE**
+2.  **Install dependencies:**
+    ```bash
+    npm install --legacy-peer-deps
+    ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Deployment
 
-Follow these steps:
+This site is automatically deployed to GitHub Pages whenever changes are pushed to the `main` branch.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Live Site:** [www.bridgepointautomations.com](https://www.bridgepointautomations.com)
+- **Workflow:** `.github/workflows/deploy.yml`
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Scripts
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/295190af-0916-44e0-bfa5-27508ff78aea) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- `npm run dev`: Start local development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build locally
