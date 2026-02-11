@@ -50,7 +50,7 @@ const FAQSection = () => {
         },
         {
           question: "How do we get started?",
-          answer: "It's easy. Just click the 'Get Started' button to book a free call. We'll chat about your business and see how we can help – no pressure, no jargon."
+          answer: "It's easy. Just click the 'Book Free Audit' button to book a free call. We'll chat about your business and see how we can help – no pressure, no jargon."
         }
       ]
     }
