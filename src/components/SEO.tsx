@@ -38,6 +38,7 @@ export const SEO = ({
             <meta name="description" content={description} />
             {keywords && <meta name="keywords" content={keywords} />}
             <link rel="canonical" href={fullCanonical} />
+            <link rel="icon" type="image/png" href="/favicon.png" />
 
             {noindex && <meta name="robots" content="noindex" />}
 

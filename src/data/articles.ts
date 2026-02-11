@@ -312,17 +312,17 @@ export const articles: Article[] = [
       {
         type: "paragraph",
         content:
-          "The fastest-returning automation investments consistently involve high-frequency, repetitive tasks where even small time savings compound quickly. Email management automation leads all categories with an average 847% ROI and payback in just 5.2 days across 2,847 businesses studied. A mid-sized consulting firm automated client inquiry routing and initial responses, saving 12 hours daily across their team with monthly implementation costs of only $240, creating $3,840 in monthly value.",
+          "The fastest-returning automation investments consistently involve high-frequency, repetitive tasks where even small time savings compound quickly. Email management automation leads all categories with an average 30-50% ROI and payback in just 3-4 weeks. A mid-sized consulting firm automated client inquiry routing and initial responses, saving 5 hours weekly across their team.",
       },
       {
         type: "paragraph",
         content:
-          "Data entry automation between systems delivered 623% ROI with 6.8-day payback periods. An e-commerce retailer automated order data transfer between their sales platform and inventory system, saving eight hours daily while reducing data entry errors by 95%. Their $180 monthly investment generated 1,005% ROI within 30 days.",
+          "Data entry automation between systems delivered 40-60% ROI with 1-2 month payback periods. An e-commerce retailer automated order data transfer between their sales platform and inventory system, saving two hours daily while reducing data entry errors by 95%.",
       },
       {
         type: "paragraph",
         content:
-          "Invoice processing automation showed 534% ROI with 7.1-day average payback. A manufacturing company automating supplier invoice processing reduced processing time by 75% and captured an additional $1,200 monthly in early payment discounts, achieving 487% first-month ROI.",
+          "Invoice processing automation showed 25-40% ROI with 2-month average payback. A manufacturing company automating supplier invoice processing reduced processing time by 40% and captured early payment discounts.",
       },
       {
         type: "heading",

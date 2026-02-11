@@ -90,10 +90,10 @@ const HeroSection = ({ onOpenBooking }: HeroSectionProps) => {
             className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-100 pt-8"
           >
             {[
-              { label: "Efficiency Boost", value: "300%", icon: Zap },
-              { label: "Active Clients", value: "50+", icon: Bot },
-              { label: "Hours Saved", value: "10k+", icon: Cpu },
-              { label: "Growth Avg", value: "10x", icon: ArrowRight },
+              { label: "Efficiency Boost", value: "50-100%", icon: Zap },
+              { label: "Active Clients", value: "15+", icon: Bot },
+              { label: "Hours Saved", value: "1000+", icon: Cpu },
+              { label: "Growth Avg", value: "2-3x", icon: ArrowRight },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="flex justify-center mb-2 text-primary group-hover:text-primary/80 transition-colors duration-300">

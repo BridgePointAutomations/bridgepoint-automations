@@ -19,7 +19,7 @@ export const TrustBadges = () => {
     },
     {
       icon: TrendingUp,
-      title: "77% Average Profit Margins",
+      title: "20-30% Improved Margins",
       description: "Proven results for clients",
     },
   ];

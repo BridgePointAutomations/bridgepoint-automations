@@ -23,7 +23,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Business Automation Experts | Zapier, Make & Airtable Consultants"
-        description="Transform your small business with enterprise-level automation. We specialize in Zapier, Airtable & Make integrations to save you 20+ hours weekly. Guaranteed ROI > 300%."
+        description="Transform your small business with enterprise-level automation. We specialize in Zapier, Airtable & Make integrations to save you 5-10 hours weekly. Guaranteed ROI > 100%."
         keywords="business automation, small business automation, Zapier consultant, Airtable expert, Make integrations, business process automation, automation services, Pittsburgh automation"
         structuredData={{
           "@context": "https://schema.org",
