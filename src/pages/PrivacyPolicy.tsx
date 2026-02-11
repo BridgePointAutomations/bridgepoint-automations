@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto prose prose-slate">
-              
+
               <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">1. Introduction</h2>
@@ -46,8 +46,26 @@ const PrivacyPolicy = () => {
 
               <Card className="mb-8">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4 text-foreground">2. Information We Collect</h2>
-                  
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">2. Legal Basis for Processing (GDPR)</h2>
+                  <p className="text-muted-foreground mb-4">
+                    If you are from the European Economic Area (EEA), our legal basis for collecting and using the personal information described above will depend on the personal information concerned and the specific context in which we collect it.
+                  </p>
+                  <p className="text-muted-foreground mb-4">
+                    However, we specifically rely on the following legal bases:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                    <li><strong>Consent:</strong> Where you have given us permission to process your data (e.g., subscribing to newsletters).</li>
+                    <li><strong>Contract:</strong> Where processing is necessary to perform a contract with you (e.g., delivering our services).</li>
+                    <li><strong>Legitimate Interests:</strong> Where necessary for our legitimate business interests, ensuring these do not override your fundamental rights.</li>
+                    <li><strong>Legal Obligation:</strong> Where we need to comply with a legal requirement.</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="mb-8">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">3. Information We Collect</h2>
+
                   <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Personal Information</h3>
                   <p className="text-muted-foreground mb-4">
                     We collect information that you provide directly to us, including:
@@ -109,7 +127,19 @@ const PrivacyPolicy = () => {
 
               <Card className="mb-8">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4 text-foreground">5. Data Storage and Security</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">5. International Data Transfers</h2>
+                  <p className="text-muted-foreground mb-4">
+                    Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+                  </p>
+                  <p className="text-muted-foreground">
+                    If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there. We ensure appropriate safeguards are in place for such transfers, such as Standard Contractual Clauses.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="mb-8">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">6. Data Storage and Security</h2>
                   <p className="text-muted-foreground mb-4">
                     We implement appropriate technical and organizational measures to protect your personal data:
                   </p>
@@ -174,6 +204,8 @@ const PrivacyPolicy = () => {
                     <li>Right to know if personal information is sold or disclosed</li>
                     <li>Right to opt-out of the sale of personal information</li>
                     <li>Right to request deletion of personal information</li>
+                    <li>Right to correct inaccurate personal information (CPRA)</li>
+                    <li>Right to limit usage of sensitive personal information (CPRA)</li>
                     <li>Right to non-discrimination for exercising your rights</li>
                   </ul>
                 </CardContent>
@@ -206,12 +238,12 @@ const PrivacyPolicy = () => {
               </Card>
 
             </div>
-          </div>
-        </section>
-      </main>
+          </div >
+        </section >
+      </main >
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

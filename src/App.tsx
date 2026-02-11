@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CookieConsent from "@/components/CookieConsent";
 import Index from "./pages/Index";
-import Booking from "./pages/Booking";
 // import Resources from "./pages/Resources";
 // import Article from "./pages/Article";
 // import Workflows from "./pages/Workflows";
@@ -29,7 +28,6 @@ const App = () => {
           <CookieConsent />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/booking" element={<Booking />} />
             {/* <Route path="/workflows" element={<Workflows />} /> */}
             {/* <Route path="/resources" element={<Resources />} /> */}
             {/* <Route path="/resources/:slug" element={<Article />} /> */}

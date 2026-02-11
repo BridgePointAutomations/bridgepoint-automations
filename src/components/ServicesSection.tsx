@@ -111,7 +111,7 @@ const ServicesSection = ({ onOpenBooking }: ServicesSectionProps) => {
                       bg-primary/5
                       text-primary
                     `}>
-                      <IconComponent className="w-8 h-8" />
+                      <IconComponent className="w-8 h-8" aria-hidden="true" />
                     </div>
                     <CardTitle className="text-2xl font-bold text-slate-900 mb-3">
                       {service.title}

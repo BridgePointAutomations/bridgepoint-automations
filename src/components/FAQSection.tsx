@@ -77,7 +77,7 @@ const FAQSection = () => {
             <Card key={sectionIndex} className="border-slate-200 shadow-sm bg-white">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-3 text-xl text-slate-900">
-                  <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+                  <div className="p-2 bg-primary/10 rounded-lg text-primary">
                     {section.icon}
                   </div>
                   {section.title}
@@ -87,7 +87,7 @@ const FAQSection = () => {
                 <Accordion type="single" collapsible className="w-full">
                   {section.faqs.map((faq, faqIndex) => (
                     <AccordionItem key={faqIndex} value={`${sectionIndex}-${faqIndex}`} className="border-slate-100">
-                      <AccordionTrigger className="text-left text-slate-800 hover:text-indigo-600 hover:no-underline font-medium">
+                      <AccordionTrigger className="text-left text-slate-800 hover:text-primary hover:no-underline font-medium">
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-slate-600 leading-relaxed">

@@ -5,7 +5,6 @@ import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
-import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { TrustBadges } from "@/components/TrustBadges";
 import ProcessSection from "@/components/ProcessSection";
 import { AutomationReadinessAssessment } from "@/components/AutomationReadinessAssessment";
@@ -22,7 +21,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation onOpenBooking={handleOpenBooking} />
-      <ExitIntentPopup />
       <ScrollToTop />
       <main>
         <HeroSection onOpenBooking={handleOpenBooking} />

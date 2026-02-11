@@ -59,7 +59,7 @@ const Navigation = ({ onOpenBooking }: NavigationProps) => {
               <div className="w-8 h-8 rounded bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-lg group-hover:shadow-glow-primary transition-all duration-300">
                 B
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:opacity-80 transition-all duration-300">
+              <span className="text-xl font-bold text-gradient group-hover:opacity-80 transition-all duration-300">
                 BridgePoint
               </span>
             </a>

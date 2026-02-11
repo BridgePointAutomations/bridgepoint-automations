@@ -91,7 +91,7 @@ const TermsOfService = () => {
                 </CardContent>
               </Card>
 
-               <Card className="mb-8">
+              <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">5. Service Packages and Payment Terms</h2>
 
@@ -117,9 +117,12 @@ const TermsOfService = () => {
                     <li>Late payments may incur a 1.5% monthly finance charge</li>
                   </ul>
 
-                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Cancellation Policy</h3>
+                  <h3 className="text-xl font-semibold mb-3 mt-6 text-foreground">Auto-Renewal and Cancellation</h3>
+                  <p className="text-muted-foreground mb-4">
+                    <strong>Auto-Renewal:</strong> Your subscription will automatically renew at the end of each billing cycle unless you cancel it before the renewal date.
+                  </p>
                   <p className="text-muted-foreground">
-                    Services may be canceled at any time with 30 days written notice. No refunds are provided for the current billing period. All monthly fees are non-refundable once the billing period has commenced.
+                    <strong>Cancellation:</strong> You may cancel your subscription at any time by contacting us or through your account dashboard. Cancellation will be effective at the end of the current billing period. No refunds are provided for partial months.
                   </p>
                 </CardContent>
               </Card>
@@ -171,7 +174,7 @@ const TermsOfService = () => {
                 </CardContent>
               </Card>
 
-               <Card className="mb-8">
+              <Card className="mb-8">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">9. Termination</h2>
 
@@ -231,7 +234,25 @@ const TermsOfService = () => {
 
               <Card className="mb-8">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4 text-foreground">13. Changes to Terms</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">13. Class Action Waiver</h2>
+                  <p className="text-muted-foreground">
+                    You agree that any arbitration or proceeding shall be limited to the dispute between us and you individually. To the full extent permitted by law, (i) no arbitration or proceeding shall be joined with any other; (ii) there is no right or authority for any dispute to be arbitrated or resolved on a class action-basis or to utilize class action procedures; and (iii) there is no right or authority for any dispute to be brought in a purported representative capacity on behalf of the general public or any other persons.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="mb-8">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">14. Force Majeure</h2>
+                  <p className="text-muted-foreground">
+                    BridgePoint Automations shall not be liable for any failure to perform its obligations where such failure is as a result of Acts of God (including fire, flood, earthquake, storm, hurricane or other natural disaster), war, invasion, act of foreign enemies, hostilities (whether war is declared or not), civil war, rebellion, revolution, insurrection, military or usurped power or confiscation, terrorist activities, nationalization, government sanction, blockage, embargo, labor dispute, strike, lockout or interruption or failure of electricity or telephone service.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="mb-8">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">15. Changes to Terms</h2>
                   <p className="text-muted-foreground">
                     We reserve the right to modify these Terms of Service at any time. Material changes will be
                     communicated via email to active clients. Continued use of our services after changes constitutes
@@ -242,7 +263,7 @@ const TermsOfService = () => {
 
               <Card className="mb-8">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4 text-foreground">14. Severability</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">16. Severability</h2>
                   <p className="text-muted-foreground">
                     If any provision of these terms is found to be unenforceable, the remaining provisions will remain
                     in full effect.
@@ -252,7 +273,7 @@ const TermsOfService = () => {
 
               <Card className="mb-8">
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold mb-4 text-foreground">15. Entire Agreement</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-foreground">17. Entire Agreement</h2>
                   <p className="text-muted-foreground">
                     These Terms of Service, together with our Privacy Policy and any signed service agreements,
                     constitute the entire agreement between you and BridgePoint Automations.
@@ -264,7 +285,7 @@ const TermsOfService = () => {
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                     <Mail className="w-6 h-6 text-primary" />
-                    16. Contact Information
+                    18. Contact Information
                   </h2>
                   <p className="text-muted-foreground mb-4">
                     For questions about these Terms of Service, please contact:

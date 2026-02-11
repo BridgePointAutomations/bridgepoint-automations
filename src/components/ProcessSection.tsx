@@ -101,7 +101,7 @@ const ProcessSection = () => {
                       border border-white/80
                       transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-3
                     `}>
-                      <step.icon className={`w-8 h-8 ${step.color}`} />
+                      <step.icon className={`w-8 h-8 ${step.color}`} aria-hidden="true" />
                     </div>
 
                     <h3 className="text-xl font-bold text-center mb-3 text-slate-900 group-hover:text-primary transition-colors">
