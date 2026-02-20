@@ -31,7 +31,7 @@ const Footer = ({ onOpenBooking }: FooterProps) => {
               {[Twitter, Linkedin, Instagram].map((Icon, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href="https://bridgepointautomations.com"
                   className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300"
                 >
                   <Icon className="w-4 h-4" />

@@ -28,7 +28,7 @@ export const SEO = ({
     structuredData,
     children
 }: SEOProps) => {
-    const siteUrl = 'https://bridgepoint-automations.com';
+    const siteUrl = 'https://bridgepointautomations.com';
     const fullCanonical = canonical ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`) : siteUrl;
     const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 

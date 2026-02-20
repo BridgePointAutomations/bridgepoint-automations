@@ -37,14 +37,14 @@ const questions: Question[] = [
   { id: "q3", section: 1, text: "Can you identify tasks that take significant time but require minimal decision-making?" },
   { id: "q4", section: 1, text: "Do you currently track time spent on various business processes?" },
   { id: "q5", section: 1, text: "Are your processes consistent across team members?" },
-  
+
   // Section 2: Organizational Readiness
   { id: "q6", section: 2, text: "Is your leadership team open to adopting new technologies and workflows?" },
   { id: "q7", section: 2, text: "Do you have team members who can dedicate time to automation implementation?" },
   { id: "q8", section: 2, text: "Is your team experiencing burnout or overwhelm from manual tasks?" },
   { id: "q9", section: 2, text: "Do you have clear visibility into your business metrics and KPIs?" },
   { id: "q10", section: 2, text: "Is your organization willing to invest time in training on new systems?" },
-  
+
   // Section 3: Technical Readiness
   { id: "q11", section: 3, text: "Do you currently use cloud-based software tools (e.g., Google Workspace, Office 365)?" },
   { id: "q12", section: 3, text: "Are your business systems integrated, or do you frequently move data between applications?" },
@@ -244,13 +244,13 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
 
       const answerValue = answers[q.id];
       const answerText = answerValue === 2 ? "Yes" : answerValue === 1 ? "Partially" : "No";
-      
+
       const questionLines = doc.splitTextToSize(`Q: ${q.text}`, pageWidth - margin * 2 - 10);
       questionLines.forEach((line: string) => {
         doc.text(line, margin + 5, yPos);
         yPos += 5;
       });
-      
+
       doc.setTextColor(80, 80, 80);
       doc.text(`A: ${answerText}`, margin + 5, yPos);
       doc.setTextColor(0, 0, 0);
@@ -273,7 +273,7 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
 
     doc.setFontSize(10);
     doc.setTextColor(5, 130, 132);
-    doc.text("Visit: bridgepointconsulting.com/booking", pageWidth / 2, yPos, { align: "center" });
+    doc.text("Visit: bridgepointautomations.com", pageWidth / 2, yPos, { align: "center" });
 
     return doc.output("blob");
   };
@@ -317,13 +317,13 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
     }
 
     setIsSendingEmail(true);
-    
+
     try {
       const pdfBlob = generatePDFBlob();
       const pdfBase64 = await blobToBase64(pdfBlob);
 
       const readiness = getReadinessLevel(totalScore);
-      
+
       const { data, error } = await supabase.functions.invoke('send-assessment-results', {
         body: {
           email: userEmail,
@@ -389,7 +389,7 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
             <Card className="border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-sm text-muted-foreground">
-                  For each question, select the option that best describes your current situation. 
+                  For each question, select the option that best describes your current situation.
                   Be honest for the most accurate assessment.
                 </p>
               </CardContent>
@@ -447,9 +447,9 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
 
             {/* View Results Button */}
             {isComplete && (
-              <Button 
-                onClick={handleViewResults} 
-                size="lg" 
+              <Button
+                onClick={handleViewResults}
+                size="lg"
                 className="w-full"
                 variant="default"
               >
@@ -510,9 +510,9 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
 
             {/* Action Buttons */}
             <div className="space-y-3">
-              <Button 
-                onClick={handleBookConsultation} 
-                size="lg" 
+              <Button
+                onClick={handleBookConsultation}
+                size="lg"
                 className="w-full"
                 variant="hero"
               >
@@ -520,8 +520,8 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
               </Button>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <Button 
-                  onClick={handleDownloadPDF} 
+                <Button
+                  onClick={handleDownloadPDF}
                   variant="outline"
                   disabled={isDownloading}
                 >
@@ -530,8 +530,8 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
                 </Button>
 
                 {!showEmailInput ? (
-                  <Button 
-                    onClick={() => setShowEmailInput(true)} 
+                  <Button
+                    onClick={() => setShowEmailInput(true)}
                     variant="outline"
                   >
                     <Mail className="mr-2 h-4 w-4" />
@@ -549,7 +549,7 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
                         onChange={(e) => setUserEmail(e.target.value)}
                         disabled={isSendingEmail}
                       />
-                      <Button 
+                      <Button
                         onClick={handleEmailResults}
                         disabled={isSendingEmail || !userEmail}
                       >
@@ -560,8 +560,8 @@ export function AutomationReadinessAssessment({ isOpen, onClose }: AutomationRea
                 )}
               </div>
 
-              <Button 
-                onClick={handleRetake} 
+              <Button
+                onClick={handleRetake}
                 variant="ghost"
                 className="w-full"
               >

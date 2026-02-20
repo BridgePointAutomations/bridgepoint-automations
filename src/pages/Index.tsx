@@ -30,7 +30,7 @@ const Index = () => {
           "@type": "LocalBusiness",
           "name": "BridgePoint Automations",
           "description": "Business process automation services for small businesses using Zapier, Airtable, and Make platforms",
-          "url": "https://bridgepoint-automations.com",
+          "url": "https://bridgepointautomations.com",
           "telephone": "(412) 555-2743",
           "email": "support@bridgepointautomations.com",
           "address": {
